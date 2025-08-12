@@ -1,0 +1,130 @@
+{"name": "additive_cancellation", "description": "If a + c = b + c, then a = b"}
+{"name": "multiplicative_cancellation", "description": "If a × c = b × c and c ≠ 0, then a = b"}
+{"name": "inequality_antisymmetry", "description": "If a ≥ b and b ≥ a, then a = b"}
+{"name": "double_negative", "description": "For any number a: -(-a) = a"}
+{"name": "opposite_of_sum", "description": "For any numbers a, b: -(a + b) = (-a) + (-b)"}
+{"name": "opposite_of_product", "description": "For any numbers a, b: -(a × b) = (-a) × b = a × (-b)"}
+{"name": "subtaction_definition", "description": "a - b = a + (-b)"}
+{"name": "division_definition", "description": "a ÷ b = a × (1/b) for b ≠ 0"}
+{"name": "reciprocal_product", "description": "For a,b ≠ 0: 1/(a×b) = (1/a)×(1/b)"}
+{"name": "reciprocal_of_reciprocal", "description": "For a ≠ 0: 1/(1/a) = a"}
+{"name": "fraction_division", "description": "(a/b) ÷ (c/d) = (a/b) × (d/c) for b,c,d ≠ 0"}
+{"name": "fraction_subtraction", "description": "a/b - c/d = (ad - bc)/(bd) for b,d ≠ 0"}
+{"name": "negative_fraction", "description": "-a/b = (-a)/b = a/(-b)"}
+{"name": "cross_multiplication", "description": "If a/b = c/d then a×d = b×c for b,d ≠ 0"}
+{"name": "componendo", "description": "If a/b = c/d then (a+b)/b = (c+d)/d for b,d ≠ 0"}
+{"name": "dividendo", "description": "If a/b = c/d then (a-b)/b = (c-d)/d for b,d ≠ 0"}
+{"name": "componendo_dividendo", "description": "If a/b = c/d then (a+b)/(a-b) = (c+d)/(c-d) for a≠b, c≠d, b,d≠0"}
+{"name": "exponent_zero", "description": "For a ≠ 0: a^0 = 1"}
+{"name": "exponent_negative", "description": "For a ≠ 0: a^{-n} = 1/a^n"}
+{"name": "exponent_quotient", "description": "(a/b)^n = a^n / b^n for b ≠ 0"}
+{"name": "exponent_difference", "description": "a^m / a^n = a^{m-n} for a ≠ 0"}
+{"name": "exponent_fractional", "description": "a^{1/n} = √[n]{a} for a ≥ 0, n > 0"}
+{"name": "root_product", "description": "For a,b ≥ 0: √(a×b) = √a × √b"}
+{"name": "root_quotient", "description": "For a ≥ 0, b > 0: √(a/b) = √a / √b"}
+{"name": "root_of_square", "description": "√(a^2) = |a|"}
+{"name": "even_root_nonnegative", "description": "For even n, √[n]{a^n} = |a|"}
+{"name": "odd_root_sign", "description": "For odd n, √[n]{a^n} = a"}
+{"name": "absolute_value_definition", "description": "|a| = a if a ≥ 0; |a| = -a if a < 0"}
+{"name": "absolute_value_identity", "description": "|a| = |-a|"}
+{"name": "absolute_value_division", "description": "|a / b| = |a| / |b| for b ≠ 0"}
+{"name": "reverse_triangle_inequality", "description": "||a| - |b|| ≤ |a - b|"}
+{"name": "absolute_value_inequality_less", "description": "|x| < a iff -a < x < a for a > 0"}
+{"name": "absolute_value_inequality_greater", "description": "|x| > a iff x < -a or x > a for a > 0"}
+{"name": "set_reflexivity", "description": "For any set A: A ⊆ A"}
+{"name": "set_antisymmetry", "description": "If A ⊆ B and B ⊆ A, then A = B"}
+{"name": "empty_set_intersection", "description": "For any set A: A ∩ ∅ = ∅"}
+{"name": "universal_set_union", "description": "A ∪ U = U where U is universal set"}
+{"name": "set_intersection_associativity", "description": "A ∩ (B ∩ C) = (A ∩ B) ∩ C"}
+{"name": "set_union_associativity", "description": "A ∪ (B ∪ C) = (A ∪ B) ∪ C"}
+{"name": "set_union_distributive", "description": "A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)"}
+{"name": "cartesian_product_distributive_union", "description": "A × (B ∪ C) = (A × B) ∪ (A × C)"}
+{"name": "cartesian_product_distributive_intersection", "description": "A × (B ∩ C) = (A × B) ∩ (A × C)"}
+{"name": "power_set_property", "description": "∅ ∈ P(A) and A ∈ P(A) for any set A"}
+{"name": "set_difference_empty", "description": "A - ∅ = A"}
+{"name": "set_difference_self", "description": "A - A = ∅"}
+{"name": "complement_universal", "description": "A ∪ A^c = U"}
+{"name": "complement_empty", "description": "U^c = ∅ and ∅^c = U"}
+{"name": "subset_union", "description": "A ⊆ B iff A ∪ B = B"}
+{"name": "subset_intersection", "description": "A ⊆ B iff A ∩ B = A"}
+{"name": "disjoint_sets", "description": "A and B disjoint iff A ∩ B = ∅"}
+{"name": "even_plus_even", "description": "Sum of two even integers is even"}
+{"name": "odd_plus_odd", "description": "Sum of two odd integers is even"}
+{"name": "even_plus_odd", "description": "Sum of even and odd integer is odd"}
+{"name": "even_times_integer", "description": "Product of even integer with any integer is even"}
+{"name": "odd_times_odd", "description": "Product of two odd integers is odd"}
+{"name": "square_nonnegative", "description": "For any real a: a² ≥ 0"}
+{"name": "square_sum", "description": "(a + b)² = a² + 2ab + b²"}
+{"name": "square_difference", "description": "(a - b)² = a² - 2ab + b²"}
+{"name": "difference_of_squares", "description": "a² - b² = (a - b)(a + b)"}
+{"name": "cube_sum", "description": "(a + b)³ = a³ + 3a²b + 3ab² + b³"}
+{"name": "cube_difference", "description": "(a - b)³ = a³ - 3a²b + 3ab² - b³"}
+{"name": "sum_of_cubes", "description": "a³ + b³ = (a + b)(a² - ab + b²)"}
+{"name": "difference_of_cubes", "description": "a³ - b³ = (a - b)(a² + ab + b²)"}
+{"name": "product_roots_quadratic", "description": "For x² + px + q = 0, sum of roots = -p, product = q"}
+{"name": "triangle_inequality_three", "description": "|a + b + c| ≤ |a| + |b| + |c|"}
+{"name": "am_gm_inequality", "description": "For a,b ≥ 0: (a + b)/2 ≥ √(ab)"}
+{"name": "transitive_divisibility", "description": "If a|b and b|c, then a|c"}
+{"name": "division_algorithm", "description": "For integers a,b>0, ∃! q,r: a = bq + r, 0≤r<b"}
+{"name": "congruence_reflexive", "description": "a ≡ a mod m"}
+{"name": "congruence_symmetric", "description": "If a ≡ b mod m, then b ≡ a mod m"}
+{"name": "congruence_transitive", "description": "If a ≡ b mod m and b ≡ c mod m, then a ≡ c mod m"}
+{"name": "congruence_addition", "description": "If a ≡ b mod m and c ≡ d mod m, then a+c ≡ b+d mod m"}
+{"name": "congruence_multiplication", "description": "If a ≡ b mod m and c ≡ d mod m, then ac ≡ bd mod m"}
+{"name": "zero_product_inequality", "description": "If ab > 0, then a and b same sign; if ab < 0, opposite signs"}
+{"name": "addition_positive_negative", "description": "a + (-b) = a - b"}
+{"name": "multiplication_sign_rules", "description": "positive × positive = positive; negative × negative = positive; positive × negative = negative"}
+{"name": "division_sign_rules", "description": "positive ÷ positive = positive; negative ÷ negative = positive; positive ÷ negative = negative"}
+{"name": "fraction_simplification", "description": "a/b = (a÷c)/(b÷c) for c ≠ 0"}
+{"name": "mixed_number_conversion", "description": "a b/c = (a×c + b)/c"}
+{"name": "reciprocal_inequality_negative", "description": "If a < b < 0, then 1/a < 1/b < 0"}
+{"name": "inequality_addition_different_signs", "description": "If a > b, then a + c > b + c for any c"}
+{"name": "inequality_chain", "description": "If a < b < c, then a < c"}
+{"name": "strict_inequality_transitivity", "description": "If a < b and b < c, then a < c"}
+{"name": "exponent_product_base", "description": "(a×b)^n = a^n × b^n"}
+{"name": "exponent_quotient_base", "description": "(a/b)^n = a^n / b^n for b ≠ 0"}
+{"name": "logarithm_product", "description": "log_b(xy) = log_b(x) + log_b(y) for x,y > 0"}
+{"name": "logarithm_quotient", "description": "log_b(x/y) = log_b(x) - log_b(y) for x,y > 0"}
+{"name": "logarithm_power", "description": "log_b(x^n) = n·log_b(x) for x > 0"}
+{"name": "logarithm_base_change", "description": "log_b(a) = log_c(a) / log_c(b) for a,b,c > 0, c ≠ 1"}
+{"name": "set_partition", "description": "A = (A - B) ∪ (A ∩ B) for any sets A,B"}
+{"name": "demorgan_law_generalized", "description": "For sets A_i: (∪A_i)^c = ∩(A_i^c)"}
+{"name": "symmetric_difference", "description": "A Δ B = (A - B) ∪ (B - A)"}
+{"name": "function_composition_associative", "description": "f∘(g∘h) = (f∘g)∘h"}
+{"name": "constant_function_property", "description": "If f(x) = c for all x, then f(a) = f(b) for all a,b"}
+{"name": "identity_function", "description": "f(x) = x satisfies f(a) = a"}
+{"name": "even_function_property", "description": "f(-x) = f(x) for even functions"}
+{"name": "odd_function_property", "description": "f(-x) = -f(x) for odd functions"}
+{"name": "linear_function_property", "description": "f(x) = mx + b satisfies f(a) - f(b) = m(a - b)"}
+{"name": "quadratic_vertex", "description": "Vertex of ax²+bx+c is at x = -b/(2a)"}
+{"name": "sum_arithmetic_series", "description": "Sum of n terms: S_n = n/2 × (a_1 + a_n)"}
+{"name": "sum_geometric_series", "description": "Sum of n terms: S_n = a(1-r^n)/(1-r) for r ≠ 1"}
+{"name": "infinite_geometric_series", "description": "Sum = a/(1-r) for |r| < 1"}
+{"name": "binomial_theorem", "description": "(a+b)^n = Σ[k=0 to n] C(n,k) a^{n-k} b^k"}
+{"name": "pigeonhole_principle", "description": "If n items in m containers, at least one container has ⌈n/m⌉ items"}
+{"name": "factorization_integers", "description": "Every integer >1 has unique prime factorization"}
+{"name": "greatest_common_divisor", "description": "gcd(a,b) = largest d such that d|a and d|b"}
+{"name": "least_common_multiple", "description": "lcm(a,b) = smallest m such that a|m and b|m"}
+{"name": "gcd_lcm_relation", "description": "gcd(a,b) × lcm(a,b) = |a×b| for a,b ≠ 0"}
+{"name": "modular_arithmetic", "description": "a ≡ b mod m iff m|(a-b)"}
+{"name": "fermats_little_theorem", "description": "If p prime, a not divisible by p, then a^{p-1} ≡ 1 mod p"}
+{"name": "quadratic_residue", "description": "a is quadratic residue mod p if x² ≡ a mod p has solution"}
+{"name": "eulers_totient", "description": "φ(n) = number of integers < n coprime to n"}
+{"name": "vector_dot_product", "description": "a·b = |a||b|cosθ"}
+{"name": "vector_cross_product", "description": "|a×b| = |a||b|sinθ"}
+{"name": "complex_conjugate", "description": "conjugate(a+bi) = a-bi"}
+{"name": "complex_modulus", "description": "|a+bi| = √(a²+b²)"}
+{"name": "eulers_formula", "description": "e^{iθ} = cosθ + isinθ"}
+{"name": "demorgans_law_logic", "description": "¬(P∧Q) ≡ ¬P∨¬Q and ¬(P∨Q) ≡ ¬P∧¬Q"}
+{"name": "distributive_law_logic", "description": "P∧(Q∨R) ≡ (P∧Q)∨(P∧R) and P∨(Q∧R) ≡ (P∨Q)∧(P∨R)"}
+{"name": "implication_equivalence", "description": "P→Q ≡ ¬P∨Q"}
+{"name": "contrapositive", "description": "P→Q ≡ ¬Q→¬P"}
+{"name": "mathematical_induction", "description": "If P(1) true and P(k)→P(k+1), then P(n) true ∀n"}
+{"name": "well_ordering_principle", "description": "Every non-empty set of positive integers has smallest element"}
+{"name": "archimedean_property", "description": "For any real x, ∃ integer n > x"}
+{"name": "density_rationals", "description": "Between any two reals, there is a rational number"}
+{"name": "triangle_angle_sum", "description": "Sum of interior angles in triangle is 180 degrees"}
+{"name": "pythagorean_theorem", "description": "In right triangle: a² + b² = c²"}
+{"name": "circle_circumference", "description": "C = 2πr"}
+{"name": "circle_area", "description": "A = πr²"}
+{"name": "similar_triangles", "description": "Corresponding angles equal, sides proportional"}
