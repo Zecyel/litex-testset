@@ -1,0 +1,13 @@
+# If a × c = b × c and c ≠ 0, then a = b
+
+let a R, b R, c R:
+    a * c = b * c
+    c != 0
+
+# Multiply both sides by 1/c
+a * c * (1/c) = b * c * (1/c)
+
+# Simplify using multiplicative inverse
+a * (c * (1/c)) = b * (c * (1/c))
+a * 1 = b * 1
+a = b

@@ -1,0 +1,46 @@
+# A ∪ A^c = U
+
+let U set  # Universal set
+let A set   # Arbitrary subset of U
+
+# Definition of complement
+prop complement(x set, y set):
+    forall a U:
+        a $in y
+        iff:
+            not a $in x
+
+# Definition of union
+prop union(x set, y set, z set):
+    forall a U:
+        a $in z
+        iff:
+            or:
+                a $in x
+                a $in y
+
+# Proof that A ∪ A^c = U
+claim:
+    forall A set:
+        have Ac set st $complement(A, Ac)  # Ac is the complement of A
+        have A_union_Ac set st $union(A, Ac, A_union_Ac)
+        A_union_Ac = U
+    prove:
+        # First show A_union_Ac is subset of U
+        forall x A_union_Ac:
+            x $in U  # By definition of union and complement
+        
+        # Then show U is subset of A_union_Ac
+        forall x U:
+            or:
+                x $in A
+                not x $in A  # Law of excluded middle
+            then:
+                or:
+                    x $in A
+                    x $in Ac  # By definition of complement
+                then:
+                    x $in A_union_Ac  # By definition of union
+        
+        # Therefore A_union_Ac = U
+        A_union_Ac = U

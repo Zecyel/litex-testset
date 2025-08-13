@@ -1,0 +1,15 @@
+# a is quadratic residue mod p if x² ≡ a mod p has solution
+
+# Definition of quadratic residue
+prop quadratic_residue(a Z, p Z):
+    dom:
+        p > 1
+    iff:
+        exist x Z:
+            x^2 ≡ a mod p
+
+# Example proof that 4 is a quadratic residue modulo 5
+know:
+    exist 3 Z:
+        3^2 ≡ 4 mod 5
+    $quadratic_residue(4, 5)

@@ -1,0 +1,16 @@
+# a b/c = (a×c + b)/c
+
+let a R, b R, c R:
+    c != 0
+
+# Left-hand side
+a b/c = a + b/c
+
+# Right-hand side
+(a × c + b)/c = (a × c)/c + b/c
+              = a × (c/c) + b/c
+              = a × 1 + b/c
+              = a + b/c
+
+# Therefore
+a b/c = (a × c + b)/c

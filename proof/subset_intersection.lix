@@ -1,0 +1,37 @@
+# A ⊆ B iff A ∩ B = A
+
+# Proof that A ⊆ B iff A ∩ B = A
+
+let A set, B set
+
+# First, prove A ⊆ B implies A ∩ B = A
+claim:
+    A $is_subset_of B
+    then:
+        A ∩ B = A
+    prove:
+        # Show A ∩ B ⊆ A
+        forall x A ∩ B:
+            x $in A
+        # Show A ⊆ A ∩ B
+        forall x A:
+            x $in B  # since A ⊆ B
+            x $in A ∩ B
+        # Therefore, A ∩ B = A by set equality
+
+# Second, prove A ∩ B = A implies A ⊆ B
+claim:
+    A ∩ B = A
+    then:
+        A $is_subset_of B
+    prove:
+        forall x A:
+            x $in A ∩ B  # since A ∩ B = A
+            x $in B
+        # Therefore, A ⊆ B
+
+# Combining both directions gives the iff statement
+know:
+    A $is_subset_of B
+    iff:
+        A ∩ B = A

@@ -1,0 +1,19 @@
+# (a×b)^n = a^n × b^n
+
+let a R, b R, n N
+
+# Base case: n = 0
+know (a * b)^0 = 1
+know a^0 * b^0 = 1 * 1 = 1
+therefore (a * b)^0 = a^0 * b^0
+
+# Inductive step
+assume (a * b)^k = a^k * b^k for some k N
+then:
+    (a * b)^(k+1) = (a * b)^k * (a * b)  # by definition of exponentiation
+    = (a^k * b^k) * (a * b)              # by inductive hypothesis
+    = a^k * a * b^k * b                   # by commutativity and associativity of multiplication
+    = a^(k+1) * b^(k+1)                   # by definition of exponentiation
+
+# By induction, the statement holds for all n N
+therefore forall n N: (a * b)^n = a^n * b^n

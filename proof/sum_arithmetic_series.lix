@@ -1,0 +1,54 @@
+# Sum of n terms: S_n = n/2 × (a_1 + a_n)
+
+# Proof of the sum of an arithmetic series formula: S_n = n/2 × (a_1 + a_n)
+
+# Define an arithmetic sequence
+fn_template arithmetic_sequence(a_1 R, d R):
+    fn a(n N) R:
+        a(n) = a_1 + (n-1)*d
+
+# Define the sum function
+fn S(n N) R:
+    S(n) = sum from k=1 to n of a(k)
+
+# Base case: n=1
+prove:
+    let n N:
+        n = 1
+    S(1) = a(1)
+    =:
+        n/2 × (a(1) + a(n))
+        1/2 × (a(1) + a(1))
+        1/2 × (2 × a(1))
+        a(1)
+    S(1) = n/2 × (a(1) + a(n))
+
+# Inductive step
+prove:
+    let n N:
+        assume S(n) = n/2 × (a(1) + a(n))
+    # Show it holds for n+1
+    S(n+1) = S(n) + a(n+1)
+    =:
+        n/2 × (a(1) + a(n)) + a(n+1)
+        n/2 × (a(1) + a(n)) + (a(1) + n*d)  # since a(n+1) = a(1) + n*d
+        (n*a(1) + n*a(n))/2 + (2*a(1) + 2*n*d)/2
+        ((n+2)*a(1) + n*a(n) + 2*n*d)/2
+    # But a(n) = a(1) + (n-1)*d
+    =:
+        ((n+2)*a(1) + n*(a(1) + (n-1)*d) + 2*n*d)/2
+        ((n+2)*a(1) + n*a(1) + n*(n-1)*d + 2*n*d)/2
+        ((2n+2)*a(1) + (n² - n + 2n)*d)/2
+        ((2n+2)*a(1) + (n² + n)*d)/2
+        (n+1)*a(1) + n*(n+1)*d/2
+    # And (n+1)/2 × (a(1) + a(n+1))
+    =:
+        (n+1)/2 × (a(1) + a(1) + n*d)
+        (n+1)/2 × (2*a(1) + n*d)
+        (n+1)*a(1) + n*(n+1)*d/2
+    Therefore:
+        S(n+1) = (n+1)/2 × (a(1) + a(n+1))
+
+# By induction, the formula holds for all n in N
+know forall n N:
+    S(n) = n/2 × (a(1) + a(n))

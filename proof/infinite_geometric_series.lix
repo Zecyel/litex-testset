@@ -1,0 +1,52 @@
+# Sum = a/(1-r) for |r| < 1
+
+# Proof of infinite geometric series sum: S = a/(1-r) for |r| < 1
+
+let a R, r R:
+    |r| < 1
+
+# Define the partial sum function
+fn S(n N) R:
+    S(n) = a * (1 - r^(n+1)) / (1 - r)
+
+# The infinite sum is the limit of partial sums as n approaches infinity
+fn infinite_sum() R:
+    infinite_sum() = a / (1 - r)
+
+# We know that for |r| < 1, r^n → 0 as n → ∞
+know forall ε R:
+    ε > 0
+    then:
+        exist N N st:
+            forall n N:
+                n > N
+                then:
+                    |r^n| < ε
+
+# Therefore, the limit of S(n) as n → ∞ is a/(1-r)
+claim:
+    forall ε R:
+        ε > 0
+        then:
+            exist N N st:
+                forall n N:
+                    n > N
+                    then:
+                        |S(n) - infinite_sum()| < ε
+    prove:
+        |S(n) - infinite_sum()| = |a * r^(n+1) / (1 - r)|
+        = (|a| / |1 - r|) * |r|^(n+1)
+        
+        # Since |r| < 1, we can find N such that for n > N, |r|^(n+1) < ε*(1-r)/a
+        let δ = ε * (1 - r) / a
+        have N st:
+            forall n N:
+                n > N
+                then:
+                    |r|^(n+1) < δ
+        
+        therefore:
+            |S(n) - infinite_sum()| < ε
+
+# Thus we've shown the infinite sum converges to a/(1-r)
+infinite_sum() = a / (1 - r)

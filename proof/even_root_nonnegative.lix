@@ -1,0 +1,42 @@
+# For even n, √[n]{a^n} = |a|
+
+# First, we define the nth root function
+fn nth_root(x R, n N_pos) R:
+    x >= 0 or n % 2 = 0  # For even n, x can be negative
+    then:
+        nth_root(x, n)^n = x
+
+# Define absolute value function
+fn abs(x R) R:
+    x >= 0 => abs(x) = x
+    x < 0 => abs(x) = -x
+
+# Main proof
+let n N:
+    n % 2 = 0  # n is even
+let a R
+
+# Case 1: a >= 0
+prove:
+    a >= 0
+    nth_root(a^n, n)^n = a^n  # By definition of nth_root
+    nth_root(a^n, n) = a       # Since a >= 0 and n is even
+    abs(a) = a                 # By definition of abs
+    nth_root(a^n, n) = abs(a)
+
+# Case 2: a < 0
+prove:
+    a < 0
+    nth_root(a^n, n)^n = a^n   # By definition of nth_root
+    a^n = (-a)^n               # Since n is even
+    nth_root(a^n, n) = -a      # Taking nth root
+    abs(a) = -a                # By definition of abs
+    nth_root(a^n, n) = abs(a)
+
+# Combining both cases
+forall a R:
+    or:
+        a >= 0
+        a < 0
+    then:
+        nth_root(a^n, n) = abs(a)

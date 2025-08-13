@@ -1,0 +1,22 @@
+# ∅ ∈ P(A) and A ∈ P(A) for any set A
+
+# Proof that the empty set and the set itself are always in the power set
+
+let A set  # Let A be any set
+
+# First part: ∅ ∈ P(A)
+know:
+    forall x ∅:
+        x $in A  # Vacuous truth since there are no elements in ∅
+    ∅ $in P(A)  # By definition of power set
+
+# Second part: A ∈ P(A)
+know:
+    forall x A:
+        x $in A  # Trivially true by definition
+    A $in P(A)  # By definition of power set
+
+# Therefore, for any set A, both ∅ and A are in P(A)
+forall A set:
+    ∅ $in P(A)
+    A $in P(A)

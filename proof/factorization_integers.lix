@@ -1,0 +1,130 @@
+# Every integer >1 has unique prime factorization
+
+# Fundamental Theorem of Arithmetic: Every integer >1 has a unique prime factorization
+
+# First, define what a prime number is
+prop is_prime(p N_pos):
+    p > 1
+    iff:
+        forall a, b N_pos:
+            a * b = p
+            then:
+                or:
+                    a = 1
+                    b = 1
+
+# Define prime factorization
+prop is_prime_factorization(n N_pos, factors seq(N_pos)):
+    n > 1
+    iff:
+        forall p factors:
+            $is_prime(p)
+        product(factors) = n  # product is a built-in function that multiplies all elements in a sequence
+
+# Existence of prime factorization
+claim:
+    forall n N_pos:
+        n > 1
+        then:
+            exist_prop factors seq(N_pos) st $is_prime_factorization(n, factors)
+    prove_by_strong_induction:
+        base_case:
+            let n = 2
+            have factors := [2]
+            $is_prime(2)
+            product([2]) = 2
+            $is_prime_factorization(2, [2])
+        
+        inductive_step:
+            let k N_pos:
+                k > 1
+                assume forall m N_pos:
+                    1 < m < k
+                    then:
+                        exist_prop factors seq(N_pos) st $is_prime_factorization(m, factors)
+            
+            # Case 1: k is prime
+            or:
+                $is_prime(k)
+                have factors := [k]
+                product([k]) = k
+                $is_prime_factorization(k, [k])
+            
+            # Case 2: k is composite
+            or:
+                not $is_prime(k)
+                exist a, b N_pos:
+                    1 < a < k
+                    1 < b < k
+                    a * b = k
+                
+                # By induction hypothesis
+                have factors_a st $is_prime_factorization(a, factors_a)
+                have factors_b st $is_prime_factorization(b, factors_b)
+                
+                # Concatenate the factorizations
+                have factors := concat(factors_a, factors_b)
+                product(factors) = product(factors_a) * product(factors_b) = a * b = k
+                $is_prime_factorization(k, factors)
+
+# Uniqueness of prime factorization
+claim:
+    forall n N_pos:
+        n > 1
+        then:
+            forall factors1, factors2 seq(N_pos):
+                $is_prime_factorization(n, factors1)
+                $is_prime_factorization(n, factors2)
+                then:
+                    factors1 = factors2
+    prove_by_contradiction:
+        # Assume there exists a smallest counterexample
+        exist_prop m N_pos st smallest_counterexample():
+            m > 1
+            exist factors1, factors2 seq(N_pos):
+                $is_prime_factorization(m, factors1)
+                $is_prime_factorization(m, factors2)
+                factors1 != factors2
+            forall n N_pos:
+                1 < n < m
+                then:
+                    forall f1, f2 seq(N_pos):
+                        $is_prime_factorization(n, f1)
+                        $is_prime_factorization(n, f2)
+                        then:
+                            f1 = f2
+        
+        have m st $smallest_counterexample()
+        have factors1, factors2 st $smallest_counterexample()
+        
+        # Both factorizations must contain some prime p
+        have p factors1:
+            $is_prime(p)
+            p divides m
+        
+        # By Euclid's lemma (p divides product => p divides some factor)
+        know forall p N_pos, factors seq(N_pos):
+            $is_prime(p)
+            p divides product(factors)
+            then:
+                exist q factors:
+                    p divides q
+                    $is_prime(q)
+                    then:
+                        p = q
+        
+        # So p must be in factors2 as well
+        p $in factors2
+        
+        # Remove p from both factorizations
+        have reduced_m := m / p
+        have reduced_factors1 := remove_first(factors1, p)
+        have reduced_factors2 := remove_first(factors2, p)
+        
+        # Now we have two different factorizations for reduced_m < m
+        $is_prime_factorization(reduced_m, reduced_factors1)
+        $is_prime_factorization(reduced_m, reduced_factors2)
+        reduced_factors1 != reduced_factors2
+        
+        # But this contradicts minimality of m
+        not $smallest_counterexample()

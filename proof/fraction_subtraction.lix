@@ -1,0 +1,13 @@
+# a/b - c/d = (ad - bc)/(bd) for b,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+
+# Start with left side
+a/b - c/d
+=: (a/b)*(d/d) - (c/d)*(b/b)  # Multiply by 1 in forms d/d and b/b
+=: (a*d)/(b*d) - (c*b)/(d*b)   # Distributive property of multiplication
+=: (a*d - c*b)/(b*d)           # Combine fractions with common denominator
+=: (a*d - b*c)/(b*d)           # Commutative property of multiplication
+=: (a*d - b*c)/(b*d)           # Final form

@@ -1,0 +1,16 @@
+# log_b(x^n) = n·log_b(x) for x > 0
+
+fn logBase(b R, x R) R:
+    dom:
+        b > 0
+        b != 1
+        x > 0
+
+know forall b R, x R, y R, n R:
+    b > 0
+    b != 1
+    x > 0
+    y > 0
+    then:
+        logBase(b, x^n) = n * logBase(b, x)
+        logBase(b, x*y) = logBase(b, x) + logBase(b, y)

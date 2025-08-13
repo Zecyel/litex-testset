@@ -1,0 +1,25 @@
+# a/b = (a÷c)/(b÷c) for c ≠ 0
+
+let a R, b R, c R:
+    c != 0
+
+# Left side: a/b
+a / b
+
+# Right side: (a÷c)/(b÷c)
+(a / c) / (b / c)
+
+# Simplify denominator (b/c) by multiplying numerator and denominator by c
+= (a / c) * (c / b)
+
+# Cancel c terms
+= (a * c) / (c * b)
+
+# Commutative property of multiplication
+= (a * c) / (b * c)
+
+# Cancel c terms (since c ≠ 0)
+= a / b
+
+# Therefore, a/b = (a÷c)/(b÷c) when c ≠ 0
+a / b = (a / c) / (b / c)

@@ -1,0 +1,50 @@
+# |a / b| = |a| / |b| for b ≠ 0
+
+let a R, b R:
+    b != 0
+
+# First, consider the case where a ≥ 0 and b > 0
+prove:
+    let a R, b R:
+        a >= 0
+        b > 0
+    then:
+        |a / b| = a / b
+        |a| / |b| = a / b
+        |a / b| = |a| / |b|
+
+# Next, consider the case where a ≥ 0 and b < 0
+prove:
+    let a R, b R:
+        a >= 0
+        b < 0
+    then:
+        |a / b| = a / (-b)
+        |a| / |b| = a / (-b)
+        |a / b| = |a| / |b|
+
+# Then, consider the case where a < 0 and b > 0
+prove:
+    let a R, b R:
+        a < 0
+        b > 0
+    then:
+        |a / b| = (-a) / b
+        |a| / |b| = (-a) / b
+        |a / b| = |a| / |b|
+
+# Finally, consider the case where a < 0 and b < 0
+prove:
+    let a R, b R:
+        a < 0
+        b < 0
+    then:
+        |a / b| = (-a) / (-b)
+        |a| / |b| = (-a) / (-b)
+        |a / b| = |a| / |b|
+
+# Since we've covered all cases, the general statement holds
+forall a R, b R:
+    b != 0
+    then:
+        |a / b| = |a| / |b|

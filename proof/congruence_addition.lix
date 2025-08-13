@@ -1,0 +1,34 @@
+# If a ≡ b mod m and c ≡ d mod m, then a+c ≡ b+d mod m
+
+let a, b, c, d, m Z:
+    a ≡ b mod m
+    c ≡ d mod m
+
+# By definition of congruence modulo m
+know forall x, y Z:
+    x ≡ y mod m
+    iff:
+        m | (x - y)
+
+# Applying the definition to a ≡ b mod m and c ≡ d mod m
+m | (a - b)
+m | (c - d)
+
+# Since m divides both (a - b) and (c - d), it must divide their sum
+know forall k, l Z:
+    m | k
+    m | l
+    then:
+        m | (k + l)
+
+# Applying this to (a - b) and (c - d)
+m | ((a - b) + (c - d))
+
+# Rearranging terms
+((a - b) + (c - d)) = (a + c) - (b + d)
+
+# Therefore
+m | ((a + c) - (b + d))
+
+# By definition of congruence modulo m
+a + c ≡ b + d mod m

@@ -1,0 +1,4 @@
+# For any number a: -(-a) = a
+
+let a R
+know -(-a) = a

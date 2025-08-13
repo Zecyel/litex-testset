@@ -1,0 +1,13 @@
+# f(-x) = -f(x) for odd functions
+
+# Definition of an odd function
+fn odd_function(f fn(R)R):
+    forall x R:
+        f(-x) = -f(x)
+
+# Given an odd function f, prove f(-x) = -f(x)
+let f odd_function
+let x R
+
+# By definition of odd function
+f(-x) = -f(x)

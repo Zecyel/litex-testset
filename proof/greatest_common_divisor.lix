@@ -1,0 +1,7 @@
+# gcd(a,b) = largest d such that d|a and d|b
+
+fn gcd(a Z, b Z) N:
+    # d is the largest number that divides both a and b
+    d | a and d | b
+    forall d' Z:
+        d' | a and d' | b => d' <= d

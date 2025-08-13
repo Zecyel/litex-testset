@@ -1,0 +1,27 @@
+# φ(n) = number of integers < n coprime to n
+
+# Definition of Euler's totient function φ(n)
+fn φ(n N_pos) N:
+    # φ(n) counts the numbers less than n that are coprime to n
+    let count N = 0
+    forall k N:
+        k < n
+        then:
+            if gcd(k, n) = 1:
+                count = count + 1
+    φ(n) = count
+
+# Definition of coprime (relatively prime)
+prop coprime(a N, b N):
+    gcd(a, b) = 1
+
+# Properties of φ(n)
+know forall p N_pos:
+    p is_prime  # Assuming we have a prime predicate
+    then:
+        φ(p) = p - 1  # All numbers less than a prime p are coprime to p
+
+know forall p N_pos, k N_pos:
+    p is_prime
+    then:
+        φ(p^k) = p^k - p^(k-1)  # Only multiples of p share factors with p^k

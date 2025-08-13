@@ -1,0 +1,30 @@
+# If a/b = c/d then (a+b)/b = (c+d)/d for b,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+    a / b = c / d
+
+# Multiply both sides by b
+a = (c / d) * b
+
+# Add b to both sides
+a + b = (c / d) * b + b
+
+# Factor out b on the right side
+a + b = b * (c / d + 1)
+
+# Divide both sides by b
+(a + b) / b = c / d + 1
+
+# Similarly, add d to both sides of the original equation
+c + d = (a / b) * d + d
+
+# Factor out d on the right side
+c + d = d * (a / b + 1)
+
+# Divide both sides by d
+(c + d) / d = a / b + 1
+
+# Since a/b = c/d, we can substitute
+(a + b) / b = (c + d) / d

@@ -1,0 +1,32 @@
+# A ∩ (B ∩ C) = (A ∩ B) ∩ C
+
+let A set, B set, C set
+
+# To prove A ∩ (B ∩ C) = (A ∩ B) ∩ C, we need to show that both sets are subsets of each other.
+
+# First, prove A ∩ (B ∩ C) ⊆ (A ∩ B) ∩ C
+prove:
+    forall x A ∩ (B ∩ C):
+        x $in A ∩ (B ∩ C)
+        then:
+            x $in A
+            x $in B ∩ C
+            x $in B
+            x $in C
+            x $in A ∩ B
+            x $in (A ∩ B) ∩ C
+
+# Second, prove (A ∩ B) ∩ C ⊆ A ∩ (B ∩ C)
+prove:
+    forall x (A ∩ B) ∩ C:
+        x $in (A ∩ B) ∩ C
+        then:
+            x $in A ∩ B
+            x $in C
+            x $in A
+            x $in B
+            x $in B ∩ C
+            x $in A ∩ (B ∩ C)
+
+# Since both sets are subsets of each other, they must be equal
+A ∩ (B ∩ C) = (A ∩ B) ∩ C

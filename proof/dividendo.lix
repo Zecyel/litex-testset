@@ -1,0 +1,18 @@
+# If a/b = c/d then (a-b)/b = (c-d)/d for b,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+    a / b = c / d
+
+# Multiply both sides by b*d to eliminate denominators
+a / b * (b * d) = c / d * (b * d)
+a * d = c * b
+
+# Subtract b*d from both sides
+a * d - b * d = c * b - b * d
+(a - b) * d = (c - d) * b
+
+# Divide both sides by b*d (which is allowed since b,d ≠ 0)
+(a - b) * d / (b * d) = (c - d) * b / (b * d)
+(a - b) / b = (c - d) / d

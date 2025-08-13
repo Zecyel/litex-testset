@@ -1,0 +1,15 @@
+# a³ - b³ = (a - b)(a² + ab + b²)
+
+let a R, b R
+
+# Expand the right-hand side
+=:
+    (a - b)(a^2 + ab + b^2)
+    a * a^2 + a * ab + a * b^2 - b * a^2 - b * ab - b * b^2
+    a^3 + a^2b + ab^2 - a^2b - ab^2 - b^3
+    a^3 - b^3 + (a^2b - a^2b) + (ab^2 - ab^2)
+    a^3 - b^3 + 0 + 0
+    a^3 - b^3
+
+# Therefore, we've shown both sides are equal
+a^3 - b^3 = (a - b)(a^2 + ab + b^2)

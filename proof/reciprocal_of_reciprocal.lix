@@ -1,0 +1,6 @@
+# For a ≠ 0: 1/(1/a) = a
+
+forall a R:
+    a != 0
+    then:
+        1/(1/a) = a

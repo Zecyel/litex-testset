@@ -1,0 +1,37 @@
+# If a ≡ b mod m, then b ≡ a mod m
+
+# Definition of congruence modulo m
+prop congruent_mod(a Z, b Z, m Z):
+    dom:
+        m != 0
+    iff:
+        (a - b) % m = 0
+
+# Proof that congruence modulo m is symmetric
+claim:
+    forall a Z, b Z, m Z:
+        $congruent_mod(a, b, m)
+        then:
+            $congruent_mod(b, a, m)
+    prove:
+        let a Z, b Z, m Z:
+            m != 0
+            $congruent_mod(a, b, m)
+        
+        # From the definition of congruent_mod
+        (a - b) % m = 0
+        
+        # Rewrite (a - b) as -(b - a)
+        (a - b) = -(b - a)
+        
+        # Therefore:
+        (-(b - a)) % m = 0
+        
+        # Using properties of modulo operation:
+        (-x) % m = x % m  # Since (-x) ≡ x mod m
+        
+        # So:
+        (b - a) % m = 0
+        
+        # Which by definition means:
+        $congruent_mod(b, a, m)

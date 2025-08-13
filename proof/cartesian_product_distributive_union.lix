@@ -1,0 +1,44 @@
+# A × (B ∪ C) = (A × B) ∪ (A × C)
+
+let A set, B set, C set
+
+# First, prove A × (B ∪ C) ⊆ (A × B) ∪ (A × C)
+prove:
+    forall x A × (B ∪ C):
+        # x is of the form (a, d) where a ∈ A and d ∈ (B ∪ C)
+        have a A, d (B ∪ C) st x = (a, d)
+        # Since d ∈ (B ∪ C), either d ∈ B or d ∈ C
+        or:
+            d ∈ B
+            then:
+                (a, d) ∈ A × B
+                (a, d) ∈ (A × B) ∪ (A × C)
+            d ∈ C
+            then:
+                (a, d) ∈ A × C
+                (a, d) ∈ (A × B) ∪ (A × C)
+        x ∈ (A × B) ∪ (A × C)
+    then:
+        A × (B ∪ C) ⊆ (A × B) ∪ (A × C)
+
+# Second, prove (A × B) ∪ (A × C) ⊆ A × (B ∪ C)
+prove:
+    forall x (A × B) ∪ (A × C):
+        # x is either in A × B or in A × C
+        or:
+            x ∈ A × B
+            then:
+                have a A, b B st x = (a, b)
+                b ∈ (B ∪ C)
+                (a, b) ∈ A × (B ∪ C)
+            x ∈ A × C
+            then:
+                have a A, c C st x = (a, c)
+                c ∈ (B ∪ C)
+                (a, c) ∈ A × (B ∪ C)
+        x ∈ A × (B ∪ C)
+    then:
+        (A × B) ∪ (A × C) ⊆ A × (B ∪ C)
+
+# Since both sides are subsets of each other, they are equal
+A × (B ∪ C) = (A × B) ∪ (A × C)

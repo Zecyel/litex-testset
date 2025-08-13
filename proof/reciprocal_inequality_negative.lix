@@ -1,0 +1,24 @@
+# If a < b < 0, then 1/a < 1/b < 0
+
+let a R, b R:
+    a < b
+    b < 0
+
+# First prove 1/a < 1/b
+# Since a < b < 0, both a and b are negative
+# Multiply both sides of a < b by 1/(ab) (which is positive since a,b < 0)
+a * (1/(ab)) < b * (1/(ab))
+1/b < 1/a
+1/a > 1/b
+
+# Now prove 1/b < 0
+# Since b < 0, dividing both sides by b (a negative number) reverses the inequality
+1 > 0
+# Which is equivalent to
+1/b < 0
+
+# Combining both results
+1/a > 1/b
+1/b < 0
+=:
+    1/a < 1/b < 0

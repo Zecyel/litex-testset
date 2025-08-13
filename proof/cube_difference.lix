@@ -1,0 +1,17 @@
+# (a - b)³ = a³ - 3a²b + 3ab² - b³
+
+let a R, b R
+
+# Expand (a - b)³ using the binomial theorem
+(a - b)³ = (a - b) * (a - b) * (a - b)
+
+# First multiply (a - b) * (a - b)
+= (a * a - a * b - b * a + b * b) * (a - b)
+= (a² - 2ab + b²) * (a - b)
+
+# Now multiply by the remaining (a - b)
+= a² * a - a² * b - 2ab * a + 2ab * b + b² * a - b² * b
+= a³ - a²b - 2a²b + 2ab² + ab² - b³
+
+# Combine like terms
+= a³ - 3a²b + 3ab² - b³

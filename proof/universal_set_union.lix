@@ -1,0 +1,25 @@
+# A ∪ U = U where U is universal set
+
+let A set, U set
+know forall x U: x $in U  # U is the universal set
+
+# To prove A ∪ U = U, we need to show that for all x, x ∈ A ∪ U iff x ∈ U
+claim:
+    A ∪ U = U
+    prove:
+        # First, show that if x ∈ A ∪ U, then x ∈ U
+        forall x A ∪ U:
+            or:
+                x $in A
+                x $in U
+            then:
+                x $in U  # Since U is the universal set, x must be in U
+
+        # Second, show that if x ∈ U, then x ∈ A ∪ U
+        forall x U:
+            x $in U
+            then:
+                x $in A ∪ U  # By definition of union
+
+        # Therefore, A ∪ U and U have exactly the same elements
+        A ∪ U = U

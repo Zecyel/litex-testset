@@ -1,0 +1,11 @@
+# If a < b and b < c, then a < c
+
+# Proof of transitivity of less-than relation
+prop less_than_transitive(a R, b R, c R):
+    a < b
+    b < c
+    then:
+        a < c
+
+# Alternatively, using inline format:
+forall a, b, c R: a < b, b < c => a < c

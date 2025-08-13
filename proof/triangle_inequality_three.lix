@@ -1,0 +1,24 @@
+# |a + b + c| ≤ |a| + |b| + |c|
+
+# Proof of the triangle inequality for three real numbers
+
+# First, we need the basic properties of absolute value
+know forall x R:
+    |x| >= 0
+    |x| = x if x >= 0 else -x
+
+# The standard triangle inequality for two numbers is built-in
+know forall x R, y R:
+    |x + y| <= |x| + |y|
+
+# Now prove the three-number version
+let a R, b R, c R
+
+# Apply the two-number version twice
+|a + b + c| = |(a + b) + c| <= |a + b| + |c|  # First application
+|a + b| <= |a| + |b|                          # Second application
+
+# Combine the inequalities
+|a + b + c| <= |a + b| + |c| <= (|a| + |b|) + |c| = |a| + |b| + |c|
+
+# Therefore, |a + b + c| <= |a| + |b| + |c|

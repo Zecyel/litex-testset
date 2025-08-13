@@ -1,0 +1,10 @@
+# f(x) = mx + b satisfies f(a) - f(b) = m(a - b)
+
+fn f(x R) R:
+    f(x) = m * x + b
+
+let a R, b R
+
+f(a) - f(b) = (m * a + b) - (m * b + b)
+= m * a + b - m * b - b
+= m * (a - b)

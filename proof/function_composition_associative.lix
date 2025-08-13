@@ -1,0 +1,31 @@
+# f∘(g∘h) = (f∘g)∘h
+
+# Function composition is associative: f∘(g∘h) = (f∘g)∘h
+
+# First, define function composition
+fn compose(f fn(Y)Z, g fn(X)Y) fn(X)Z:
+    forall x X:
+        compose(f, g)(x) = f(g(x))
+
+# Let f, g, h be arbitrary functions with compatible domains/codomains
+let f fn(Z)W
+let g fn(Y)Z
+let h fn(X)Y
+
+# Prove left-hand side: f∘(g∘h)
+let lhs fn(X)W = compose(f, compose(g, h))
+forall x X:
+    lhs(x) = f(compose(g, h)(x))  # by definition of compose
+    lhs(x) = f(g(h(x)))            # by definition of inner compose
+
+# Prove right-hand side: (f∘g)∘h
+let rhs fn(X)W = compose(compose(f, g), h)
+forall x X:
+    rhs(x) = compose(f, g)(h(x))   # by definition of compose
+    rhs(x) = f(g(h(x)))            # by definition of inner compose
+
+# Since lhs(x) = rhs(x) for all x, the functions are equal
+forall x X:
+    lhs(x) = f(g(h(x))) = rhs(x)
+lhs = rhs
+f∘(g∘h) = (f∘g)∘h

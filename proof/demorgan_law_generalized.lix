@@ -1,0 +1,54 @@
+# For sets A_i: (∪A_i)^c = ∩(A_i^c)
+
+# Proof that complement of union equals intersection of complements
+
+let A_i set  # Define a collection of sets A_i
+
+# Define the union of all A_i sets
+prop union_A_i(x obj):
+    iff:
+        exist i obj:
+            x $in A_i
+
+# Define the complement of the union
+prop complement_union(x obj):
+    iff:
+        not $union_A_i(x)
+
+# Define the complement of each A_i
+prop complement_A_i(x obj):
+    iff:
+        not x $in A_i
+
+# Define the intersection of all complements
+prop intersection_complements(x obj):
+    iff:
+        forall i obj:
+            $complement_A_i(x)
+
+# Prove equality between complement of union and intersection of complements
+claim:
+    forall x obj:
+        $complement_union(x)
+        iff:
+            $intersection_complements(x)
+    prove:
+        # Forward direction
+        let x obj:
+            $complement_union(x)
+            not $union_A_i(x)
+            not (exist i obj: x $in A_i)
+            forall i obj: not x $in A_i
+            forall i obj: $complement_A_i(x)
+            $intersection_complements(x)
+        
+        # Backward direction
+        let x obj:
+            $intersection_complements(x)
+            forall i obj: $complement_A_i(x)
+            forall i obj: not x $in A_i
+            not exist i obj: x $in A_i
+            not $union_A_i(x)
+            $complement_union(x)
+
+# Therefore, (∪A_i)^c = ∩(A_i^c)

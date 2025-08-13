@@ -1,0 +1,33 @@
+# Sum of two even integers is even
+
+# Definition of even integer
+prop even(n Z):
+    exist k Z:
+        n = 2 * k
+
+# Claim: Sum of two even integers is even
+claim:
+    forall a Z, b Z:
+        $even(a)
+        $even(b)
+        then:
+            $even(a + b)
+    prove:
+        # Since a is even, exists k1 such that a = 2*k1
+        have k1 st $even(a)
+        a = 2 * k1
+        
+        # Since b is even, exists k2 such that b = 2*k2
+        have k2 st $even(b)
+        b = 2 * k2
+        
+        # Sum a + b = 2*k1 + 2*k2 = 2*(k1 + k2)
+        a + b = 2 * k1 + 2 * k2
+        a + b = 2 * (k1 + k2)
+        
+        # Let k = k1 + k2, which is an integer since k1 and k2 are integers
+        let k = k1 + k2
+        k $in Z
+        
+        # Therefore a + b = 2*k, which satisfies the definition of even
+        $even(a + b)

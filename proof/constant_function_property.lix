@@ -1,0 +1,11 @@
+# If f(x) = c for all x, then f(a) = f(b) for all a,b
+
+let f fn(R)R:
+    forall x R:
+        f(x) = c
+
+let a R, b R
+
+f(a) = c
+f(b) = c
+f(a) = f(b)

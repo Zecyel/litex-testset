@@ -1,0 +1,27 @@
+# P→Q ≡ ¬P∨Q
+
+prop implies(P, Q):
+    P => Q
+
+prop or_not(P, Q):
+    not P or Q
+
+claim:
+    forall P, Q:
+        $implies(P, Q) <=> $or_not(P, Q)
+    prove:
+        # Case 1: P is true
+        prove:
+            let P:
+                P = true
+            $implies(P, Q) <=> Q
+            $or_not(P, Q) <=> (false or Q) <=> Q
+            $implies(P, Q) <=> $or_not(P, Q)
+        
+        # Case 2: P is false
+        prove:
+            let P:
+                P = false
+            $implies(P, Q) <=> true
+            $or_not(P, Q) <=> (true or Q) <=> true
+            $implies(P, Q) <=> $or_not(P, Q)

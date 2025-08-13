@@ -1,0 +1,31 @@
+# Sum of even and odd integer is odd
+
+# Define even and odd integers
+prop even(n Z):
+    exist k Z:
+        n = 2 * k
+
+prop odd(n Z):
+    exist k Z:
+        n = 2 * k + 1
+
+# Claim: Sum of even and odd is odd
+claim:
+    forall a Z, b Z:
+        $even(a)
+        $odd(b)
+        then:
+            $odd(a + b)
+    prove:
+        have k1 Z st $even(a)  # a is even, so a = 2*k1
+        a = 2 * k1
+        
+        have k2 Z st $odd(b)   # b is odd, so b = 2*k2 + 1
+        b = 2 * k2 + 1
+        
+        =:
+            a + b
+            2 * k1 + (2 * k2 + 1)
+            2 * (k1 + k2) + 1
+        
+        exist (k1 + k2) st $odd(a + b)

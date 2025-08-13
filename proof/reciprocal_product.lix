@@ -1,0 +1,20 @@
+# For a,b ≠ 0: 1/(a×b) = (1/a)×(1/b)
+
+let a R, b R:
+    a != 0
+    b != 0
+
+# Start with the left side
+1 / (a * b)
+
+# Multiply numerator and denominator by (1/a * 1/b)
+= (1 * (1/a * 1/b)) / (a * b * (1/a * 1/b))
+
+# Simplify numerator
+= (1/a * 1/b) / (a * b * (1/a * 1/b))
+
+# Simplify denominator: a * (1/a) = 1 and b * (1/b) = 1
+= (1/a * 1/b) / (1 * 1)
+
+# Final simplification
+= (1/a) * (1/b)

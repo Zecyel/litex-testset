@@ -1,0 +1,18 @@
+# Product of even integer with any integer is even
+
+# Definition of even integer
+prop is_even(n Z):
+    exist k Z: n = 2 * k
+
+# Product of even integer with any integer is even
+claim:
+    forall a Z, b Z:
+        $is_even(a)
+        then:
+            $is_even(a * b)
+    prove:
+        have k st $is_even(a)  # By definition of even, a = 2*k for some integer k
+        a = 2 * k
+        a * b = (2 * k) * b    # Substitute a with 2*k
+        a * b = 2 * (k * b)    # Associative property of multiplication
+        exist (k * b) st $is_even(a * b)  # Show a*b is of form 2*m where m = k*b

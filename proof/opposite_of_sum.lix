@@ -1,0 +1,10 @@
+# For any numbers a, b: -(a + b) = (-a) + (-b)
+
+let a R, b R
+
+# Proof:
+-(a + b) = -1 * (a + b)          # Definition of negation
+         = -1 * a + -1 * b        # Distributive property of multiplication over addition
+         = (-a) + (-b)            # Definition of negation
+
+# Therefore, -(a + b) = (-a) + (-b) for any real numbers a, b

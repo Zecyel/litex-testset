@@ -1,0 +1,55 @@
+# log_b(a) = log_c(a) / log_c(b) for a,b,c > 0, c ≠ 1
+
+# Proof of log_b(a) = log_c(a) / log_c(b) for a,b,c > 0, c ≠ 1
+
+# Define the logarithm function
+fn log(x R, base R) R:
+    dom:
+        x > 0
+        base > 0
+        base != 1
+    then:
+        base ^ log(x, base) = x
+
+# Let a, b, c be positive real numbers with c ≠ 1
+let a R:
+    a > 0
+let b R:
+    b > 0
+let c R:
+    c > 0
+    c != 1
+
+# Express a and b in terms of base c
+=:
+    a
+    c ^ log(a, c)
+=:
+    b
+    c ^ log(b, c)
+
+# Express log_b(a) using the definition
+=:
+    b ^ log(a, b)
+    a
+=:
+    (c ^ log(b, c)) ^ log(a, b)
+    c ^ log(a, c)
+
+# Simplify exponents using power rule
+=:
+    c ^ (log(b, c) * log(a, b))
+    c ^ log(a, c)
+
+# Since c^x is one-to-one, we can equate exponents
+=:
+    log(b, c) * log(a, b)
+    log(a, c)
+
+# Solve for log(a, b)
+=:
+    log(a, b)
+    log(a, c) / log(b, c)
+
+# Final result
+log(a, b) = log(a, c) / log(b, c)

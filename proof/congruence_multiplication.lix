@@ -1,0 +1,46 @@
+# If a ≡ b mod m and c ≡ d mod m, then ac ≡ bd mod m
+
+# Given a ≡ b mod m and c ≡ d mod m, prove ac ≡ bd mod m
+
+let a Z, b Z, c Z, d Z, m Z:
+    m != 0
+    a ≡ b mod m
+    c ≡ d mod m
+
+# By definition of congruence modulo m:
+know forall x Z, y Z:
+    x ≡ y mod m
+    iff:
+        m | (x - y)
+
+# Therefore:
+m | (a - b)
+m | (c - d)
+
+# We can express a - b and c - d as multiples of m:
+have k Z:
+    a - b = k * m
+
+have l Z:
+    c - d = l * m
+
+# Now consider ac - bd:
+ac - bd = a*c - b*d
+        = a*c - b*c + b*c - b*d  # Adding and subtracting b*c
+        = (a - b)*c + b*(c - d)
+        = (k*m)*c + b*(l*m)       # Substituting from above
+        = m*(k*c + b*l)
+
+# Therefore:
+ac - bd = m*(k*c + b*l)
+
+# Since k*c + b*l is an integer (as k, c, b, l are integers):
+have n Z:
+    n = k*c + b*l
+
+# Thus:
+ac - bd = m*n
+m | (ac - bd)
+
+# By definition of congruence modulo m:
+ac ≡ bd mod m

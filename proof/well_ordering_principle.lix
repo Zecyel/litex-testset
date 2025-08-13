@@ -1,0 +1,62 @@
+# Every non-empty set of positive integers has smallest element
+
+# Definition of smallest element
+prop is_smallest_element(x N_pos, s set):
+    dom:
+        x $in s
+    iff:
+        forall y s:
+            y >= x
+
+# Main proof
+claim:
+    forall s set:
+        dom:
+            $non_empty(s)
+            forall x s:
+                x $in N_pos
+        then:
+            exist_prop m N_pos st has_smallest_element(s):
+                $is_smallest_element(m, s)
+    prove_by_contradiction:
+        # Assume there exists a non-empty set of positive integers with no smallest element
+        have s set:
+            $non_empty(s)
+            forall x s:
+                x $in N_pos
+            not exist m N_pos:
+                $is_smallest_element(m, s)
+
+        # Since s is non-empty, pick any element n in s
+        have n s
+        n $in N_pos
+
+        # Consider the set of all positive integers less than n
+        have set T := {k N_pos | k < n}
+
+        # By our assumption, s must contain some element less than n
+        # because otherwise n would be the smallest element
+        know exist x s:
+            x < n
+
+        # But T is finite (contains at most n-1 elements)
+        # and well-ordered (every non-empty subset has a smallest element)
+        # So the subset s ∩ T must have a smallest element
+        have set s_cap_T := {x s | x < n}
+        $non_empty(s_cap_T)  # since we know there exists x in s with x < n
+
+        # By the well-ordering principle for finite sets, s_cap_T has a smallest element
+        have m s_cap_T:
+            forall y s_cap_T:
+                y >= m
+
+        # This m is also the smallest element of s
+        forall y s:
+            or:
+                y >= n  # in which case y >= n > m (since m < n)
+                y < n   # in which case y is in s_cap_T, so y >= m
+            then:
+                y >= m
+
+        # Contradiction with our assumption that s has no smallest element
+        $is_smallest_element(m, s)

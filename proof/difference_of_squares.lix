@@ -1,0 +1,11 @@
+# a² - b² = (a - b)(a + b)
+
+let a R, b R
+
+# Expand the right-hand side
+(a - b)(a + b) = a*a + a*b - b*a - b*b
+= a^2 + a*b - a*b - b^2  # Since multiplication is commutative (a*b = b*a)
+= a^2 - b^2               # The a*b terms cancel out
+
+# Therefore, we've shown:
+a^2 - b^2 = (a - b)(a + b)

@@ -1,0 +1,43 @@
+# ¬(P∧Q) ≡ ¬P∨¬Q and ¬(P∨Q) ≡ ¬P∧¬Q
+
+# Proof of De Morgan's Laws: ¬(P∧Q) ≡ ¬P∨¬Q and ¬(P∨Q) ≡ ¬P∧¬Q
+
+prop P
+prop Q
+
+# First law: ¬(P∧Q) ≡ ¬P∨¬Q
+claim:
+    not (P and Q) <=> (not P) or (not Q)
+    prove:
+        # Case 1: Assume ¬(P∧Q) is true
+        assume:
+            not (P and Q)
+        # Then either P is false or Q is false (or both)
+        or:
+            not P
+            not Q
+        # Therefore ¬P∨¬Q is true
+
+        # Case 2: Assume ¬P∨¬Q is true
+        assume:
+            (not P) or (not Q)
+        # Then P∧Q cannot be true
+        not (P and Q)
+
+# Second law: ¬(P∨Q) ≡ ¬P∧¬Q
+claim:
+    not (P or Q) <=> (not P) and (not Q)
+    prove:
+        # Case 1: Assume ¬(P∨Q) is true
+        assume:
+            not (P or Q)
+        # Then both P and Q must be false
+        not P
+        not Q
+        # Therefore ¬P∧¬Q is true
+
+        # Case 2: Assume ¬P∧¬Q is true
+        assume:
+            (not P) and (not Q)
+        # Then P∨Q cannot be true
+        not (P or Q)

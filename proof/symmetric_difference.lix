@@ -1,0 +1,78 @@
+# A Δ B = (A - B) ∪ (B - A)
+
+# Proof that symmetric difference equals the union of differences
+
+let A set, B set
+
+# Define symmetric difference A Δ B
+prop symmetric_diff(x obj):
+    or:
+        x $in A
+        x $in B
+    iff:
+        not (x $in A and x $in B)
+
+# Define set difference A - B
+prop diff_A_B(x obj):
+    x $in A
+    iff:
+        not x $in B
+
+# Define set difference B - A
+prop diff_B_A(x obj):
+    x $in B
+    iff:
+        not x $in A
+
+# Define union (A - B) ∪ (B - A)
+prop union_diff(x obj):
+    or:
+        $diff_A_B(x)
+        $diff_B_A(x)
+
+# Prove equivalence
+claim:
+    forall x obj:
+        $symmetric_diff(x)
+        iff:
+            $union_diff(x)
+    prove:
+        # Case 1: x in A but not in B
+        let x obj:
+            x $in A
+            not x $in B
+        $diff_A_B(x)
+        $union_diff(x)
+        $symmetric_diff(x)
+
+        # Case 2: x in B but not in A
+        let x obj:
+            x $in B
+            not x $in A
+        $diff_B_A(x)
+        $union_diff(x)
+        $symmetric_diff(x)
+
+        # Case 3: x in both A and B
+        let x obj:
+            x $in A
+            x $in B
+        not $symmetric_diff(x)
+        not $diff_A_B(x)
+        not $diff_B_A(x)
+        not $union_diff(x)
+
+        # Case 4: x in neither A nor B
+        let x obj:
+            not x $in A
+            not x $in B
+        not $symmetric_diff(x)
+        not $diff_A_B(x)
+        not $diff_B_A(x)
+        not $union_diff(x)
+
+# Therefore, A Δ B = (A - B) ∪ (B - A)
+know forall x obj:
+    $symmetric_diff(x)
+    iff:
+        $union_diff(x)

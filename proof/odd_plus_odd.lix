@@ -1,0 +1,28 @@
+# Sum of two odd integers is even
+
+# Define odd and even numbers
+prop odd(n Z):
+    exist k Z:
+        n = 2 * k + 1
+
+prop even(n Z):
+    exist k Z:
+        n = 2 * k
+
+# Let a and b be odd integers
+let a Z, b Z:
+    $odd(a)
+    $odd(b)
+
+# Since a and b are odd, they can be expressed as 2k+1 and 2m+1
+have k Z st a = 2 * k + 1
+have m Z st b = 2 * m + 1
+
+# Compute the sum
+a + b = (2 * k + 1) + (2 * m + 1)
+a + b = 2 * k + 2 * m + 2
+a + b = 2 * (k + m + 1)
+
+# Show the sum is even
+exist (k + m + 1) st a + b = 2 * (k + m + 1)
+$even(a + b)

@@ -1,0 +1,34 @@
+# ||a| - |b|| ≤ |a - b|
+
+# Proof of ||a| - |b|| ≤ |a - b|
+
+let a R, b R
+
+# Case 1: |a| ≥ |b|
+prove:
+    |a| ≥ |b|
+    then:
+        ||a| - |b|| = |a| - |b|
+        # By triangle inequality: |a| = |a - b + b| ≤ |a - b| + |b|
+        |a| ≤ |a - b| + |b|
+        |a| - |b| ≤ |a - b|
+        ||a| - |b|| ≤ |a - b|
+
+# Case 2: |b| ≥ |a|
+prove:
+    |b| ≥ |a|
+    then:
+        ||a| - |b|| = |b| - |a|
+        # By triangle inequality: |b| = |b - a + a| ≤ |b - a| + |a|
+        |b| ≤ |b - a| + |a|
+        |b| - |a| ≤ |b - a|
+        # Since |b - a| = |a - b|
+        |b - a| = |a - b|
+        ||a| - |b|| ≤ |a - b|
+
+# Combining both cases
+or:
+    |a| ≥ |b|
+    |b| ≥ |a|
+then:
+    ||a| - |b|| ≤ |a - b|

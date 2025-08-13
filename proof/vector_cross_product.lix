@@ -1,0 +1,40 @@
+# |a×b| = |a||b|sinθ
+
+# Proof of |a×b| = |a||b|sinθ
+
+# Define cross product magnitude property
+prop cross_product_magnitude(a R³, b R³, θ R):
+    dom:
+        θ = angle_between(a, b)
+    iff:
+        |a × b| = |a| * |b| * sin(θ)
+
+# Define angle between vectors
+fn angle_between(a R³, b R³) R:
+    dom:
+        a ≠ 0
+        b ≠ 0
+    then:
+        cos(θ) = (a · b) / (|a| * |b|)
+
+# Know basic trigonometric identity
+know forall θ R:
+    sin²θ + cos²θ = 1
+
+# Prove the property
+claim:
+    forall a R³, b R³:
+        a ≠ 0
+        b ≠ 0
+        then:
+            $cross_product_magnitude(a, b, angle_between(a, b))
+    prove:
+        let θ = angle_between(a, b)
+        # Start with |a × b|²
+        |a × b|² = |a|²|b|² - (a · b)²  # Known vector identity
+        = |a|²|b|² - (|a||b|cosθ)²      # From angle_between definition
+        = |a|²|b|²(1 - cos²θ)
+        = |a|²|b|²sin²θ                 # From trigonometric identity
+        
+        # Take square root of both sides
+        |a × b| = |a||b|sinθ

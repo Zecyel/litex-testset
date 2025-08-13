@@ -1,0 +1,36 @@
+# Sum of interior angles in triangle is 180 degrees
+
+# Define a triangle and its angles
+let triangle set
+let A, B, C triangle
+let angle_A, angle_B, angle_C R
+
+# Define that these are interior angles of the triangle
+prop interior_angles(t triangle, a R, b R, c R):
+    t = {A, B, C}
+    a = angle_A
+    b = angle_B
+    c = angle_C
+
+# Axiom: The sum of angles on a straight line is 180 degrees
+know forall x R, y R:
+    x + y = 180 <=> $angles_form_straight_line(x, y)
+
+# Construct a line parallel to BC through point A
+let line_l line
+know $parallel(line_l, line_of(B, C))
+know $point_on_line(A, line_l)
+
+# Using alternate angles theorem
+know $alternate_angles(angle_B, angle_B')  # angle_B' is between AB and line_l
+know $alternate_angles(angle_C, angle_C')  # angle_C' is between AC and line_l
+
+# Angles around point A sum to 180 degrees
+know angle_A + angle_B' + angle_C' = 180
+
+# Since alternate angles are equal
+know angle_B' = angle_B
+know angle_C' = angle_C
+
+# Therefore:
+angle_A + angle_B + angle_C = 180

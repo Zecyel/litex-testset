@@ -1,0 +1,17 @@
+# For a,b ≥ 0: (a + b)/2 ≥ √(ab)
+
+# Proof of (a + b)/2 ≥ √(ab) for a, b ≥ 0
+
+let a R, b R:
+    a ≥ 0
+    b ≥ 0
+
+# Consider the difference between the arithmetic and geometric means
+(a - b)^2 ≥ 0
+a^2 - 2ab + b^2 ≥ 0
+a^2 + 2ab + b^2 ≥ 4ab
+(a + b)^2 ≥ 4ab
+
+# Take square roots of both sides (valid since a, b ≥ 0)
+a + b ≥ 2√(ab)
+(a + b)/2 ≥ √(ab)

@@ -1,0 +1,48 @@
+# A ∪ (B ∪ C) = (A ∪ B) ∪ C
+
+let A set, B set, C set
+
+# To prove A ∪ (B ∪ C) = (A ∪ B) ∪ C, we need to show that both sets are subsets of each other.
+
+# First, prove A ∪ (B ∪ C) ⊆ (A ∪ B) ∪ C
+forall x A ∪ (B ∪ C):
+    or:
+        x $in A
+        x $in B ∪ C
+    then:
+        or:
+            x $in A
+            or:
+                x $in B
+                x $in C
+        then:
+            or:
+                or:
+                    x $in A
+                    x $in B
+                x $in C
+            then:
+                x $in (A ∪ B) ∪ C
+
+# Second, prove (A ∪ B) ∪ C ⊆ A ∪ (B ∪ C)
+forall x (A ∪ B) ∪ C:
+    or:
+        x $in A ∪ B
+        x $in C
+    then:
+        or:
+            or:
+                x $in A
+                x $in B
+            x $in C
+        then:
+            or:
+                x $in A
+                or:
+                    x $in B
+                    x $in C
+            then:
+                x $in A ∪ (B ∪ C)
+
+# Since both sets are subsets of each other, they are equal
+A ∪ (B ∪ C) = (A ∪ B) ∪ C

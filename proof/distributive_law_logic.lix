@@ -1,0 +1,45 @@
+# P∧(Q∨R) ≡ (P∧Q)∨(P∧R) and P∨(Q∧R) ≡ (P∨Q)∧(P∨R)
+
+# Proof of distributive laws: P∧(Q∨R) ≡ (P∧Q)∨(P∧R) and P∨(Q∧R) ≡ (P∨Q)∧(P∨R)
+
+# First distributive law: P∧(Q∨R) ≡ (P∧Q)∨(P∧R)
+claim:
+    forall P, Q, R prop:
+        P ∧ (Q ∨ R) ≡ (P ∧ Q) ∨ (P ∧ R)
+    prove:
+        # Case 1: Assume P is true
+        let P:
+            P = true
+            then:
+                P ∧ (Q ∨ R) ≡ Q ∨ R
+                (P ∧ Q) ∨ (P ∧ R) ≡ Q ∨ R
+                therefore P ∧ (Q ∨ R) ≡ (P ∧ Q) ∨ (P ∧ R)
+        
+        # Case 2: Assume P is false
+        let P:
+            P = false
+            then:
+                P ∧ (Q ∨ R) ≡ false
+                (P ∧ Q) ∨ (P ∧ R) ≡ false ∨ false ≡ false
+                therefore P ∧ (Q ∨ R) ≡ (P ∧ Q) ∨ (P ∧ R)
+
+# Second distributive law: P∨(Q∧R) ≡ (P∨Q)∧(P∨R)
+claim:
+    forall P, Q, R prop:
+        P ∨ (Q ∧ R) ≡ (P ∨ Q) ∧ (P ∨ R)
+    prove:
+        # Case 1: Assume P is true
+        let P:
+            P = true
+            then:
+                P ∨ (Q ∧ R) ≡ true
+                (P ∨ Q) ∧ (P ∨ R) ≡ true ∧ true ≡ true
+                therefore P ∨ (Q ∧ R) ≡ (P ∨ Q) ∧ (P ∨ R)
+        
+        # Case 2: Assume P is false
+        let P:
+            P = false
+            then:
+                P ∨ (Q ∧ R) ≡ Q ∧ R
+                (P ∨ Q) ∧ (P ∨ R) ≡ Q ∧ R
+                therefore P ∨ (Q ∧ R) ≡ (P ∨ Q) ∧ (P ∨ R)

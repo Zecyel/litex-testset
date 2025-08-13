@@ -1,0 +1,22 @@
+# |a+bi| = √(a²+b²)
+
+# Definition of complex numbers
+let self_complex set
+fn sc(a, b R) self_complex  # sc means self_complex, creates a complex number a+bi
+
+# Definition of complex modulus
+fn modulus(c self_complex) R:
+    let a, b R:
+        c = sc(a, b)
+    then:
+        modulus(c) = (a^2 + b^2)^(1/2)
+
+# Proof that |a+bi| = √(a²+b²)
+let a, b R
+let c = sc(a, b)
+
+# Calculate modulus
+modulus(c) = (a^2 + b^2)^(1/2)  # By definition of modulus
+
+# Therefore |a+bi| = √(a²+b²)
+modulus(sc(a, b)) = (a^2 + b^2)^(1/2)

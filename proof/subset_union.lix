@@ -1,0 +1,42 @@
+# A ⊆ B iff A ∪ B = B
+
+let A set, B set
+
+# First, prove A ⊆ B => A ∪ B = B
+claim:
+    A $is_subset_of B
+    then:
+        A ∪ B = B
+    prove:
+        # Prove A ∪ B ⊆ B
+        forall x A ∪ B:
+            or:
+                x $in A
+                x $in B
+            then:
+                x $in B  # since A ⊆ B, x in A implies x in B
+        
+        # Prove B ⊆ A ∪ B
+        forall x B:
+            x $in A ∪ B
+        
+        # Therefore A ∪ B = B
+        A ∪ B = B
+
+# Second, prove A ∪ B = B => A ⊆ B
+claim:
+    A ∪ B = B
+    then:
+        A $is_subset_of B
+    prove:
+        forall x A:
+            x $in A ∪ B  # since x in A
+            x $in B      # since A ∪ B = B
+        
+        # Therefore A ⊆ B
+        A $is_subset_of B
+
+# Combine both directions to get the iff
+A $is_subset_of B
+iff:
+    A ∪ B = B

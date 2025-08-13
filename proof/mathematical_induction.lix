@@ -1,0 +1,24 @@
+# If P(1) true and P(k)→P(k+1), then P(n) true ∀n
+
+# Proof by mathematical induction
+
+# Base case
+know P(1)  # Given that P(1) is true
+
+# Inductive step
+know forall k N:
+    P(k) => P(k+1)  # Given that P(k) implies P(k+1)
+
+# Induction principle
+claim:
+    forall n N:
+        P(n)
+    prove_by_induction:
+        # Base case (n=1)
+        P(1)
+        
+        # Inductive step
+        let k N:
+            assume P(k)  # Induction hypothesis
+            P(k) => P(k+1)  # From given
+            P(k+1)

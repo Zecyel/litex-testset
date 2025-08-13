@@ -1,0 +1,20 @@
+# For a,b ≥ 0: √(a×b) = √a × √b
+
+# Define square root function for non-negative real numbers
+fn sqrt(x R) R:
+    dom:
+        x >= 0
+    then:
+        sqrt(x) * sqrt(x) = x
+
+# Proof that √(a×b) = √a × √b for a,b ≥ 0
+let a R, b R:
+    a >= 0
+    b >= 0
+
+# Square both sides to verify equality
+sqrt(a * b) * sqrt(a * b) = a * b
+(sqrt(a) * sqrt(b)) * (sqrt(a) * sqrt(b)) = (sqrt(a) * sqrt(a)) * (sqrt(b) * sqrt(b)) = a * b
+
+# Since both expressions square to the same value and are non-negative
+sqrt(a * b) = sqrt(a) * sqrt(b)

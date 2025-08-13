@@ -1,0 +1,62 @@
+# gcd(a,b) × lcm(a,b) = |a×b| for a,b ≠ 0
+
+# Define gcd and lcm properties
+prop gcd_property(a Z, b Z, d N):
+    d = gcd(a, b)
+    iff:
+        d | a
+        d | b
+        forall c N:
+            c | a
+            c | b
+            then:
+                c | d
+
+prop lcm_property(a Z, b Z, m N):
+    m = lcm(a, b)
+    iff:
+        a | m
+        b | m
+        forall c N:
+            a | c
+            b | c
+            then:
+                m | c
+
+# Main proof
+claim:
+    forall a Z, b Z:
+        a != 0
+        b != 0
+        then:
+            gcd(a, b) * lcm(a, b) = |a * b|
+    prove:
+        let d = gcd(a, b)
+        let m = lcm(a, b)
+        
+        # By gcd property
+        d | a
+        d | b
+        let a' = a / d
+        let b' = b / d
+        
+        # a' and b' are coprime
+        gcd(a', b') = 1
+        
+        # lcm(a,b) = |a*b|/gcd(a,b)
+        m = lcm(a, b)
+        = lcm(d*a', d*b')
+        = d * lcm(a', b')  # since d is gcd
+        = d * (a' * b')    # since gcd(a',b')=1
+        = (d * a') * b'
+        = a * b'
+        = (a * b) / d
+        
+        # Therefore
+        d * m = d * ((a * b) / d) = a * b
+        
+        # Absolute value
+        |a * b| = |d * m| = d * m  # since d > 0 and m > 0
+        
+        # Final result
+        gcd(a, b) * lcm(a, b) = |a * b|

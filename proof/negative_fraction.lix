@@ -1,0 +1,17 @@
+# -a/b = (-a)/b = a/(-b)
+
+let a R, b R:
+    b != 0
+
+# Proof that -a/b = (-a)/b
+-a/b = (-1 * a)/b  # by definition of negation
+     = (-1) * (a/b)  # by distributive property of division
+     = (-a)/b  # by definition of negation
+
+# Proof that (-a)/b = a/(-b)
+(-a)/b = (-1 * a)/b  # by definition of negation
+       = -1 * (a/b)  # by distributive property of division
+       = a/(-b)  # since dividing by -b is same as multiplying by -1/b
+
+# Therefore, -a/b = (-a)/b = a/(-b)
+-a/b = (-a)/b = a/(-b)

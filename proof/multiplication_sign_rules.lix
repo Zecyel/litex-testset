@@ -1,0 +1,53 @@
+# positive × positive = positive; negative × negative = positive; positive × negative = negative
+
+# Proof that positive × positive = positive; negative × negative = positive; positive × negative = negative
+
+# First, let's define the properties of positive and negative numbers
+prop is_positive(x R):
+    x > 0
+
+prop is_negative(x R):
+    x < 0
+
+# 1. Positive × Positive = Positive
+claim:
+    forall a R, b R:
+        $is_positive(a)
+        $is_positive(b)
+        then:
+            $is_positive(a * b)
+    prove:
+        a > 0
+        b > 0
+        a * b > 0  # By properties of real numbers, product of two positives is positive
+
+# 2. Negative × Negative = Positive
+claim:
+    forall a R, b R:
+        $is_negative(a)
+        $is_negative(b)
+        then:
+            $is_positive(a * b)
+    prove:
+        a < 0
+        b < 0
+        -a > 0    # Negating a negative gives positive
+        -b > 0
+        (-a) * (-b) > 0  # Product of two positives is positive
+        a * b = (-a) * (-b)  # By properties of multiplication
+        a * b > 0
+
+# 3. Positive × Negative = Negative
+claim:
+    forall a R, b R:
+        $is_positive(a)
+        $is_negative(b)
+        then:
+            $is_negative(a * b)
+    prove:
+        a > 0
+        b < 0
+        -b > 0     # Negating a negative gives positive
+        a * (-b) > 0  # Product of two positives is positive
+        a * b = -(a * (-b))  # By properties of multiplication
+        a * b < 0

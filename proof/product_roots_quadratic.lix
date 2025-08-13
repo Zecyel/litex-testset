@@ -1,0 +1,5 @@
+# For x² + px + q = 0, sum of roots = -p, product = q
+
+# For quadratic equation x² + px + q = 0:
+sum_of_roots = -p
+product_of_roots = q

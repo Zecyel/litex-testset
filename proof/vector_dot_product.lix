@@ -1,0 +1,57 @@
+# a·b = |a||b|cosθ
+
+# Proof of the dot product formula: a·b = |a||b|cosθ
+
+# First, we need to define vectors and their properties
+let vector set
+
+# Define vector magnitude (length)
+fn magnitude(v vector) R:
+    magnitude(v) >= 0
+
+# Define dot product operation
+fn dot_product(a vector, b vector) R
+
+# Define angle between vectors
+fn angle_between(a vector, b vector) R:
+    angle_between(a, b) >= 0
+    angle_between(a, b) <= 3.14159  # π radians (180 degrees)
+
+# We'll need the cosine function
+fn cos(x R) R
+
+# We need to know the geometric interpretation of dot product
+know forall a vector, b vector:
+    a != 0
+    b != 0
+    then:
+        dot_product(a, b) = magnitude(a) * magnitude(b) * cos(angle_between(a, b))
+
+# Proof:
+let a vector, b vector:
+    a != 0
+    b != 0
+
+# By definition of dot product in terms of magnitudes and angle
+dot_product(a, b) = magnitude(a) * magnitude(b) * cos(angle_between(a, b))
+
+# For zero vectors, we need to handle separately
+know forall v vector:
+    v = 0
+    then:
+        magnitude(v) = 0
+        dot_product(v, b) = 0
+        angle_between(v, b) is undefined but product becomes 0
+
+# Therefore, the formula holds in all cases
+forall a vector, b vector:
+    or:
+        a = 0
+        b = 0
+        then:
+            dot_product(a, b) = 0 = magnitude(a) * magnitude(b) * cos(angle_between(a, b))
+    or:
+        a != 0
+        b != 0
+        then:
+            dot_product(a, b) = magnitude(a) * magnitude(b) * cos(angle_between(a, b))

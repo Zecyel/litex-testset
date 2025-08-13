@@ -1,0 +1,24 @@
+# (a/b)^n = a^n / b^n for b ≠ 0
+
+let a R, b R:
+    b != 0
+let n N
+
+# Base case: n = 0
+know (a / b)^0 = 1
+know a^0 / b^0 = 1 / 1 = 1
+(a / b)^0 = a^0 / b^0
+
+# Inductive step: assume (a/b)^k = a^k / b^k holds for n = k
+prop inductive_hypothesis(k N):
+    (a / b)^k = a^k / b^k
+
+# For n = k + 1
+(a / b)^(k + 1) = (a / b)^k * (a / b)  # By definition of exponentiation
+               = (a^k / b^k) * (a / b)  # By inductive hypothesis
+               = (a^k * a) / (b^k * b)  # Combining fractions
+               = a^(k + 1) / b^(k + 1)  # By definition of exponentiation
+
+# By induction, the statement holds for all n ∈ N
+forall n N:
+    (a / b)^n = a^n / b^n

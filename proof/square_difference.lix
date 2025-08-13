@@ -1,0 +1,18 @@
+# (a - b)² = a² - 2ab + b²
+
+let a R, b R
+
+# Expand (a - b)^2
+(a - b)^2 = (a - b) * (a - b)
+
+# Apply distributive property
+= a * (a - b) - b * (a - b)
+
+# Distribute a and -b
+= a * a - a * b - b * a + b * b
+
+# Simplify terms
+= a^2 - a*b - a*b + b^2
+
+# Combine like terms
+= a^2 - 2*a*b + b^2

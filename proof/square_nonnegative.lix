@@ -1,0 +1,4 @@
+# For any real a: a² ≥ 0
+
+forall a R:
+    a^2 >= 0

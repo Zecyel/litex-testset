@@ -1,0 +1,14 @@
+# For a ≠ 0: a^0 = 1
+
+# Proof that for any non-zero a, a^0 = 1
+
+let a R:
+    a ≠ 0
+
+# By definition of exponentiation:
+know forall x R, n N:
+    x^n = x * x^(n-1) when n > 0
+    x^0 = 1
+
+# Therefore:
+a^0 = 1

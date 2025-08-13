@@ -1,0 +1,7 @@
+# If a + c = b + c, then a = b
+
+let a R, b R, c R:
+    a + c = b + c
+
+a + c - c = b + c - c
+a = b

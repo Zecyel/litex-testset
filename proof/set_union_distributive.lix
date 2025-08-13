@@ -1,0 +1,34 @@
+# A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)
+
+let A set, B set, C set
+
+# To prove A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C), we'll show both subset relations
+
+# First prove A ∪ (B ∩ C) ⊆ (A ∪ B) ∩ (A ∪ C)
+prove:
+    forall x A ∪ (B ∩ C):
+        or:
+            x $in A
+            x $in B ∩ C
+        then:
+            # Case 1: x ∈ A
+            or:
+                x $in A => x $in A ∪ B and x $in A ∪ C
+                # Case 2: x ∈ B ∩ C
+                x $in B ∩ C => x $in B and x $in C => x $in A ∪ B and x $in A ∪ C
+            x $in (A ∪ B) ∩ (A ∪ C)
+    A ∪ (B ∩ C) $is_subset_of (A ∪ B) ∩ (A ∪ C)
+
+# Now prove (A ∪ B) ∩ (A ∪ C) ⊆ A ∪ (B ∩ C)
+prove:
+    forall x (A ∪ B) ∩ (A ∪ C):
+        x $in A ∪ B and x $in A ∪ C
+        then:
+            or:
+                x $in A => x $in A ∪ (B ∩ C)
+                not x $in A => x $in B and x $in C => x $in B ∩ C => x $in A ∪ (B ∩ C)
+            x $in A ∪ (B ∩ C)
+    (A ∪ B) ∩ (A ∪ C) $is_subset_of A ∪ (B ∩ C)
+
+# Since both subset relations hold, the sets are equal
+A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)

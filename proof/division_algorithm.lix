@@ -1,0 +1,66 @@
+# For integers a,b>0, ∃! q,r: a = bq + r, 0≤r<b
+
+exist_prop q Z, r N st division_theorem(a N_pos, b N_pos):
+    dom:
+        a > 0
+        b > 0
+    iff:
+        a = b * q + r
+        0 ≤ r
+        r < b
+
+# Proof of existence
+claim:
+    forall a N_pos, b N_pos:
+        $division_theorem(a, b)
+    prove:
+        let S set := {s N | s = a - b * k for some k N, s ≥ 0}
+        
+        # S is non-empty since a - b*0 = a ≥ 0
+        know a $in S
+        
+        # By well-ordering principle, S has a smallest element
+        have r st $is_smallest_element_of(r, S)
+        
+        # Let q be such that r = a - b*q
+        have q Z:
+            r = a - b * q
+            
+        # We have 0 ≤ r by definition of S
+        0 ≤ r
+        
+        # Show r < b by contradiction
+        prove_by_contradiction:
+            r ≥ b
+            then:
+                r - b = a - b*q - b = a - b*(q+1) ≥ 0
+                r - b $in S
+                r - b < r  # contradicts minimality of r
+            contradiction
+        
+        # Thus we've found q and r satisfying the conditions
+        a = b * q + r
+        0 ≤ r
+        r < b
+
+# Proof of uniqueness
+claim:
+    forall a N_pos, b N_pos, q1 Z, r1 N, q2 Z, r2 N:
+        a = b * q1 + r1
+        0 ≤ r1 < b
+        a = b * q2 + r2
+        0 ≤ r2 < b
+        then:
+            q1 = q2
+            r1 = r2
+    prove:
+        b * q1 + r1 = b * q2 + r2
+        b * (q1 - q2) = r2 - r1
+        
+        # Since -b < r2 - r1 < b and b divides r2 - r1
+        # The only possibility is r2 - r1 = 0
+        r2 = r1
+        then:
+            b * (q1 - q2) = 0
+            since b > 0:
+                q1 = q2

@@ -1,0 +1,23 @@
+# If a|b and b|c, then a|c
+
+# Definition of divisibility
+prop divides(a Z, b Z):
+    exist k Z:
+        b = a * k
+
+# Given conditions
+let a, b, c Z:
+    $divides(a, b)
+    $divides(b, c)
+
+# Proof
+have k1 Z st $divides(a, b)  # From a|b, exists k1 such that b = a*k1
+have k2 Z st $divides(b, c)   # From b|c, exists k2 such that c = b*k2
+
+c = b * k2           # From b|c
+c = (a * k1) * k2    # Substitute b = a*k1
+c = a * (k1 * k2)    # Associativity of multiplication
+
+# Conclusion: exists k = k1*k2 such that c = a*k
+exist k1 * k2 st $divides(a, c)
+$divides(a, c)

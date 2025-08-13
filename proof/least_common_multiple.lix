@@ -1,0 +1,55 @@
+# lcm(a,b) = smallest m such that a|m and b|m
+
+# Definition of least common multiple
+prop is_lcm(a, b, m Z):
+    dom:
+        a > 0
+        b > 0
+        m > 0
+    iff:
+        a | m
+        b | m
+        forall n Z:
+            a | n
+            b | n
+            then:
+                m <= n
+
+# Proof that lcm(a,b) is the smallest m such that a|m and b|m
+claim:
+    forall a, b Z:
+        a > 0
+        b > 0
+        then:
+            exist_prop m Z st smallest_common_multiple():
+                a | m
+                b | m
+                forall n Z:
+                    a | n
+                    b | n
+                    then:
+                        m <= n
+    prove:
+        # Existence: the product ab is a common multiple
+        exist a * b st $smallest_common_multiple()
+        a | (a * b)
+        b | (a * b)
+        
+        # Minimality: any common multiple must be ≥ lcm
+        let n Z:
+            a | n
+            b | n
+        # By definition of lcm, m must divide any common multiple n
+        # So n = k*m for some k ≥ 1, hence m ≤ n
+        exist k Z:
+            n = k * m
+        k >= 1
+        then:
+            m <= n
+
+# Therefore, lcm(a,b) satisfies the definition of being the smallest common multiple
+forall a, b Z:
+    a > 0
+    b > 0
+    then:
+        $is_lcm(a, b, lcm(a, b))

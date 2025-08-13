@@ -1,0 +1,33 @@
+# If a ≥ b and b ≥ a, then a = b
+
+let a R, b R:
+    a >= b
+    b >= a
+
+# By definition of >=, a >= b implies a > b or a = b
+# Similarly, b >= a implies b > a or b = a
+# We consider the cases:
+
+prove_in_each_case:
+    or:
+        a > b
+        a = b
+
+    # Case 1: a > b
+    prove:
+        a > b
+        # But we also have b >= a which implies b > a or b = a
+        # a > b contradicts b > a (since > is antisymmetric)
+        # and a > b contradicts b = a
+        # Therefore this case leads to contradiction
+        not b >= a  # contradicts given b >= a
+        false
+
+    # Case 2: a = b
+    prove:
+        a = b
+        # This is our desired conclusion
+        a = b
+
+# Since all other cases lead to contradiction, a = b must hold
+a = b

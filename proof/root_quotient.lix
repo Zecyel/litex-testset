@@ -1,0 +1,27 @@
+# For a ≥ 0, b > 0: √(a/b) = √a / √b
+
+# Proof that √(a/b) = √a / √b for a ≥ 0, b > 0
+
+# Define square root function
+fn sqrt(x R) R:
+    dom:
+        x >= 0
+    then:
+        sqrt(x) * sqrt(x) = x
+
+# Claim to prove
+claim:
+    forall a R, b R:
+        a >= 0
+        b > 0
+        then:
+            sqrt(a / b) = sqrt(a) / sqrt(b)
+    prove:
+        # Start with left side
+        sqrt(a / b) * sqrt(a / b) = a / b  # By definition of sqrt
+        sqrt(a / b) * sqrt(a / b) * b = a  # Multiply both sides by b
+        sqrt(a / b) * sqrt(a / b) * sqrt(b) * sqrt(b) = a  # Since b = sqrt(b) * sqrt(b)
+        (sqrt(a / b) * sqrt(b)) * (sqrt(a / b) * sqrt(b)) = a  # Regroup terms
+        (sqrt(a / b) * sqrt(b))^2 = a  # Rewrite as square
+        sqrt(a / b) * sqrt(b) = sqrt(a)  # Take square root of both sides
+        sqrt(a / b) = sqrt(a) / sqrt(b)  # Divide both sides by sqrt(b)

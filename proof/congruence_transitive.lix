@@ -1,0 +1,37 @@
+# If a ≡ b mod m and b ≡ c mod m, then a ≡ c mod m
+
+let a Z, b Z, c Z, m Z:
+    m != 0
+    a ≡ b mod m
+    b ≡ c mod m
+
+# Definition of congruence modulo m
+know forall x Z, y Z:
+    x ≡ y mod m
+    iff:
+        m | (x - y)
+
+# From a ≡ b mod m, we have m | (a - b)
+m | (a - b)
+
+# From b ≡ c mod m, we have m | (b - c)
+m | (b - c)
+
+# Since m divides both (a - b) and (b - c), it divides their sum
+know forall x Z, y Z, k Z:
+    k | x
+    k | y
+    then:
+        k | (x + y)
+
+# Applying this to our case
+m | ((a - b) + (b - c))
+
+# Simplifying the expression
+(a - b) + (b - c) = a - c
+
+# Therefore m | (a - c)
+m | (a - c)
+
+# By definition of congruence modulo m
+a ≡ c mod m

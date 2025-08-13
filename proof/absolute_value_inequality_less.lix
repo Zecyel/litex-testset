@@ -1,0 +1,24 @@
+# |x| < a iff -a < x < a for a > 0
+
+prop absolute_value_inequality(x R, a R):
+    a > 0
+    iff:
+        |x| < a <=> -a < x < a
+
+claim:
+    forall x R, a R:
+        a > 0
+        then:
+            |x| < a <=> -a < x < a
+    prove:
+        case x >= 0:
+            |x| = x
+            x < a
+            -a < x
+            -a < x < a
+        case x < 0:
+            |x| = -x
+            -x < a
+            x > -a
+            -a < x < a
+        end

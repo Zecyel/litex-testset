@@ -1,0 +1,28 @@
+# Vertex of ax²+bx+c is at x = -b/(2a)
+
+let a R, b R, c R:
+    a != 0
+
+# The vertex form of a quadratic function is f(x) = a(x - h)^2 + k, where (h, k) is the vertex
+# To find the vertex, we'll complete the square
+
+# Start with the standard form
+f(x) = a*x^2 + b*x + c
+
+# Factor out 'a' from the first two terms
+= a*(x^2 + (b/a)*x) + c
+
+# Complete the square inside the parentheses
+= a*(x^2 + (b/a)*x + (b/(2a))^2 - (b/(2a))^2) + c
+
+# Rewrite as perfect square plus remaining terms
+= a*((x + b/(2a))^2 - (b/(2a))^2) + c
+
+# Distribute 'a'
+= a*(x + b/(2a))^2 - a*(b/(2a))^2 + c
+
+# Simplify the constant terms
+= a*(x + b/(2a))^2 - (b^2)/(4a) + c
+
+# Now in vertex form: f(x) = a*(x - h)^2 + k where h = -b/(2a) and k = c - (b^2)/(4a)
+# Therefore, the vertex is at x = -b/(2a)

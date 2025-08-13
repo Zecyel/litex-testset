@@ -1,0 +1,23 @@
+# For odd n, √[n]{a^n} = a
+
+# Proof that for odd n, the nth root of a^n equals a
+
+let n N:
+    n % 2 = 1  # n is odd
+
+let a R
+
+# Define the nth root function
+fn nth_root(x R, n N) R:
+    nth_root(x, n)^n = x
+
+# Main proof
+claim:
+    nth_root(a^n, n) = a
+    prove:
+        # Since n is odd, the nth root function is bijective on R
+        # Therefore, the only solution to x^n = a^n is x = a
+        nth_root(a^n, n)^n = a^n  # by definition of nth_root
+        (nth_root(a^n, n))^n = a^n
+        # For odd n, x^n = y^n implies x = y
+        nth_root(a^n, n) = a

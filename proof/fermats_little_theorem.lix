@@ -1,0 +1,54 @@
+# If p prime, a not divisible by p, then a^{p-1} ≡ 1 mod p
+
+# Fermat's Little Theorem: If p is prime and a is not divisible by p, then a^{p-1} ≡ 1 mod p
+
+let p prime
+let a Z:
+    not $is_divisible_by(a, p)
+
+# Define the set S = {1a, 2a, 3a, ..., (p-1)a} mod p
+have set S := {x Z | exist k N_pos: x = (k * a) % p, k < p}
+
+# All elements in S are distinct modulo p
+claim:
+    forall x S, y S:
+        x % p = y % p
+        then:
+            x = y
+    prove:
+        let x S, y S:
+            x % p = y % p
+        have k1 N_pos st x = (k1 * a) % p
+        have k2 N_pos st y = (k2 * a) % p
+        (k1 * a) % p = (k2 * a) % p
+        ((k1 - k2) * a) % p = 0
+        $is_divisible_by((k1 - k2) * a, p)
+        # Since gcd(a,p) = 1, p must divide (k1 - k2)
+        $is_divisible_by((k1 - k2), p)
+        # But 0 < k1, k2 < p, so k1 - k2 must be 0
+        k1 = k2
+        x = y
+
+# S contains p-1 distinct non-zero elements modulo p
+know len(S) = p - 1
+
+# The product of all elements in S is congruent to (p-1)! mod p
+fn product(S set) Z:
+    if len(S) = 0 then 1
+    else:
+        have x S
+        x * product(S \ {x})
+
+claim:
+    product(S) % p = (p-1)! % p
+    prove:
+        # Rearrange terms since multiplication is commutative mod p
+        product(S) ≡ a * 2a * 3a * ... * (p-1)a mod p
+                 ≡ a^{p-1} * (p-1)! mod p
+        # But product(S) ≡ (p-1)! mod p from the distinctness
+        (p-1)! ≡ a^{p-1} * (p-1)! mod p
+        # Multiply both sides by inverse of (p-1)! mod p
+        1 ≡ a^{p-1} mod p
+
+# Final result
+a^{p-1} % p = 1

@@ -1,0 +1,14 @@
+# f(-x) = f(x) for even functions
+
+# Definition of an even function
+prop is_even(fn(R)R):
+    forall x R:
+        f(-x) = f(x)
+
+# Given an even function f
+let f fn(R)R:
+    $is_even(f)
+
+# Proof that f(-x) = f(x) for even functions
+forall x R:
+    f(-x) = f(x)  # By definition of even function

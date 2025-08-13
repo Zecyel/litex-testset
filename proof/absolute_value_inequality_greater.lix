@@ -1,0 +1,47 @@
+# |x| > a iff x < -a or x > a for a > 0
+
+let x R, a R:
+    a > 0
+
+# First, prove |x| > a => x < -a or x > a
+claim:
+    |x| > a
+    then:
+        x < -a or x > a
+    prove:
+        # Case 1: x ≥ 0
+        or:
+            x ≥ 0
+            x < 0
+        prove_in_each_case:
+            case x ≥ 0:
+                |x| = x
+                x > a
+            case x < 0:
+                |x| = -x
+                -x > a
+                x < -a
+
+# Now prove the converse: x < -a or x > a => |x| > a
+claim:
+    x < -a or x > a
+    then:
+        |x| > a
+    prove:
+        or:
+            x < -a
+            x > a
+        prove_in_each_case:
+            case x < -a:
+                since a > 0, -a < 0
+                thus x < -a < 0
+                |x| = -x > a
+            case x > a:
+                since a > 0, x > a > 0
+                |x| = x > a
+
+# Combine both directions to get the iff
+know:
+    |x| > a
+    iff:
+        x < -a or x > a

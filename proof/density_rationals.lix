@@ -1,0 +1,80 @@
+# Between any two reals, there is a rational number
+
+# Proof that between any two reals, there is a rational number
+
+# First, define the property we want to prove
+exist_prop q Q st exists_rational_between(a R, b R):
+    dom:
+        a < b
+    iff:
+        a < q
+        q < b
+
+# To prove this, we'll use the Archimedean property of real numbers
+know @archimedean_property(x R, y R):
+    x > 0
+    y > 0
+    then:
+        exist n N:
+            n * x > y
+
+# Main proof
+claim:
+    forall a, b R:
+        a < b
+        then:
+            $exists_rational_between(a, b)
+    prove:
+        # Let d = b - a > 0
+        let d R:
+            d = b - a
+        d > 0
+
+        # By Archimedean property, exists n such that n*d > 1
+        $archimedean_property(d, 1)
+        have n N st n * d > 1
+
+        # Consider the set of integers k where k > n*a
+        # This set is non-empty and bounded below, so has a smallest element
+        exist_prop k Z st smallest_integer_greater_than_na(m R):
+            dom:
+                m = n * a
+            iff:
+                k > m
+                forall j Z:
+                    j > m
+                    then:
+                        j >= k
+
+        have k st $smallest_integer_greater_than_na(n * a)
+
+        # Now consider q = k/n
+        let q Q:
+            q = k / n
+
+        # We have:
+        # 1. k > n*a => q > a
+        k > n * a
+        q > a
+
+        # 2. Since k-1 <= n*a (by minimality of k)
+        #    and n*d > 1 => n*b - n*a > 1
+        #    so k < n*b
+        k - 1 <= n * a
+        n * d > 1
+        n * b - n * a > 1
+        k < n * b
+        q < b
+
+        # Therefore q is between a and b
+        a < q
+        q < b
+
+        # So we've found our rational q
+        exist q st $exists_rational_between(a, b)
+
+# The claim is now proved
+know forall a, b R:
+    a < b
+    then:
+        $exists_rational_between(a, b)

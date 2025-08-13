@@ -1,0 +1,18 @@
+# positive ÷ positive = positive; negative ÷ negative = positive; positive ÷ negative = negative
+
+# Proof of division sign rules
+
+# Rule 1: positive ÷ positive = positive
+let a N_pos, b N_pos
+know a / b > 0
+
+# Rule 2: negative ÷ negative = positive
+let c Z, d Z:
+    c < 0
+    d < 0
+know c / d > 0
+
+# Rule 3: positive ÷ negative = negative
+let e N_pos, f Z:
+    f < 0
+know e / f < 0

@@ -1,0 +1,36 @@
+# a ≡ b mod m iff m|(a-b)
+
+prop congruent_mod(a Z, b Z, m Z):
+    a ≡ b mod m
+    iff:
+        m | (a - b)
+
+# Proof:
+let a Z, b Z, m Z
+
+# (=>) Direction: a ≡ b mod m implies m | (a - b)
+claim:
+    a ≡ b mod m => m | (a - b)
+    prove:
+        a ≡ b mod m
+        # By definition of congruence, there exists k such that a - b = km
+        exist k Z:
+            a - b = k * m
+        # This directly shows m divides (a - b)
+        m | (a - b)
+
+# (<=) Direction: m | (a - b) implies a ≡ b mod m
+claim:
+    m | (a - b) => a ≡ b mod m
+    prove:
+        m | (a - b)
+        # By definition of divides, there exists k such that a - b = km
+        exist k Z:
+            a - b = k * m
+        # Rearranged, this gives a = b + km
+        a = b + k * m
+        # Which is the definition of congruence modulo m
+        a ≡ b mod m
+
+# Therefore, the equivalence holds
+a ≡ b mod m <=> m | (a - b)

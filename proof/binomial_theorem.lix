@@ -1,0 +1,48 @@
+# (a+b)^n = Σ[k=0 to n] C(n,k) a^{n-k} b^k
+
+# Proof of the Binomial Theorem by Mathematical Induction
+
+# Base case: n=0
+let a R, b R
+(a + b)^0 = 1
+Σ[k=0 to 0] C(0,k) a^{0-k} b^k = C(0,0) a^0 b^0 = 1
+=:
+    (a + b)^0
+    1
+=:
+    Σ[k=0 to 0] C(0,k) a^{0-k} b^k
+    1
+
+# Inductive step
+prop binomial_theorem_holds(n N):
+    (a + b)^n = Σ[k=0 to n] C(n,k) a^{n-k} b^k
+
+know:
+    $binomial_theorem_holds(0)  # Base case holds
+
+# Assume it holds for some n
+let n N:
+    $binomial_theorem_holds(n)
+
+# Show it holds for n+1
+(a + b)^{n+1} = (a + b) * (a + b)^n
+= (a + b) * Σ[k=0 to n] C(n,k) a^{n-k} b^k  # By inductive hypothesis
+= a * Σ[k=0 to n] C(n,k) a^{n-k} b^k + b * Σ[k=0 to n] C(n,k) a^{n-k} b^k
+= Σ[k=0 to n] C(n,k) a^{n+1-k} b^k + Σ[k=0 to n] C(n,k) a^{n-k} b^{k+1}
+
+# Reindex the second sum
+= Σ[k=0 to n] C(n,k) a^{n+1-k} b^k + Σ[k=1 to n+1] C(n,k-1) a^{n+1-k} b^k
+
+# Combine the sums
+= C(n,0) a^{n+1} b^0 + Σ[k=1 to n] [C(n,k) + C(n,k-1)] a^{n+1-k} b^k + C(n,n) a^0 b^{n+1}
+
+# Use Pascal's identity: C(n+1,k) = C(n,k) + C(n,k-1)
+= C(n+1,0) a^{n+1} b^0 + Σ[k=1 to n] C(n+1,k) a^{n+1-k} b^k + C(n+1,n+1) a^0 b^{n+1}
+= Σ[k=0 to n+1] C(n+1,k) a^{n+1-k} b^k
+
+# Therefore, by induction
+prove_by_math_induction($binomial_theorem_holds(n))
+
+# Final conclusion
+forall n N:
+    (a + b)^n = Σ[k=0 to n] C(n,k) a^{n-k} b^k

@@ -1,0 +1,8 @@
+# If a/b = c/d then a×d = b×c for b,d ≠ 0
+
+forall a R, b R, c R, d R:
+    b != 0
+    d != 0
+    a / b = c / d
+    then:
+        a * d = b * c

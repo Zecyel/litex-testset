@@ -1,0 +1,18 @@
+# If A ⊆ B and B ⊆ A, then A = B
+
+let A set, B set
+
+# Given A is a subset of B
+know forall x A:
+    x $in B
+
+# Given B is a subset of A
+know forall x B:
+    x $in A
+
+# To prove A = B, we need to show:
+# 1. Every element of A is in B (already given)
+# 2. Every element of B is in A (already given)
+
+# Therefore A = B by definition of set equality
+A = B

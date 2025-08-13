@@ -1,0 +1,29 @@
+# a^{1/n} = √[n]{a} for a ≥ 0, n > 0
+
+# Define the nth root function
+fn nth_root(a R, n N_pos) R:
+    a >= 0
+    then:
+        nth_root(a, n)^n = a
+
+# Define the exponentiation function with rational exponents
+fn pow(a R, r Q) R:
+    a >= 0
+    then:
+        # For r = 1/n
+        exists m Z, n N_pos:
+            r = m / n
+            pow(a, r) = nth_root(a, n)^m
+
+# Prove a^(1/n) = nth_root(a, n)
+claim:
+    forall a R, n N_pos:
+        a >= 0
+        then:
+            pow(a, 1/n) = nth_root(a, n)
+    prove:
+        let a R, n N_pos:
+            a >= 0
+        pow(a, 1/n) = nth_root(a, n)^1  # by definition of pow with m=1
+        nth_root(a, n)^1 = nth_root(a, n)  # by exponentiation rules
+        pow(a, 1/n) = nth_root(a, n)  # by transitivity

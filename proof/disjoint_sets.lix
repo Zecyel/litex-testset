@@ -1,0 +1,28 @@
+# A and B disjoint iff A ∩ B = ∅
+
+prop disjoint(A set, B set):
+    A ∩ B = ∅
+
+prop intersection_empty(A set, B set):
+    forall x obj:
+        not (x ∈ A ∧ x ∈ B)
+
+claim:
+    forall A set, B set:
+        $disjoint(A, B) <=> $intersection_empty(A, B)
+    prove:
+        # Forward direction: disjoint => intersection empty
+        let A set, B set:
+            $disjoint(A, B)
+            A ∩ B = ∅
+            forall x obj:
+                not (x ∈ A ∧ x ∈ B)
+        $intersection_empty(A, B)
+
+        # Reverse direction: intersection empty => disjoint
+        let A set, B set:
+            $intersection_empty(A, B)
+            forall x obj:
+                not (x ∈ A ∧ x ∈ B)
+            A ∩ B = ∅
+        $disjoint(A, B)

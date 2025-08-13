@@ -1,0 +1,40 @@
+# P→Q ≡ ¬Q→¬P
+
+prop implies(P, Q):
+    P => Q
+
+prop contrapositive(P, Q):
+    not Q => not P
+
+claim:
+    forall P, Q:
+        $implies(P, Q) <=> $contrapositive(P, Q)
+    prove:
+        # Prove P→Q implies ¬Q→¬P
+        let P, Q:
+            $implies(P, Q)
+        prove:
+            $contrapositive(P, Q)
+            prove_by_contradiction:
+                not $contrapositive(P, Q)
+                not (not Q => not P)
+                not Q and not (not P)  # Negation of implication
+                not Q and P
+                P and not Q
+                $implies(P, Q) gives Q
+                Q and not Q
+                false
+
+        # Prove ¬Q→¬P implies P→Q
+        let P, Q:
+            $contrapositive(P, Q)
+        prove:
+            $implies(P, Q)
+            prove_by_contradiction:
+                not $implies(P, Q)
+                not (P => Q)
+                P and not Q  # Negation of implication
+                not Q
+                $contrapositive(P, Q) gives not P
+                P and not P
+                false

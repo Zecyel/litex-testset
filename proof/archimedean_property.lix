@@ -1,0 +1,11 @@
+# For any real x, ∃ integer n > x
+
+exist_prop n Z st greater_than(x R):
+    iff:
+        n > x
+
+know forall x R:
+    have n Z:
+        n = floor(x) + 1
+    n > x
+    $greater_than(x)

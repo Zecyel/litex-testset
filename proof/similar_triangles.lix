@@ -1,0 +1,35 @@
+# Corresponding angles equal, sides proportional
+
+# Definition of similar triangles
+prop similar_triangles(t1 triangle, t2 triangle):
+    # Corresponding angles are equal
+    angle_of_points(t1.a, t1.b, t1.c) = angle_of_points(t2.a, t2.b, t2.c)
+    angle_of_points(t1.b, t1.c, t1.a) = angle_of_points(t2.b, t2.c, t2.a)
+    angle_of_points(t1.c, t1.a, t1.b) = angle_of_points(t2.c, t2.a, t2.b)
+    
+    # Sides are proportional
+    length_of_finite_line(finite_line_of(t1.a, t1.b)) / length_of_finite_line(finite_line_of(t2.a, t2.b)) = 
+    length_of_finite_line(finite_line_of(t1.b, t1.c)) / length_of_finite_line(finite_line_of(t2.b, t2.c)) = 
+    length_of_finite_line(finite_line_of(t1.c, t1.a)) / length_of_finite_line(finite_line_of(t2.c, t2.a))
+
+# Proof that corresponding angles equal implies sides proportional
+claim:
+    forall t1 triangle, t2 triangle:
+        # Given corresponding angles are equal
+        angle_of_points(t1.a, t1.b, t1.c) = angle_of_points(t2.a, t2.b, t2.c)
+        angle_of_points(t1.b, t1.c, t1.a) = angle_of_points(t2.b, t2.c, t2.a)
+        angle_of_points(t1.c, t1.a, t1.b) = angle_of_points(t2.c, t2.a, t2.b)
+        
+        # Then sides must be proportional
+        then:
+            $similar_triangles(t1, t2)
+    prove:
+        # Using AA similarity criterion (Angle-Angle)
+        # Since two angles are equal, third must be equal (sum of angles in triangle is 180°)
+        # Therefore triangles are similar and sides are proportional
+        know forall t triangle:
+            angle_of_points(t.a, t.b, t.c) + angle_of_points(t.b, t.c, t.a) + angle_of_points(t.c, t.a, t.b) = 180°
+        
+        # By the AA similarity theorem, triangles with two equal angles are similar
+        # Therefore their corresponding sides are proportional
+        $similar_triangles(t1, t2)

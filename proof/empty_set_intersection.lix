@@ -1,0 +1,17 @@
+# For any set A: A ∩ ∅ = ∅
+
+let A set
+
+# Definition of intersection
+prop intersection(x set, y set, z set):
+    forall a obj:
+        a $in z <=> (a $in x and a $in y)
+
+# To show A ∩ ∅ = ∅, we need to show that for all a, a is not in A ∩ ∅
+forall a obj:
+    not (a $in A and a $in ∅)  # Since a $in ∅ is always false
+    then:
+        not a $in (A ∩ ∅)      # By definition of intersection
+
+# Therefore, A ∩ ∅ contains no elements, which means A ∩ ∅ = ∅
+A ∩ ∅ = ∅

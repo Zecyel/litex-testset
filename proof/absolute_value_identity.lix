@@ -1,0 +1,31 @@
+# |a| = |-a|
+
+let a R
+
+# Definition of absolute value
+prop abs(x R):
+    or:
+        x >= 0 and abs(x) = x
+        x <= 0 and abs(x) = -x
+
+# Case 1: a >= 0
+prove:
+    a >= 0
+    then:
+        abs(a) = a  # by definition
+        -a <= 0
+        abs(-a) = -(-a) = a  # by definition
+        abs(a) = abs(-a)
+
+# Case 2: a < 0
+prove:
+    a < 0
+    then:
+        abs(a) = -a  # by definition
+        -a > 0
+        abs(-a) = -a  # by definition
+        abs(a) = abs(-a)
+
+# Conclusion from both cases
+forall a R:
+    abs(a) = abs(-a)

@@ -1,0 +1,8 @@
+# If a < b < c, then a < c
+
+let a R, b R, c R:
+    a < b
+    b < c
+
+# By the transitivity of the < relation (built-in in Litex)
+a < c

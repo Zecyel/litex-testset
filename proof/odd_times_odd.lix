@@ -1,0 +1,23 @@
+# Product of two odd integers is odd
+
+# Define odd integers
+prop is_odd(n Z):
+    exist k Z:
+        n = 2 * k + 1
+
+# Claim: Product of two odd integers is odd
+claim:
+    forall a Z, b Z:
+        $is_odd(a)
+        $is_odd(b)
+        then:
+            $is_odd(a * b)
+    prove:
+        have k1 Z st $is_odd(a)  # a = 2k1 + 1
+        have k2 Z st $is_odd(b)   # b = 2k2 + 1
+        
+        a * b = (2 * k1 + 1) * (2 * k2 + 1)
+        a * b = 4 * k1 * k2 + 2 * k1 + 2 * k2 + 1
+        a * b = 2 * (2 * k1 * k2 + k1 + k2) + 1
+        
+        exist (2 * k1 * k2 + k1 + k2) st $is_odd(a * b)

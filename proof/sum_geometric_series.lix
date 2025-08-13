@@ -1,0 +1,51 @@
+# Sum of n terms: S_n = a(1-r^n)/(1-r) for r ≠ 1
+
+# Sum of geometric series proof
+let a R, r R, n N:
+    r != 1
+
+# Define the sum S_n
+fn S(n N) R:
+    S(0) = a
+    S(n + 1) = S(n) + a * r^(n + 1)
+
+# Claim the closed-form formula
+claim:
+    forall n N:
+        S(n) = a * (1 - r^n) / (1 - r)
+    prove_by_induction:
+        # Base case n=0
+        S(0) = a
+        a * (1 - r^0) / (1 - r) = a * (1 - 1) / (1 - r) = a * 0 / (1 - r) = 0
+        But S(0) = a ≠ 0, so we need to adjust the base case
+        
+        # Alternative base case n=1
+        S(1) = a + a*r = a(1 + r)
+        a*(1 - r^1)/(1 - r) = a*(1 - r)/(1 - r) = a
+        This doesn't match, so perhaps induction from n=0 is correct with different formula
+        
+        # Correct formula should be S(n) = a*(1 - r^(n+1))/(1 - r)
+        # Let's prove this instead
+        
+        # Revised claim
+        forall n N:
+            S(n) = a * (1 - r^(n + 1)) / (1 - r)
+        prove_by_induction:
+            # Base case n=0
+            S(0) = a
+            a*(1 - r^(0+1))/(1 - r) = a*(1 - r)/(1 - r) = a
+            # Matches
+            
+            # Inductive step
+            assume S(k) = a*(1 - r^(k+1))/(1 - r)
+            then S(k+1) = S(k) + a*r^(k+1)
+                        = a*(1 - r^(k+1))/(1 - r) + a*r^(k+1)
+                        = [a*(1 - r^(k+1)) + a*r^(k+1)*(1 - r)] / (1 - r)
+                        = [a - a*r^(k+1) + a*r^(k+1) - a*r^(k+2)] / (1 - r)
+                        = [a - a*r^(k+2)] / (1 - r)
+                        = a*(1 - r^(k+2)) / (1 - r)
+            which matches the formula for n=k+1
+            
+# Therefore the sum is
+forall n N:
+    sum_{i=0}^n a*r^i = a*(1 - r^(n+1))/(1 - r)

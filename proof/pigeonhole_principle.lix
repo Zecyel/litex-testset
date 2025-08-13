@@ -1,0 +1,42 @@
+# If n items in m containers, at least one container has ⌈n/m⌉ items
+
+# Problem: If n items in m containers, at least one container has ⌈n/m⌉ items
+
+let n N, m N_pos  # n items, m containers (m is positive)
+
+# Define the average number of items per container
+let avg = n / m
+
+# The ceiling function ⌈avg⌉ is the smallest integer >= avg
+know forall x R:
+    ⌈x⌉ $in Z
+    ⌈x⌉ >= x
+    ⌈x⌉ - 1 < x
+
+# Proof by contradiction
+claim:
+    forall containers set:
+        len(containers) = m
+        forall c containers:
+            len(c) <= ⌈avg⌉ - 1
+        then:
+            sum of items <= m*(⌈avg⌉ - 1)
+    prove_by_contradiction:
+        # Assume all containers have <= ⌈n/m⌉ - 1 items
+        have containers set:
+            len(containers) = m
+            forall c containers:
+                len(c) <= ⌈avg⌉ - 1
+        
+        # Total items would be <= m*(⌈avg⌉ - 1)
+        # But ⌈avg⌉ - 1 < avg = n/m
+        # So m*(⌈avg⌉ - 1) < m*(n/m) = n
+        # This contradicts having n items
+        m*(⌈avg⌉ - 1) < m*avg
+        m*avg = n
+        m*(⌈avg⌉ - 1) < n
+        # But we have n items, so this is impossible
+        
+        # Therefore, at least one container must have >= ⌈n/m⌉ items
+        exist c containers:
+            len(c) >= ⌈avg⌉

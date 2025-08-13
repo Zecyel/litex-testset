@@ -1,0 +1,23 @@
+# For any numbers a, b: -(a × b) = (-a) × b = a × (-b)
+
+let a R, b R
+
+# Proof that -(a × b) = (-a) × b
+-(a × b) = -1 × (a × b)  # Definition of negation
+-1 × (a × b) = (-1 × a) × b  # Associative property of multiplication
+(-1 × a) × b = (-a) × b  # Definition of negation
+
+# Therefore:
+-(a × b) = (-a) × b
+
+# Proof that (-a) × b = a × (-b)
+(-a) × b = (-1 × a) × b  # Definition of negation
+(-1 × a) × b = -1 × (a × b)  # Associative property of multiplication
+-1 × (a × b) = a × (-1 × b)  # Commutative property of multiplication
+a × (-1 × b) = a × (-b)  # Definition of negation
+
+# Therefore:
+(-a) × b = a × (-b)
+
+# Combining both results:
+-(a × b) = (-a) × b = a × (-b)
