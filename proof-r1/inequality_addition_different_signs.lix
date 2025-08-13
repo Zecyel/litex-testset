@@ -1,0 +1,19 @@
+# If a > b, then a + c > b + c for any c
+
+let a R, b R, c R:
+    a > b
+
+# By the definition of >, a - b > 0
+a - b > 0
+
+# Rearrange the expression (a + c) - (b + c)
+(a + c) - (b + c) = a + c - b - c
+a + c - b - c = a - b + (c - c)
+a - b + (c - c) = a - b + 0
+a - b + 0 = a - b
+
+# Thus (a + c) - (b + c) = a - b > 0
+(a + c) - (b + c) > 0
+
+# Therefore a + c > b + c by definition of >
+a + c > b + c

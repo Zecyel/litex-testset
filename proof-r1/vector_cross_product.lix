@@ -1,0 +1,44 @@
+# |a×b| = |a||b|sinθ
+
+# Proof of |a × b| = |a||b|sinθ
+
+# Define vectors in R^3
+let a1 R, a2 R, a3 R  # Components of vector a
+let b1 R, b2 R, b3 R  # Components of vector b
+
+# Define cross product components
+let cross_x = a2*b3 - a3*b2
+let cross_y = a3*b1 - a1*b3
+let cross_z = a1*b2 - a2*b1
+
+# Magnitude of cross product squared
+let |a×b|^2 = cross_x^2 + cross_y^2 + cross_z^2
+
+# Magnitudes of vectors squared
+let |a|^2 = a1^2 + a2^2 + a3^2
+let |b|^2 = b1^2 + b2^2 + b3^2
+
+# Dot product
+let a·b = a1*b1 + a2*b2 + a3*b3
+
+# Lagrange identity (known vector identity)
+know |a×b|^2 = |a|^2 |b|^2 - (a·b)^2
+
+# Define angle θ via dot product formula
+let cosθ = (a·b) / (sqrt(|a|^2) * sqrt(|b|^2))
+
+# Trigonometric identity
+know sinθ^2 + cosθ^2 = 1
+
+# Substitute into Lagrange identity
+|a×b|^2 = |a|^2 |b|^2 - (a·b)^2
+         = |a|^2 |b|^2 - (|a|^2 |b|^2 cosθ^2)
+         = |a|^2 |b|^2 (1 - cosθ^2)
+         = |a|^2 |b|^2 sinθ^2
+
+# Take square roots (magnitudes are non-negative)
+sqrt(|a×b|^2) = sqrt(|a|^2 |b|^2 sinθ^2)
+|a×b| = |a| |b| |sinθ|
+
+# Since θ ∈ [0,π] for vector angles, sinθ ≥ 0
+|a×b| = |a| |b| sinθ

@@ -1,0 +1,8 @@
+# A ∪ A^c = U
+
+let U set
+let A set:
+    forall x A: x $in U
+have set A_complement := x U: not x $in A
+have set union_set := union(A, A_complement)
+union_set = U

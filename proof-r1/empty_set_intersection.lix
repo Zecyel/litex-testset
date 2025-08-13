@@ -1,0 +1,23 @@
+# For any set A: A ∩ ∅ = ∅
+
+let A set
+let ∅ set := {}
+
+# Define the intersection: S = A ∩ ∅
+have set S := x A: x $in ∅
+
+# Prove that S is empty by showing no element can be in S
+prove:
+    forall x obj:
+        not x $in S
+    prove:
+        let x obj
+        # By definition of S: x ∈ S iff (x ∈ A and x ∈ ∅)
+        # But we know: for any x, not x ∈ ∅ (empty set property)
+        not x $in ∅
+        # Therefore, the condition (x ∈ A and x ∈ ∅) is always false
+        # Hence, there exists no x such that x ∈ S
+        not x $in S
+
+# Since S has no elements, S = ∅
+S = ∅

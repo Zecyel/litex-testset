@@ -1,0 +1,29 @@
+# In right triangle: a² + b² = c²
+
+# Define the coordinate system and points for a right triangle
+have set R2 := set_product(R, R)  # Cartesian plane
+let A R2 := (0, 0)                # Origin
+let B R2 := (a, 0)                # Point on x-axis
+let C R2 := (0, b)                # Point on y-axis
+
+# Define the sides using the distance formula
+fn dist(p1 R2, p2 R2) R:
+    dist(p1, p2) = sqrt((proj(0, p1) - proj(0, p2))^2 + (proj(1, p1) - proj(1, p2))^2)
+
+# Calculate side lengths
+have AB = dist(A, B)  # Length a (along x-axis)
+have AC = dist(A, C)  # Length b (along y-axis)
+have BC = dist(B, C)  # Hypotenuse c
+
+# By coordinate definition:
+AB = a
+AC = b
+BC = c
+
+# Distance between B and C:
+c = sqrt((a - 0)^2 + (0 - b)^2)  # From coordinates (a,0) and (0,b)
+c = sqrt(a^2 + b^2)              # Simplify
+
+# Therefore:
+c^2 = (sqrt(a^2 + b^2))^2
+c^2 = a^2 + b^2

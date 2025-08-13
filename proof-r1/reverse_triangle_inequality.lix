@@ -1,0 +1,16 @@
+# ||a| - |b|| ≤ |a - b|
+
+let a R, b R
+
+# Apply triangle inequality to |a| = |(a - b) + b|
+know |a| <= |a - b| + |b|
+then |a| - |b| <= |a - b|
+
+# Apply triangle inequality to |b| = |(b - a) + a|
+know |b| <= |b - a| + |a|
+then |b| - |a| <= |a - b|
+
+# Since ||a| - |b|| is either |a| - |b| or |b| - |a|
+or:
+    |a| >= |b| => ||a| - |b|| = |a| - |b| <= |a - b|
+    |b| > |a| => ||a| - |b|| = |b| - |a| <= |a - b|

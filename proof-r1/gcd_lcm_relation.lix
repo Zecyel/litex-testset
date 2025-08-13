@@ -1,0 +1,84 @@
+# gcd(a,b) × lcm(a,b) = |a×b| for a,b ≠ 0
+
+# Proof for gcd(a,b) × lcm(a,b) = |a×b| for a,b ≠ 0
+
+# Define absolute value function
+fn abs(x Z) N_pos:
+    x > 0 => abs(x) = x
+    x < 0 => abs(x) = -x
+
+# Properties of absolute value
+know forall a Z, b Z:
+    abs(a * b) = abs(a) * abs(b)
+
+# Properties of gcd and lcm with absolute values
+know forall a Z, b Z:
+    gcd(a, b) = gcd(abs(a), abs(b))
+    lcm(a, b) = lcm(abs(a), abs(b))
+
+# Proof for positive integers
+claim:
+    forall a N_pos, b N_pos:
+        gcd(a, b) * lcm(a, b) = a * b
+    prove:
+        let d = gcd(a, b)
+        know $divides(d, a)  # gcd divides a
+        know $divides(d, b)  # gcd divides b
+        
+        # Define cofactors
+        let a0 = a / d  # Since d divides a
+        let b0 = b / d  # Since d divides b
+        
+        know gcd(a0, b0) = 1  # Co-factors are coprime
+        
+        # lcm(a,b) = d * a0 * b0 for coprime a0,b0
+        let M = d * a0 * b0
+        
+        # Show M is common multiple
+        know $divides(a, M)  # M/a = b0 (integer)
+        know $divides(b, M)  # M/b = a0 (integer)
+        
+        # Show M is least
+        let L N_pos  # Any common multiple
+        know $divides(a, L)
+        know $divides(b, L)
+        
+        # Since gcd(a0,b0)=1, a0 divides L/b
+        know $divides(a0, L / d)  # As d|L
+        know $divides(b0, L / d)
+        
+        # Since coprime, a0*b0 divides L/d
+        know $divides(a0 * b0, L / d)
+        then $divides(M, L)  # M = d*(a0*b0) divides L
+        
+        thus lcm(a, b) = M
+        =:
+            gcd(a, b) * lcm(a, b)
+            d * M
+            d * (d * a0 * b0)
+            (d * a0) * (d * b0)
+            a * b
+
+# General case for non-zero integers
+claim:
+    forall a Z, b Z:
+        a != 0
+        b != 0
+        then:
+            gcd(a, b) * lcm(a, b) = abs(a * b)
+    prove:
+        let a' = abs(a)
+        let b' = abs(b)
+        know a' N_pos
+        know b' N_pos
+        
+        # By positive case
+        know gcd(a', b') * lcm(a', b') = a' * b'
+        
+        # Apply absolute value properties
+        =:
+            gcd(a, b) * lcm(a, b)
+            gcd(a', b') * lcm(a', b')  # From properties
+            a' * b'
+            abs(a) * abs(b)
+            abs(a * b)

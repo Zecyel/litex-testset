@@ -1,0 +1,28 @@
+# If A ⊆ B and B ⊆ A, then A = B
+
+let A set, B set
+know forall x obj:
+    x $in A => x $in B  # from A ⊆ B
+know forall x obj:
+    x $in B => x $in A  # from B ⊆ A
+
+# By the axiom of extensionality:
+know forall A, B set:
+    A = B
+    iff:
+        forall x obj:
+            x $in A <=> x $in B
+
+# Show that for all x, x ∈ A iff x ∈ B:
+forall x obj:
+    # (=>) If x ∈ A, then x ∈ B (from first assumption)
+    x $in A => x $in B
+    
+    # (<=) If x ∈ B, then x ∈ A (from second assumption)
+    x $in B => x $in A
+    
+    # Therefore x ∈ A iff x ∈ B
+    x $in A <=> x $in B
+
+# Therefore A = B by extensionality
+A = B

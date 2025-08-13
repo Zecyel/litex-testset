@@ -1,0 +1,6 @@
+# -a/b = (-a)/b = a/(-b)
+
+forall a R, b R:
+    b != 0
+    then:
+        -a / b = (-a) / b = a / (-b)

@@ -85,8 +85,8 @@ def process_jsonl_file(input_file, output_dir):
     print(f"跳过: {skipped_count} 个文件")
 
 if __name__ == "__main__":
-    input_file = "autogen/proof.jsonl"
-    output_dir = "proof"
+    input_file = "autogen/proof-r1.jsonl"
+    output_dir = "proof-r1"
     
     if not os.path.exists(input_file):
         print(f"错误: 输入文件不存在: {input_file}")

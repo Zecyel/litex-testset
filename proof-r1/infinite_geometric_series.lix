@@ -1,0 +1,10 @@
+# Sum = a/(1-r) for |r| < 1
+
+let a R, r R:
+    |r| < 1
+    let S R = a + a*r + a*r^2 + a*r^3 + ... 
+    S = a + r*(a + a*r + a*r^2 + ...)
+    S = a + r*S
+    S - r*S = a
+    S*(1 - r) = a
+    S = a/(1 - r)

@@ -1,0 +1,26 @@
+# a/b - c/d = (ad - bc)/(bd) for b,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+
+# Express fractions using multiplicative inverses
+a/b = a * (1/b)
+c/d = c * (1/d)
+
+# Common denominator b*d
+=:
+    a/b - c/d
+    a * (1/b) - c * (1/d)
+    (a * d) * (1/(b*d)) - (c * b) * (1/(b*d))   # Multiply first term by d/d, second by b/b
+    (a*d - c*b) / (b*d)   # Combine numerators
+
+# Commutativity of multiplication
+know forall x R, y R:
+    x * y = y * x
+
+# Apply commutativity to numerator
+=:
+    (a*d - c*b) / (b*d)
+    (a*d - b*c) / (b*d)   # Since c*b = b*c
+    (ad - bc) / (bd)       # Conventional notation without *

@@ -1,0 +1,4 @@
+# f(-x) = -f(x) for odd functions
+
+let f fn(R)R
+know forall x R: f(-x) = -f(x)

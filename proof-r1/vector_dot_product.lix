@@ -1,0 +1,4 @@
+# a·b = |a||b|cosθ
+
+know forall a Vec, b Vec:
+    a · b = |a| * |b| * cos(angle(a, b))

@@ -1,0 +1,16 @@
+# If a ≡ b mod m and c ≡ d mod m, then a+c ≡ b+d mod m
+
+let a Z, b Z, c Z, d Z, m Z:
+    m != 0
+    exist k Z: a - b = m * k
+    exist l Z: c - d = m * l
+
+have k Z st a - b = m * k
+have l Z st c - d = m * l
+
+(a + c) - (b + d) = (a - b) + (c - d)  # Integer arithmetic
+= (m * k) + (m * l)                     # Substitution
+= m * (k + l)                           # Distributive property
+
+have t Z := k + l
+(a + c) - (b + d) = m * t               # Conclusion

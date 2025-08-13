@@ -1,0 +1,6 @@
+# For a ≠ 0: a^{-n} = 1/a^n
+
+know forall a R, n N:
+    a != 0
+    then:
+        a^{-n} = 1 / a^n

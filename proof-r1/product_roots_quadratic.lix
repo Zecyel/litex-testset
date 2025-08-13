@@ -1,0 +1,32 @@
+# For x² + px + q = 0, sum of roots = -p, product = q
+
+# Proof that for the quadratic equation x² + p x + q = 0, the sum of roots is -p and the product is q
+
+# Let the quadratic equation be defined
+let p R, q R
+let eq: x^2 + p*x + q = 0
+
+# Assume the equation has roots r1 and r2
+let r1 R, r2 R
+
+# Since r1 and r2 are roots, they satisfy the equation:
+know: r1^2 + p*r1 + q = 0
+know: r2^2 + p*r2 + q = 0
+
+# The factored form of the equation is (x - r1)(x - r2) = 0
+# Expand the factored form:
+(x - r1)(x - r2) = x^2 - (r1 + r2)x + r1 r2
+
+# Set equal to the original equation:
+x^2 - (r1 + r2)x + r1 r2 = x^2 + p x + q
+
+# Since polynomials are identical, their coefficients must be equal
+# Therefore:
+- (r1 + r2) = p
+r1 r2 = q
+
+# Which implies:
+r1 + r2 = -p
+r1 r2 = q
+
+# Thus the sum of roots is -p and the product is q

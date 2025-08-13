@@ -1,0 +1,41 @@
+# lcm(a,b) = smallest m such that a|m and b|m
+
+# Define divisibility: a|m iff there exists k such that m = a*k
+prop divides(a, m Z):
+    a != 0
+    then:
+        exists k Z: m = a * k
+
+# Assume a and b are non-zero integers (for LCM definition)
+let a Z, b Z:
+    a != 0
+    b != 0
+
+# Define set S of positive common multiples
+have set S := { m N_pos : $divides(a, m) and $divides(b, m) }
+
+# Show S is non-empty: |a*b| is a common multiple
+let k = |a * b|
+know k > 0  # Since a,b ≠ 0, |a*b| > 0
+
+# Case analysis based on sign of a*b
+or:
+    a * b > 0
+    then:
+        k = a * b
+        $divides(a, k)  # k = a * b ⇒ k₁ = b
+        $divides(b, k)  # k = a * b ⇒ k₂ = a
+    or:
+        a * b < 0
+        then:
+            k = - (a * b)
+            $divides(a, k)  # k = a * (-b) ⇒ k₁ = -b
+            $divides(b, k)  # k = b * (-a) ⇒ k₂ = -a
+
+k $in S  # k is a positive common multiple
+
+# By well-ordering of positive integers, S has a least element
+exist_prop m N_pos st is_least_element_of(S):
+    m $in S
+    forall m' S:
+        m <= m'

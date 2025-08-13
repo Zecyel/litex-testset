@@ -1,0 +1,29 @@
+# If a/b = c/d then a×d = b×c for b,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+    a / b = c / d
+
+# Multiply both sides by b*d (nonzero)
+(a / b) * (b * d) = (c / d) * (b * d)
+
+# Left side simplifies to a*d
+=:
+    (a / b) * (b * d)
+    a * (1 / b) * b * d
+    a * 1 * d
+    a * d
+
+# Right side simplifies to c*b
+=:
+    (c / d) * (b * d)
+    c * (1 / d) * d * b
+    c * 1 * b
+    c * b
+
+# Since multiplication is commutative
+c * b = b * c
+
+# Therefore
+a * d = b * c

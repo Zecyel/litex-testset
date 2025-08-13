@@ -1,0 +1,4 @@
+# a³ + b³ = (a + b)(a² - ab + b²)
+
+forall a R, b R:
+    a³ + b³ = (a + b)(a² - ab + b²)

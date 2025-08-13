@@ -1,0 +1,5 @@
+# a^m / a^n = a^{m-n} for a ≠ 0
+
+let a R: a ≠ 0
+forall m R, n R:
+    a^m / a^n = a^{m-n}

@@ -1,0 +1,62 @@
+# |a / b| = |a| / |b| for b ≠ 0
+
+let a R, b R:
+    b != 0
+
+# Case 1: a >= 0 and b > 0
+prove:
+    a >= 0
+    b > 0
+    then:
+        |a| = a
+        |b| = b
+        a / b >= 0
+        |a / b| = a / b
+        |a| / |b| = a / b
+        |a / b| = |a| / |b|
+
+# Case 2: a >= 0 and b < 0
+prove:
+    a >= 0
+    b < 0
+    then:
+        |a| = a
+        |b| = -b
+        a / b <= 0
+        |a / b| = -(a / b) = a / (-b)
+        |a| / |b| = a / (-b)
+        |a / b| = |a| / |b|
+
+# Case 3: a < 0 and b > 0
+prove:
+    a < 0
+    b > 0
+    then:
+        |a| = -a
+        |b| = b
+        a / b < 0
+        |a / b| = -(a / b) = (-a) / b
+        |a| / |b| = (-a) / b
+        |a / b| = |a| / |b|
+
+# Case 4: a < 0 and b < 0
+prove:
+    a < 0
+    b < 0
+    then:
+        |a| = -a
+        |b| = -b
+        a / b > 0
+        |a / b| = a / b
+        |a| / |b| = (-a) / (-b) = a / b
+        |a / b| = |a| / |b|
+
+# Combine all cases
+or:
+    a >= 0 and b > 0
+    a >= 0 and b < 0
+    a < 0 and b > 0
+    a < 0 and b < 0
+
+then:
+    |a / b| = |a| / |b|

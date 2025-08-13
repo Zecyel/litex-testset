@@ -1,0 +1,32 @@
+# If a ≡ b mod m and c ≡ d mod m, then ac ≡ bd mod m
+
+let a, b, c, d, m Z:
+    a ≡ b mod m  # This means m | (a - b)
+    c ≡ d mod m  # This means m | (c - d)
+
+# By definition of congruence mod m
+know ∃ k Z: a - b = m * k
+know ∃ l Z: c - d = m * l
+
+have k Z: a - b = m * k
+have l Z: c - d = m * l
+
+# Expand the expression ac - bd
+ac - bd = a*c - b*d
+
+# Rewrite using the expressions above
+= a*c - b*d + b*c - b*c
+= (a*c - b*c) + (b*c - b*d)
+= c*(a - b) + b*(c - d)
+
+# Substitute the known equations
+= c*(m*k) + b*(m*l)
+= m*(c*k) + m*(b*l)
+= m*(c*k + b*l)
+
+# Let n = c*k + b*l
+have n Z := c*k + b*l
+ac - bd = m * n
+
+# Therefore ac ≡ bd mod m
+ac ≡ bd mod m

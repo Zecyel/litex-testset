@@ -1,0 +1,4 @@
+# If f(x) = c for all x, then f(a) = f(b) for all a,b
+
+forall a obj, b obj:
+    f(a) = f(b)

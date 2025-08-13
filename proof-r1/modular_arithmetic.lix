@@ -1,0 +1,6 @@
+# a ≡ b mod m iff m|(a-b)
+
+forall a, b, m Z: 
+    m != 0 
+    => 
+    (a ≡ b mod m) <=> (m | (a - b))

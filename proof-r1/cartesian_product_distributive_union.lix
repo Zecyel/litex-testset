@@ -1,0 +1,15 @@
+# A × (B ∪ C) = (A × B) ∪ (A × C)
+
+let A set, B set, C set
+let x obj, y obj
+
+# Prove equivalence: (x, y) ∈ A × (B ∪ C) iff (x, y) ∈ (A × B) ∪ (A × C)
+(x, y) ∈ A × (B ∪ C) 
+<=> x ∈ A ∧ y ∈ (B ∪ C)          [by definition of Cartesian product]
+<=> x ∈ A ∧ (y ∈ B ∨ y ∈ C)      [by definition of union]
+<=> (x ∈ A ∧ y ∈ B) ∨ (x ∈ A ∧ y ∈ C)  [by distributivity of ∧ over ∨]
+<=> (x, y) ∈ (A × B) ∨ (x, y) ∈ (A × C)  [by definition of Cartesian product]
+<=> (x, y) ∈ (A × B) ∪ (A × C)   [by definition of union]
+
+# Since the equivalence holds for arbitrary (x, y), the sets are equal
+A × (B ∪ C) = (A × B) ∪ (A × C)

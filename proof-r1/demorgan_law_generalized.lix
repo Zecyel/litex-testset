@@ -1,0 +1,36 @@
+# For sets A_i: (∪A_i)^c = ∩(A_i^c)
+
+let U set  # Universe
+let I set  # Index set
+forall i I:
+    let A_i set  # Each A_i is a set
+    forall x A_i: x $in U  # All sets are subsets of U
+
+# Define union of A_i
+let big_union set
+big_union := x U: exists i I: x $in A_i
+
+# Define complement of union
+let LHS set
+LHS := x U: not (x $in big_union)
+
+# Define complement of each A_i
+forall i I:
+    let A_i_complement set
+    A_i_complement := x U: not (x $in A_i)
+
+# Define intersection of complements
+let RHS set
+RHS := x U: forall i I: x $in A_i_complement
+
+# Prove LHS = RHS
+let x U
+prove:
+    x $in LHS <=> not (exists i I: x $in A_i)
+    not (exists i I: x $in A_i) <=> forall i I: not (x $in A_i)
+    forall i I: not (x $in A_i) <=> forall i I: x $in A_i_complement
+    forall i I: x $in A_i_complement <=> x $in RHS
+    thus x $in LHS <=> x $in RHS
+
+# By extensionality
+LHS = RHS

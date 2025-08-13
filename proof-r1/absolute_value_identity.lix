@@ -1,0 +1,48 @@
+# |a| = |-a|
+
+# Define absolute value function
+fn abs(x R) R
+
+# Axioms for absolute value
+know forall x R:
+    x >= 0 => abs(x) = x
+
+know forall x R:
+    x < 0 => abs(x) = -x
+
+# Lemma: For non-positive x, absolute value is -x
+prop lemma_abs_nonpositive(x R):
+    x <= 0 => abs(x) = -x
+
+claim:
+    $lemma_abs_nonpositive(x) forall x R
+    prove:
+        or:
+            x = 0
+            then:
+                abs(x) = 0
+                -x = 0
+            x < 0
+            then:
+                abs(x) = -x
+
+# Main proof
+let a R
+
+or:
+    a >= 0
+    then:
+        abs(a) = a
+        -a <= 0
+        $lemma_abs_nonpositive(-a)
+        abs(-a) = -(-a)
+        abs(-a) = a
+    a < 0
+    then:
+        $lemma_abs_nonpositive(a)
+        abs(a) = -a
+        -a > 0
+        abs(-a) = -a
+
+# Conclusion: abs(a) = abs(-a) in both cases
+abs(a) = abs(-a)

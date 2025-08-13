@@ -38,10 +38,16 @@ proof_set = []
 pbar = tqdm(problem_set, desc="Processing problems")
 for problem in pbar:
     pbar.set_description(f"Solving: {problem['name']}")
+
+    if problem_set.index(problem) >= 91:
+        pass
+    else:
+        continue
+
     llm_prompt = f"{prompt}\nProblem: {problem['description']}\nDocumentation: {documentation}"
     # print(llm_prompt[:1000])
     try:
-        resp = ask(llm_prompt, model="deepseek-v3-250324")
+        resp = ask(llm_prompt, model="deepseek-r1-250528")
         # print(resp)
         proof_set.append({
             "name": problem["name"],
@@ -54,6 +60,6 @@ for problem in pbar:
         continue
     # break
 
-with jsonlines.open("./proof.jsonl", "w") as f:
+with jsonlines.open("./proof-r1.jsonl.appendix", "w") as f:
     for proof in proof_set:
         f.write(proof)

@@ -1,0 +1,6 @@
+# If a < b and b < c, then a < c
+
+let a R, b R, c R:
+    a < b
+    b < c
+a < c

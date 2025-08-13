@@ -1,0 +1,8 @@
+# a² - b² = (a - b)(a + b)
+
+let a R, b R
+=:
+    (a - b) * (a + b)
+    a * a + a * b - b * a - b * b
+    a² + a * b - a * b - b²
+    a² - b²

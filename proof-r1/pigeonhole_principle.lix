@@ -1,0 +1,20 @@
+# If n items in m containers, at least one container has ⌈n/m⌉ items
+
+let n N, m N_pos
+know exist k N:
+    m*(k-1) < n <= m*k
+have k st $ceiling(n, m)
+assume:
+    forall i container_index:
+        items(i) <= k-1
+then:
+    n <= m*(k-1)
+know:
+    n > m*(k-1)
+contradiction
+therefore:
+    not forall i container_index:
+        items(i) <= k-1
+hence:
+    exist i container_index:
+        items(i) >= k

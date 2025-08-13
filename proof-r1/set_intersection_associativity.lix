@@ -1,0 +1,13 @@
+# A ∩ (B ∩ C) = (A ∩ B) ∩ C
+
+let A set, B set, C set
+claim:
+    A ∩ (B ∩ C) = (A ∩ B) ∩ C
+    prove:
+        forall x obj:
+            x $in (A ∩ (B ∩ C)) 
+                <=> x $in A and x $in (B ∩ C)
+                <=> x $in A and (x $in B and x $in C)
+                <=> (x $in A and x $in B) and x $in C
+                <=> x $in (A ∩ B) and x $in C
+                <=> x $in ((A ∩ B) ∩ C)

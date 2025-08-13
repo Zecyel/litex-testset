@@ -1,0 +1,43 @@
+# Between any two reals, there is a rational number
+
+# Archimedean property: For any positive real ε, there exists a natural number n such that 1/n < ε
+exist_prop n N_pos st archimedean_property(ε R):
+    ε > 0
+    iff:
+        1/n < ε
+
+# Floor function existence: For any real x, there exists an integer floor(x) such that floor(x) ≤ x < floor(x) + 1
+exist_prop m Z st floor_property(x R):
+    m ≤ x < m + 1
+
+# Main proof
+forall a R, b R:
+    a < b
+    then:
+        let ε R := b - a
+        ε > 0
+        
+        # Apply Archimedean property to ε
+        know $archimedean_property(ε)
+        have n st $archimedean_property(ε)
+        
+        # Apply floor property to a · n
+        know $floor_property(a · n)
+        have m st $floor_property(a · n)
+        
+        # Construct rational r = (m + 1)/n
+        let r R := (m + 1) / n
+        
+        # Verify a < r
+        a · n < m + 1  # Since m ≤ a·n < m+1 implies a·n < m+1
+        so a < (m + 1)/n = r
+        
+        # Verify r < b
+        r = (m + 1)/n ≤ (a · n + 1)/n = a + 1/n  # Since m ≤ a·n
+        a + 1/n < a + ε = a + (b - a) = b  # Since 1/n < ε
+        so r < b
+        
+        # Verify r is rational
+        m + 1 $in Z  # m ∈ Z, so m+1 ∈ Z
+        n $in N_pos  # n is positive integer
+        r = (m + 1)/n $in Q  # By definition of rationals

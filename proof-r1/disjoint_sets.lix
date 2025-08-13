@@ -1,0 +1,22 @@
+# A and B disjoint iff A ∩ B = ∅
+
+let A, B set
+let A_inter_B set:
+    A_inter_B := x obj:
+        x $in A and x $in B
+
+claim:
+    (forall x obj: not (x $in A and x $in B)) <=> (A_inter_B = {})
+prove:
+    # Left to right: disjoint implies intersection empty
+    assume forall x obj: not (x $in A and x $in B)
+    forall x obj:
+        not (x $in A and x $in B)   [by assumption]
+        not x $in A_inter_B          [by definition of A_inter_B]
+    A_inter_B = {}                  [since no elements]
+
+    # Right to left: intersection empty implies disjoint
+    assume A_inter_B = {}
+    forall x obj:
+        not x $in A_inter_B          [by A_inter_B = {}]
+        not (x $in A and x $in B)   [by definition of A_inter_B]

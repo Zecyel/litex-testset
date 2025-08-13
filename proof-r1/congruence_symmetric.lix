@@ -1,0 +1,20 @@
+# If a ≡ b mod m, then b ≡ a mod m
+
+# Prove symmetry of congruence modulo m
+let a Z, b Z, m Z:
+    m != 0
+    exist k Z: a - b = m * k   # given a ≡ b mod m
+
+    # We need to show b ≡ a mod m, i.e., exist k': b - a = m * k'
+    let k' = -k   # define k'
+    
+    # Now we compute:
+    =:
+        b - a
+        - (a - b)   # since b - a = -(a - b)
+        - (m * k)   # substitute given a - b = m * k
+        m * (-k)    # factor out m
+        m * k'      # by definition of k'
+
+    # Therefore, we have a witness k'
+    exist k' Z: b - a = m * k'

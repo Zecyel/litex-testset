@@ -1,0 +1,53 @@
+# A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)
+
+let A, B, C set
+claim:
+    forall x obj:
+        x $in A ∪ (B ∩ C) <=> x $in (A ∪ B) ∩ (A ∪ C)
+    prove:
+        # Forward direction: A ∪ (B ∩ C) ⊆ (A ∪ B) ∩ (A ∪ C)
+        let x obj
+        assume:
+            x $in A ∪ (B ∩ C)
+        then:
+            or:
+                x $in A
+                x $in B ∩ C
+        case:
+            assume:
+                x $in A
+            then:
+                x $in A ∪ B
+                x $in A ∪ C
+                x $in (A ∪ B) ∩ (A ∪ C)
+        case:
+            assume:
+                x $in B ∩ C
+            then:
+                x $in B
+                x $in C
+                x $in A ∪ B
+                x $in A ∪ C
+                x $in (A ∪ B) ∩ (A ∪ C)
+        # Reverse direction: (A ∪ B) ∩ (A ∪ C) ⊆ A ∪ (B ∩ C)
+        assume:
+            x $in (A ∪ B) ∩ (A ∪ C)
+        then:
+            x $in A ∪ B
+            x $in A ∪ C
+        or:
+            x $in A
+            not x $in A
+        case:
+            x $in A
+            then:
+                x $in A ∪ (B ∩ C)
+        case:
+            not x $in A
+            then:
+                from x $in A ∪ B and not x $in A:
+                    x $in B
+                from x $in A ∪ C and not x $in A:
+                    x $in C
+                x $in B ∩ C
+                x $in A ∪ (B ∩ C)

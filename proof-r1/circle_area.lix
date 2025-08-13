@@ -1,0 +1,4 @@
+# A = πr²
+
+let A R, r R
+know A = π * r * r

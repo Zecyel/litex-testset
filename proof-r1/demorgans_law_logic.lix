@@ -1,0 +1,109 @@
+# ¬(P∧Q) ≡ ¬P∨¬Q and ¬(P∨Q) ≡ ¬P∧¬Q
+
+prop P
+prop Q
+
+# Prove ¬(P ∧ Q) ≡ ¬P ∨ ¬Q
+claim:
+    @de_morgan1:
+        not (P and Q) <=> (not P) or (not Q)
+    prove:
+        # Forward direction: ¬(P ∧ Q) → ¬P ∨ ¬Q
+        claim:
+            @forward1:
+                not (P and Q)
+                then:
+                    (not P) or (not Q)
+            prove:
+                or:
+                    not P
+                    then:
+                        (not P) or (not Q)
+                or:
+                    P
+                    then:
+                        # If P is true and ¬(P ∧ Q), then Q must be false
+                        if Q:
+                            then:
+                                P and Q  # Contradiction
+                                not (P and Q)  # Known fact
+                        so:
+                            not Q
+                        then:
+                            (not P) or (not Q)
+        
+        # Backward direction: ¬P ∨ ¬Q → ¬(P ∧ Q)
+        claim:
+            @backward1:
+                (not P) or (not Q)
+                then:
+                    not (P and Q)
+            prove:
+                or:
+                    not P
+                    then:
+                        if P and Q:
+                            then:
+                                P  # Contradiction
+                        so:
+                            not (P and Q)
+                or:
+                    not Q
+                    then:
+                        if P and Q:
+                            then:
+                                Q  # Contradiction
+                        so:
+                            not (P and Q)
+        
+        # Combine both directions
+        $forward1
+        $backward1
+
+# Prove ¬(P ∨ Q) ≡ ¬P ∧ ¬Q
+claim:
+    @de_morgan2:
+        not (P or Q) <=> (not P) and (not Q)
+    prove:
+        # Forward direction: ¬(P ∨ Q) → ¬P ∧ ¬Q
+        claim:
+            @forward2:
+                not (P or Q)
+                then:
+                    not P
+                    not Q
+            prove:
+                # Prove ¬P
+                if P:
+                    then:
+                        P or Q  # Contradiction
+                        not (P or Q)  # Known fact
+                so:
+                    not P
+                
+                # Prove ¬Q
+                if Q:
+                    then:
+                        P or Q  # Contradiction
+                        not (P or Q)  # Known fact
+                so:
+                    not Q
+        
+        # Backward direction: ¬P ∧ ¬Q → ¬(P ∨ Q)
+        claim:
+            @backward2:
+                not P
+                not Q
+                then:
+                    not (P or Q)
+            prove:
+                if P or Q:
+                    then:
+                        or:
+                            P  # Contradiction with not P
+                        or:
+                            Q  # Contradiction with not Q
+        
+        # Combine both directions
+        $forward2
+        $backward2

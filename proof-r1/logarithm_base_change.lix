@@ -1,0 +1,31 @@
+# log_b(a) = log_c(a) / log_c(b) for a,b,c > 0, c ≠ 1
+
+prop log_def(base R, arg R, exp R):
+    base > 0, base != 1, arg > 0
+    iff:
+        base ^ exp = arg
+
+claim:
+    forall a R, b R, c R:
+        a > 0, b > 0, b != 1, c > 0, c != 1
+        then:
+            log(b, a) = log(c, a) / log(c, b)
+    prove:
+        let x = log(b, a)   # By definition: b^x = a
+        let y = log(c, a)   # By definition: c^y = a
+        let z = log(c, b)   # By definition: c^z = b
+
+        # Express b^x using c^z
+        b^x = (c^z)^x      # Substitute b with c^z
+        (c^z)^x = c^{z*x}  # Power of power rule
+
+        # Since b^x = a and c^{z*x} = a
+        c^{z*x} = a
+        c^{z*x} = c^y      # Since both equal a
+
+        # Exponential injectivity (c ≠ 1)
+        z*x = y             # Equate exponents
+
+        # Rearrange to show log identity
+        x = y / z           # Divide both sides by z
+        log(b, a) = log(c, a) / log(c, b)  # Substitute definitions

@@ -1,0 +1,6 @@
+# For a ≠ 0: a^0 = 1
+
+forall a R:
+    a != 0
+    then:
+        a^0 = 1

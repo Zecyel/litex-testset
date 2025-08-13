@@ -1,0 +1,25 @@
+# If a × c = b × c and c ≠ 0, then a = b
+
+let a R, b R, c R:
+    a * c = b * c
+    c != 0
+
+# Subtract b*c from both sides
+a * c - b * c = b * c - b * c
+a * c - b * c = 0
+
+# Factor out c
+(a - b) * c = 0
+
+# Apply zero product property
+or:
+    a - b = 0
+    c = 0
+
+# We know c ≠ 0, so a - b must be 0
+know c != 0
+then:
+    a - b = 0
+
+# Therefore a = b
+a = b

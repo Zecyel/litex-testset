@@ -1,0 +1,39 @@
+# For a,b ≥ 0: (a + b)/2 ≥ √(ab)
+
+let a R, b R:
+    a >= 0
+    b >= 0
+
+# Define square root function
+fn sqrt(x R) R:
+    dom:
+        x >= 0
+    then:
+        sqrt(x) * sqrt(x) = x
+
+# Use the fact that the square of a real number is non-negative
+let d = sqrt(a) - sqrt(b)
+d * d >= 0
+
+# Expand the square
+(sqrt(a) - sqrt(b)) * (sqrt(a) - sqrt(b)) = sqrt(a)*sqrt(a) - 2*sqrt(a)*sqrt(b) + sqrt(b)*sqrt(b)
+= a - 2*sqrt(a)*sqrt(b) + b
+
+# Since the square is non-negative
+a - 2*sqrt(a)*sqrt(b) + b >= 0
+
+# Rearrange terms
+a + b >= 2 * sqrt(a) * sqrt(b)
+
+# Using the multiplicative property of square roots
+know forall x R, y R:
+    x >= 0
+    y >= 0
+    then:
+        sqrt(x * y) = sqrt(x) * sqrt(y)
+
+# Apply the property
+a + b >= 2 * sqrt(a * b)
+
+# Divide both sides by 2 (since 2 > 0)
+(a + b)/2 >= sqrt(a * b)

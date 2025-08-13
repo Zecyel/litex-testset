@@ -1,0 +1,4 @@
+# P→Q ≡ ¬P∨Q
+
+forall P, Q:
+    (P => Q) <=> (¬P ∨ Q)

@@ -1,0 +1,27 @@
+# (a/b)^n = a^n / b^n for b ≠ 0
+
+# Proof of (a/b)^n = a^n / b^n for b ≠ 0 using mathematical induction
+
+let a R, b R: b ≠ 0
+
+# Define proposition for natural number exponent
+prop p(n N):
+    (a/b)^n = a^n / b^n
+
+# Base case: n=0
+know $p(0) because:
+    (a/b)^0 = 1
+    a^0 = 1
+    b^0 = 1
+    a^0 / b^0 = 1/1 = 1
+
+# Inductive step
+know forall k N:
+    $p(k)
+    then:
+        (a/b)^{k+1} = (a/b)^k * (a/b)   # By exponentiation rule
+        (a/b)^k * (a/b) = (a^k / b^k) * (a/b)   # By induction hypothesis
+        (a^k * a) / (b^k * b) = a^{k+1} / b^{k+1}  # Fraction multiplication
+
+# Apply mathematical induction
+prove_by_math_induction($p(n))

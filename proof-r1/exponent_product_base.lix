@@ -1,0 +1,20 @@
+# (a×b)^n = a^n × b^n
+
+claim:
+    forall n N, a R, b R: (a * b)^n = a^n * b^n
+prove_by_induction_on n:
+    base:
+        let a R, b R
+        (a * b)^0 = 1
+        a^0 * b^0 = 1 * 1 = 1
+        so 1 = 1
+    step:
+        let k N
+        assume: forall a R, b R: (a * b)^k = a^k * b^k
+        let a R, b R
+        (a * b)^{k+1} = (a * b) * (a * b)^k
+                       = (a * b) * (a^k * b^k)   [by induction hypothesis]
+                       = a * (b * a^k) * b^k     [associativity]
+                       = a * (a^k * b) * b^k     [commutativity: b * a^k = a^k * b]
+                       = (a * a^k) * (b * b^k)   [associativity]
+                       = a^{k+1} * b^{k+1}

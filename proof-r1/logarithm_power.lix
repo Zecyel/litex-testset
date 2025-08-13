@@ -1,0 +1,71 @@
+# log_b(x^n) = n·log_b(x) for x > 0
+
+```litex
+# Define logarithm function
+fn log_b(x R) R:
+    dom:
+        b > 0
+        b != 1
+        x > 0
+    then:
+        b^(log_b(x)) = x
+
+# Prove logarithmic property for x > 0
+prove:
+    let x R:
+        x > 0
+    let n Z
+
+    # Case 1: n = 0
+    if n = 0:
+        log_b(x^0) = log_b(1)
+        know b^0 = 1  # Built-in exponent rule
+        b^(log_b(1)) = 1  # By logarithm definition
+        b^0 = b^(log_b(1))  # Both equal 1
+        then: log_b(1) = 0  # Since b ≠ 1, exponential is injective
+        0 = 0 * log_b(x)  # Arithmetic
+        then: log_b(x^0) = n * log_b(x)
+
+    # Case 2: n > 0
+    if n > 0:
+        # Use logarithmic product property
+        know forall a R, b R:
+            a > 0
+            b > 0
+            then:
+                log_b(a * b) = log_b(a) + log_b(b)
+
+        # Proof by induction
+        claim:
+            @p(k N_pos):
+                then:
+                    log_b(x^k) = k * log_b(x)
+            prove_by_induction:
+                base: k=1
+                    log_b(x^1) = log_b(x)  # x^1 = x
+                    1 * log_b(x) = log_b(x)  # Arithmetic
+                step:
+                    let k N_pos
+                    assume $p(k)
+                    log_b(x^(k+1)) = log_b(x^k * x)  # Exponent rule
+                    = log_b(x^k) + log_b(x)  # Product property
+                    = k * log_b(x) + log_b(x)  # Induction hypothesis
+                    = (k+1) * log_b(x)
+        then: for n > 0, log_b(x^n) = n * log_b(x)
+
+    # Case 3: n < 0
+    if n < 0:
+        let m = -n  # m > 0
+        log_b(x^n) = log_b(1 / x^m)  # Negative exponent rule
+        # Prove log(1/y) = -log(y)
+        know forall y R:
+            y > 0
+            then:
+                log_b(1/y) = -log_b(y)  # Since b^(-log_b(y)) = 1/y
+        then: log_b(1/x^m) = -log_b(x^m)
+        = - (m * log_b(x))  # From positive case
+        = (-m) * log_b(x)
+        = n * log_b(x)
+
+    # All cases covered
+    then: log_b(x^n) = n * log_b(x)

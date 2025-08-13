@@ -1,0 +1,29 @@
+# If a|b and b|c, then a|c
+
+exist_prop k Z st divides_a_b(a Z, b Z):
+    iff: b = a * k
+
+exist_prop m Z st divides_b_c(b Z, c Z):
+    iff: c = b * m
+
+exist_prop n Z st divides_a_c(a Z, c Z):
+    iff: c = a * n
+
+prove:
+    let a, b, c Z
+    know $divides_a_b(a, b)
+    know $divides_b_c(b, c)
+
+    have k st $divides_a_b(a, b)  # From a|b
+    have m st $divides_b_c(b, c)  # From b|c
+
+    c = b * m         # By definition of b|c
+    b = a * k         # By definition of a|b
+    c = (a * k) * m   # Substitution
+    c = a * (k * m)   # Associativity of multiplication
+
+    let n = k * m
+    n $in Z           # Z closed under multiplication
+    c = a * n         # Direct equality
+
+    exist n st $divides_a_c(a, c)  # Proves a|c by definition

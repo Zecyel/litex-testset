@@ -1,0 +1,7 @@
+# a^{1/n} = √[n]{a} for a ≥ 0, n > 0
+
+forall a R, n R:
+    a >= 0
+    n > 0
+    then:
+        a^{1/n} = \sqrt[n]{a}

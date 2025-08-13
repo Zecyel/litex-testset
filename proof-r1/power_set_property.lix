@@ -1,0 +1,24 @@
+# ∅ ∈ P(A) and A ∈ P(A) for any set A
+
+let A set
+
+# Define the power set P(A) as the set of all subsets of A
+fn P(s set) set:
+    P(s) := { x set | forall z x: z $in s }
+
+# Prove ∅ ∈ P(A)
+claim:
+    ∅ $in P(A)
+    prove:
+        # Show ∅ ⊆ A
+        forall z ∅:
+            # Vacuous truth: no elements in ∅, so implication holds
+            z $in A   # Derivable from contradiction (z ∈ ∅ is false)
+
+# Prove A ∈ P(A)
+claim:
+    A $in P(A)
+    prove:
+        # Show A ⊆ A
+        forall z A:
+            z $in A   # Trivially true by definition

@@ -1,0 +1,6 @@
+# f(x) = x satisfies f(a) = a
+
+fn f(x R) R:
+    f(x) = x
+
+f(a) = a

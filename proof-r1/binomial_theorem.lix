@@ -1,0 +1,33 @@
+# (a+b)^n = Σ[k=0 to n] C(n,k) a^{n-k} b^k
+
+let a R, b R
+prop binomial(n N, k N) R
+
+know forall n N:
+    binomial(n, 0) = 1
+    binomial(n, n) = 1
+
+know forall n N, k N:
+    k >= 1 and k <= n => binomial(n, k) = binomial(n-1, k) + binomial(n-1, k-1)
+
+prop P(n N) <=> (a + b)^n = sum_{k=0}^{n} binomial(n, k) * a^{n-k} * b^k
+
+prove $P(0):
+    (a + b)^0 = 1
+    sum_{k=0}^{0} binomial(0,0) * a^{0-0} * b^0 = 1 * 1 * 1 = 1
+    1 = 1
+
+forall m N:
+    $P(m)
+    then:
+        (a + b)^{m+1} = (a + b) * (a + b)^m
+                        = (a + b) * [sum_{k=0}^{m} binomial(m,k) * a^{m-k} * b^k]
+                        = a * [sum_{k=0}^{m} binomial(m,k) * a^{m-k} * b^k] + b * [sum_{k=0}^{m} binomial(m,k) * a^{m-k} * b^k]
+                        = sum_{k=0}^{m} binomial(m,k) * a^{m+1-k} * b^k + sum_{k=0}^{m} binomial(m,k) * a^{m-k} * b^{k+1}
+                        = binomial(m,0) * a^{m+1} * b^0 + [sum_{k=1}^{m} binomial(m,k) * a^{m+1-k} * b^k] + [sum_{j=1}^{m} binomial(m,j-1) * a^{m+1-j} * b^j] + binomial(m,m) * a^0 * b^{m+1}
+                        = binomial(m,0) * a^{m+1} + [sum_{k=1}^{m} (binomial(m,k) + binomial(m,k-1)) * a^{m+1-k} * b^k] + binomial(m,m) * b^{m+1}
+                        = binomial(m,0) * a^{m+1} + [sum_{k=1}^{m} binomial(m+1,k) * a^{m+1-k} * b^k] + binomial(m,m) * b^{m+1}
+                        = binomial(m+1,0) * a^{m+1} * b^0 + [sum_{k=1}^{m} binomial(m+1,k) * a^{m+1-k} * b^k] + binomial(m+1,m+1) * a^0 * b^{m+1}
+                        = sum_{k=0}^{m+1} binomial(m+1,k) * a^{m+1-k} * b^k
+
+forall n N: $P(n)

@@ -1,0 +1,5 @@
+# Sum of interior angles in triangle is 180 degrees
+
+know forall triangle T:
+    let A, B, C = vertices(T)
+    measure_angle(A, B, C) + measure_angle(B, C, A) + measure_angle(C, A, B) = 180

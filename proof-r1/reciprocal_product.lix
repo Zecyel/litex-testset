@@ -1,0 +1,15 @@
+# For a,b ≠ 0: 1/(a×b) = (1/a)×(1/b)
+
+let a, b R:
+    a != 0
+    b != 0
+
+# Show that (a×b)×((1/a)×(1/b)) = 1
+(a * b) * ((1/a) * (1/b)) = a * b * (1/a) * (1/b)   # Associativity
+= a * (1/a) * b * (1/b)   # Commutativity
+= (a * (1/a)) * (b * (1/b))   # Associativity
+= 1 * 1   # Inverse property
+= 1   # Identity property
+
+# Since (a×b)×((1/a)×(1/b)) = 1, by definition of multiplicative inverse:
+1/(a*b) = (1/a)*(1/b)

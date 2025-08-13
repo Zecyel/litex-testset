@@ -1,0 +1,49 @@
+# Every non-empty set of positive integers has smallest element
+
+claim:
+    forall S set:
+        (forall x S: x $in N_pos) and $non_empty(S) => exist m st $is_min_in_S(S, m)
+    prove_by_contradiction:
+        let S0 set:
+            forall x S0: x $in N_pos
+            $non_empty(S0)
+            not (exist m st $is_min_in_S(S0, m))
+        
+        have set T := n N_pos: not n $in S0
+        
+        prop Q(n N_pos): forall k N_pos: k <= n => k $in T
+        
+        claim:
+            Q(1)
+            prove_by_contradiction:
+                assume not Q(1)
+                then have k N_pos: k <= 1 and not k $in T
+                know k = 1   # since 1 is the smallest positive integer
+                1 not in T
+                then 1 $in S0   # by definition of T
+                then $is_min_in_S(S0, 1)   # because any x in S0 satisfies x >= 1
+                then exist m st $is_min_in_S(S0, m)   # m=1
+                contradiction
+        
+        claim:
+            forall n N_pos: Q(n) => Q(n+1)
+            prove:
+                let n N_pos:
+                    assume Q(n)
+                
+                claim:
+                    n+1 $in T
+                    prove_by_contradiction:
+                        assume not n+1 $in T
+                        then n+1 $in S0
+                        then forall x S0: x >= n+1   # if x < n+1, then x <= n, then by Q(n) x in T, contradiction
+                        then $is_min_in_S(S0, n+1)
+                        then exist m st $is_min_in_S(S0, m)   # m=n+1
+                        contradiction
+        
+        prove_by_math_induction(Q(n))
+        
+        then forall n N_pos: n $in T   # by induction
+        then forall n N_pos: not n $in S0   # by definition of T
+        then S0 is empty   # contradiction to $non_empty(S0)
+        contradiction

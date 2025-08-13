@@ -1,0 +1,39 @@
+# If a ≡ b mod m and b ≡ c mod m, then a ≡ c mod m
+
+# Proof of transitivity of congruence modulo m
+
+# Define the proposition for congruence modulo m
+prop congruent_mod(a Z, b Z, m Z):
+    exist k Z:
+        a - b = k * m
+
+# Prove the claim using the given conditions
+claim:
+    forall a Z, b Z, c Z, m Z:
+        $congruent_mod(a, b, m)
+        $congruent_mod(b, c, m)
+        then:
+            $congruent_mod(a, c, m)
+    prove:
+        # From first congruence: a ≡ b mod m
+        have k Z st a_minus_b_eq_k_m:
+            a - b = k * m
+
+        # From second congruence: b ≡ c mod m
+        have l Z st b_minus_c_eq_l_m:
+            b - c = l * m
+
+        # Combine equations: a - c = (a - b) + (b - c)
+        a - c = (a - b) + (b - c)  # Algebraic identity
+        (a - b) + (b - c) = k * m + l * m  # Substitute from above equations
+        k * m + l * m = (k + l) * m  # Distributive property
+
+        # Let n = k + l
+        let n Z:
+            n = k + l
+
+        # Thus a - c = n * m
+        a - c = n * m
+
+        # Therefore a ≡ c mod m by definition
+        $congruent_mod(a, c, m)  # Since we have n such that a - c = n * m

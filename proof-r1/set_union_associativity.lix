@@ -1,0 +1,78 @@
+# A ∪ (B ∪ C) = (A ∪ B) ∪ C
+
+let A set, B set, C set
+
+claim:
+    A ∪ (B ∪ C) = (A ∪ B) ∪ C
+    prove:
+        # Part 1: A ∪ (B ∪ C) ⊆ (A ∪ B) ∪ C
+        forall x A ∪ (B ∪ C):
+            then:
+                x ∈ (A ∪ B) ∪ C
+            prove:
+                or:
+                    x ∈ A
+                    x ∈ B ∪ C
+                if x ∈ A:
+                    or:
+                        x ∈ A
+                        x ∈ B
+                    x ∈ A ∪ B
+                    or:
+                        x ∈ A ∪ B
+                        x ∈ C
+                    x ∈ (A ∪ B) ∪ C
+                if x ∈ B ∪ C:
+                    or:
+                        x ∈ B
+                        x ∈ C
+                    if x ∈ B:
+                        or:
+                            x ∈ A
+                            x ∈ B
+                        x ∈ A ∪ B
+                        or:
+                            x ∈ A ∪ B
+                            x ∈ C
+                        x ∈ (A ∪ B) ∪ C
+                    if x ∈ C:
+                        or:
+                            x ∈ A ∪ B
+                            x ∈ C
+                        x ∈ (A ∪ B) ∪ C
+
+        # Part 2: (A ∪ B) ∪ C ⊆ A ∪ (B ∪ C)
+        forall x (A ∪ B) ∪ C:
+            then:
+                x ∈ A ∪ (B ∪ C)
+            prove:
+                or:
+                    x ∈ A ∪ B
+                    x ∈ C
+                if x ∈ A ∪ B:
+                    or:
+                        x ∈ A
+                        x ∈ B
+                    if x ∈ A:
+                        or:
+                            x ∈ A
+                            x ∈ B ∪ C
+                        x ∈ A ∪ (B ∪ C)
+                    if x ∈ B:
+                        or:
+                            x ∈ B
+                            x ∈ C
+                        x ∈ B ∪ C
+                        or:
+                            x ∈ A
+                            x ∈ B ∪ C
+                        x ∈ A ∪ (B ∪ C)
+                if x ∈ C:
+                    or:
+                        x ∈ B
+                        x ∈ C
+                    x ∈ B ∪ C
+                    or:
+                        x ∈ A
+                        x ∈ B ∪ C
+                    x ∈ A ∪ (B ∪ C)

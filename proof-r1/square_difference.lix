@@ -1,0 +1,12 @@
+# (a - b)² = a² - 2ab + b²
+
+let a R, b R
+(a - b)² = (a - b) * (a - b)
+(a - b) * (a - b) = a*(a) + a*(-b) + (-b)*a + (-b)*(-b)
+a*(a) = a²
+a*(-b) = -ab
+(-b)*a = -ab
+(-b)*(-b) = b²
+a² + (-ab) + (-ab) + b² = a² - ab - ab + b²
+a² - ab - ab + b² = a² - 2ab + b²
+(a - b)² = a² - 2ab + b²

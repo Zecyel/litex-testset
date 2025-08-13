@@ -1,0 +1,5 @@
+# For odd n, √[n]{a^n} = a
+
+let n N: n % 2 = 1
+let a R
+(a^n)^(1/n) = a

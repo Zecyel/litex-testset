@@ -1,0 +1,96 @@
+# P∧(Q∨R) ≡ (P∧Q)∨(P∧R) and P∨(Q∧R) ≡ (P∨Q)∧(P∨R)
+
+# Proof for P ∧ (Q ∨ R) ≡ (P ∧ Q) ∨ (P ∧ R)
+
+# Forward direction: P ∧ (Q ∨ R) → (P ∧ Q) ∨ (P ∧ R)
+claim:
+    @forward(P prop, Q prop, R prop):
+        P ∧ (Q ∨ R)
+        then:
+            (P ∧ Q) ∨ (P ∧ R)
+    prove:
+        # Case 1: Q is true
+        or:
+            Q
+            then:
+                P
+                Q
+                P ∧ Q
+                (P ∧ Q) ∨ (P ∧ R)
+        # Case 2: R is true
+        or:
+            R
+            then:
+                P
+                R
+                P ∧ R
+                (P ∧ Q) ∨ (P ∧ R)
+
+# Backward direction: (P ∧ Q) ∨ (P ∧ R) → P ∧ (Q ∨ R)
+claim:
+    @backward(P prop, Q prop, R prop):
+        (P ∧ Q) ∨ (P ∧ R)
+        then:
+            P ∧ (Q ∨ R)
+    prove:
+        or:
+            P ∧ Q
+            then:
+                P
+                Q
+                Q ∨ R
+                P ∧ (Q ∨ R)
+        or:
+            P ∧ R
+            then:
+                P
+                R
+                Q ∨ R
+                P ∧ (Q ∨ R)
+
+# Proof for P ∨ (Q ∧ R) ≡ (P ∨ Q) ∧ (P ∨ R)
+
+# Forward direction: P ∨ (Q ∧ R) → (P ∨ Q) ∧ (P ∨ R)
+claim:
+    @forward2(P prop, Q prop, R prop):
+        P ∨ (Q ∧ R)
+        then:
+            (P ∨ Q) ∧ (P ∨ R)
+    prove:
+        or:
+            P
+            then:
+                P ∨ Q
+                P ∨ R
+                (P ∨ Q) ∧ (P ∨ R)
+        or:
+            Q ∧ R
+            then:
+                Q
+                R
+                P ∨ Q  # Since Q is true
+                P ∨ R  # Since R is true
+                (P ∨ Q) ∧ (P ∨ R)
+
+# Backward direction: (P ∨ Q) ∧ (P ∨ R) → P ∨ (Q ∧ R)
+claim:
+    @backward2(P prop, Q prop, R prop):
+        (P ∨ Q) ∧ (P ∨ R)
+        then:
+            P ∨ (Q ∧ R)
+    prove:
+        # Case 1: P is true
+        or:
+            P
+            then:
+                P ∨ (Q ∧ R)
+        # Case 2: P is false
+        or:
+            not P
+            then:
+                # From (P ∨ Q) and not P, we get Q
+                Q
+                # From (P ∨ R) and not P, we get R
+                R
+                Q ∧ R
+                P ∨ (Q ∧ R)

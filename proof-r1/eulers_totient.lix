@@ -1,0 +1,20 @@
+# φ(n) = number of integers < n coprime to n
+
+# Define Euler's totient function φ(n)
+let n N_pos
+have set coprime_set := k Z: 
+    0 <= k, k < n, 
+    gcd(k, n) = 1
+
+# φ(n) is the cardinality of the set of integers k where 0 ≤ k < n and gcd(k, n) = 1
+let φ(n) = len(coprime_set)
+
+# Prove that φ(1) = 1
+prove:
+    let n = 1
+    # For n=1, the set is {0} because:
+    # - 0 is the only integer satisfying 0 ≤ k < 1
+    # - gcd(0,1) = 1
+    coprime_set = {0}
+    len(coprime_set) = 1
+    φ(1) = 1

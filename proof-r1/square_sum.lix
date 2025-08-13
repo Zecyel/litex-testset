@@ -1,0 +1,8 @@
+# (a + b)² = a² + 2ab + b²
+
+let a R, b R
+(a + b) * (a + b) = a * (a + b) + b * (a + b)  # Distributive property
+a * (a + b) + b * (a + b) = a*a + a*b + b*a + b*b  # Distributive property again
+a*a + a*b + b*a + b*b = a² + a*b + a*b + b²  # Commutative property (b*a = a*b)
+a² + a*b + a*b + b² = a² + 2ab + b²  # Combine like terms
+∴ (a + b)² = a² + 2ab + b²

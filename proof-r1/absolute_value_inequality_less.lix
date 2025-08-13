@@ -1,0 +1,38 @@
+# |x| < a iff -a < x < a for a > 0
+
+let a R: a > 0
+let x R
+
+claim:
+    |x| < a
+    then:
+        -a < x < a
+    prove:
+        case x >= 0:
+            |x| = x
+            x < a
+            -a < 0 <= x  # Since a > 0, -a < 0 and 0 <= x
+            so -a < x
+        case x < 0:
+            |x| = -x
+            -x < a
+            x > -a  # Multiply both sides by -1 (reverse inequality)
+            x < 0 < a  # Since x < 0 and a > 0
+            so x < a
+        in both cases: -a < x < a
+
+claim:
+    -a < x < a
+    then:
+        |x| < a
+    prove:
+        case x >= 0:
+            |x| = x
+            x < a
+            so |x| < a
+        case x < 0:
+            |x| = -x
+            -a < x
+            -x < a  # Multiply both sides by -1 (reverse inequality)
+            so |x| < a
+        in both cases: |x| < a

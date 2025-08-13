@@ -1,0 +1,22 @@
+# Sum of two even integers is even
+
+# Definition of even integer: n is even iff there exists an integer k such that n = 2*k.
+exist_prop k Z st even(n Z):
+    iff:
+        n = 2 * k
+
+# Let a and b be two even integers.
+let a Z, b Z:
+    $even(a)
+    $even(b)
+
+# By definition, there exist integers k and l such that a = 2k and b = 2l.
+have k st $even(a)
+have l st $even(b)
+
+# Then a + b = 2k + 2l = 2(k + l)
+a + b = 2 * k + 2 * l
+a + b = 2 * (k + l)
+
+# Since k + l is an integer, this shows a + b is even
+exist (k + l) st $even(a + b)

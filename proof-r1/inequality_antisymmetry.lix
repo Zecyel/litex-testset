@@ -1,0 +1,6 @@
+# If a ≥ b and b ≥ a, then a = b
+
+let a R, b R:
+    a >= b
+    b >= a
+a = b

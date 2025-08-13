@@ -1,0 +1,21 @@
+# Sum of even and odd integer is odd
+
+prop even(n Z): exist k Z: n = 2 * k
+prop odd(n Z): exist k Z: n = 2 * k + 1
+
+let a Z: $even(a)
+let b Z: $odd(b)
+
+have k Z st $even(a)  # Witness for a being even
+have m Z st $odd(b)   # Witness for b being odd
+
+a = 2 * k
+b = 2 * m + 1
+
+a + b = 2 * k + (2 * m + 1)
+a + b = 2 * (k + m) + 1
+
+let s = k + m  # s is integer since k,m ∈ Z
+s $in Z
+
+exist s st $odd(a + b)  # Prove sum is odd by witness

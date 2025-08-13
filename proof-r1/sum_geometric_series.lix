@@ -1,0 +1,25 @@
+# Sum of n terms: S_n = a(1-r^n)/(1-r) for r ≠ 1
+
+let a R, r R: r != 1
+let S fn(N) R:
+    S(0) = 0
+    forall n N:
+        S(n+1) = S(n) + a * r^n
+
+claim:
+    forall n N:
+        S(n) = a * (1 - r^n) / (1 - r)
+prove_by_math_induction($claim(n)):
+    base: n=0
+        S(0) = 0
+        a * (1 - r^0) / (1 - r) = a * (1 - 1) / (1 - r) = 0
+        so 0 = 0
+    step: let n N
+        assume: S(n) = a * (1 - r^n) / (1 - r)
+        then:
+            S(n+1) = S(n) + a * r^n
+                    = a * (1 - r^n) / (1 - r) + a * r^n
+                    = [a * (1 - r^n) + a * r^n * (1 - r)] / (1 - r)
+                    = [a - a * r^n + a * r^n - a * r^{n+1}] / (1 - r)
+                    = (a - a * r^{n+1}) / (1 - r)
+                    = a * (1 - r^{n+1}) / (1 - r)

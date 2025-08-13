@@ -1,0 +1,24 @@
+# If a/b = c/d then (a-b)/b = (c-d)/d for b,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+    a / b = c / d
+
+# Expand both sides of the equation
+(a - b) / b = a/b - b/b
+(c - d) / d = c/d - d/d
+
+# Simplify b/b and d/d
+b/b = 1
+d/d = 1
+
+# Substitute simplifications
+(a - b)/b = a/b - 1
+(c - d)/d = c/d - 1
+
+# Use given equality
+a/b - 1 = c/d - 1
+
+# Conclude equality
+(a - b)/b = (c - d)/d

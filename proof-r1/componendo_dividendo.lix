@@ -1,0 +1,26 @@
+# If a/b = c/d then (a+b)/(a-b) = (c+d)/(c-d) for a≠b, c≠d, b,d≠0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+    a != b
+    c != d
+    a / b = c / d
+
+# Multiply both sides by b*d to clear denominators
+(a / b) * (b * d) = (c / d) * (b * d)
+a * d = c * b
+
+# Add b*d to both sides
+a * d + b * d = c * b + b * d
+d * (a + b) = b * (c + d)
+
+# Subtract b*d from both sides
+a * d - b * d = c * b - b * d
+d * (a - b) = b * (c - d)
+
+# Divide both equations (since denominators are non-zero)
+[d * (a + b)] / [d * (a - b)] = [b * (c + d)] / [b * (c - d)]
+
+# Cancel d and b (since b,d ≠0 and a≠b, c≠d ensure denominators ≠0)
+(a + b) / (a - b) = (c + d) / (c - d)

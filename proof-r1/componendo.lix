@@ -1,0 +1,19 @@
+# If a/b = c/d then (a+b)/b = (c+d)/d for b,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    d != 0
+    a / b = c / d
+
+(a + b) / b = a / b + b / b   # Fraction addition rule
+(a + b) / b = a / b + 1       # b/b = 1
+
+(c + d) / d = c / d + d / d   # Fraction addition rule
+(c + d) / d = c / d + 1       # d/d = 1
+
+a / b + 1 = c / d + 1         # Given a/b = c/d
+
+(a + b) / b = c / d + 1       # Transitivity of equality
+(c + d) / d = c / d + 1       # From above
+
+(a + b) / b = (c + d) / d     # Transitivity of equality

@@ -1,0 +1,8 @@
+# If P(1) true and P(k)→P(k+1), then P(n) true ∀n
+
+prop P(n N)
+
+know P(1)
+know forall k N: P(k) => P(k+1)
+
+forall n N: P(n)

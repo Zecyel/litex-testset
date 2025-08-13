@@ -1,0 +1,30 @@
+# A = (A - B) ∪ (A ∩ B) for any sets A,B
+
+let A set, B set
+
+# Prove A ⊆ (A - B) ∪ (A ∩ B)
+forall x A:
+    or:
+        not in_set(x, B)
+        in_set(x, B)
+    if not in_set(x, B):
+        in_set(x, set_diff(A, B))
+        in_set(x, set_union(set_diff(A, B), set_inter(A, B)))
+    if in_set(x, B):
+        in_set(x, set_inter(A, B))
+        in_set(x, set_union(set_diff(A, B), set_inter(A, B)))
+    in_set(x, set_union(set_diff(A, B), set_inter(A, B)))
+
+# Prove (A - B) ∪ (A ∩ B) ⊆ A
+forall x set_union(set_diff(A, B), set_inter(A, B)):
+    or:
+        in_set(x, set_diff(A, B))
+        in_set(x, set_inter(A, B))
+    if in_set(x, set_diff(A, B)):
+        in_set(x, A)
+    if in_set(x, set_inter(A, B)):
+        in_set(x, A)
+    in_set(x, A)
+
+# By set extensionality
+A = set_union(set_diff(A, B), set_inter(A, B))

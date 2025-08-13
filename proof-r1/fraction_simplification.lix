@@ -1,0 +1,5 @@
+# a/b = (a÷c)/(b÷c) for c ≠ 0
+
+let a R, b R, c R:
+    c != 0
+    a / b = (a / c) / (b / c)

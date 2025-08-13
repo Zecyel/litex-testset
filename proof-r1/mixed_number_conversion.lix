@@ -1,0 +1,13 @@
+# a b/c = (a×c + b)/c
+
+let a R, b R, c R:
+    c != 0
+
+# Express mixed number as sum
+a + (b / c) = (a * c) / c + b / c
+
+# Combine fractions with common denominator
+(a * c + b) / c = (a * c) / c + b / c
+
+# By transitivity of equality
+a + (b / c) = (a * c + b) / c

@@ -1,0 +1,3 @@
+# For any real x, ∃ integer n > x
+
+forall x R: exist n Z: n > x

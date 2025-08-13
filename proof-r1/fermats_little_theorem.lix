@@ -1,0 +1,79 @@
+# If p prime, a not divisible by p, then a^{p-1} ≡ 1 mod p
+
+# Fermat's Little Theorem
+let p N:
+    p > 1
+    forall d N:
+        d > 1
+        d < p
+        then:
+            not $is_divisible_by(p, d)  # Definition of prime
+
+let a Z:
+    not $is_divisible_by(a, p)  # Given condition
+
+# Set of residues modulo p
+have set residues := x N: 1 <= x <= p-1
+
+# Bijective multiplication map
+fn f(k residues) residues:
+    (a * k) % p
+
+# Claim: f is injective
+claim: forall k1 residues, k2 residues: f(k1) = f(k2) => k1 = k2
+prove:
+    f(k1) = f(k2)
+    (a * k1) % p = (a * k2) % p
+    a * k1 ≡ a * k2 (mod p)
+    a * (k1 - k2) ≡ 0 (mod p)
+    p | a*(k1-k2)  # p divides a*(k1-k2)
+    know @prime_divides_product(p, a, k1-k2):  # Euclid's lemma
+        $prime(p)
+        $is_divisible_by(a*(k1-k2), p)
+        then:
+            or:
+                $is_divisible_by(a, p)
+                $is_divisible_by(k1-k2, p)
+    not $is_divisible_by(a, p)  # Given
+    so $is_divisible_by(k1-k2, p)
+    |k1-k2| < p  # Since k1,k2 ∈ [1,p-1]
+    k1-k2 = 0
+    k1 = k2
+
+# Claim: f is surjective
+know residues $in finite_set
+len(residues) = p-1
+know forall k residues: f(k) $in residues  # By definition
+@injective_implies_bijective_for_finite_sets(domain residues, codomain residues, f):
+    injective: forall x domain, y domain: f(x) = f(y) => x = y
+    same_size: len(domain) = len(codomain)
+
+# Product equivalence
+let P = ∏_{x residues} x  # Product of residues
+=:
+    ∏_{k residues} f(k)  # Product of f(k)
+    P  # Since bijection
+=:
+    ∏_{k residues} (a * k)  # Product of a*k
+    a^{p-1} * P  # Factored out a^{p-1} times P
+
+# Congruence of products
+∏_{k residues} f(k) ≡ ∏_{k residues} (a * k) (mod p)  # Element-wise congruence
+P ≡ a^{p-1} * P (mod p)  # From above equalities
+a^{p-1} * P - P ≡ 0 (mod p)
+P * (a^{p-1} - 1) ≡ 0 (mod p)
+
+# Cancel P (since gcd(P,p)=1)
+claim: not $is_divisible_by(P, p)
+prove_by_contradiction:
+    $is_divisible_by(P, p)
+    exist k residues: $is_divisible_by(k, p)  # Prime divides some factor
+    but forall k residues: 1 <= k <= p-1  # Contradiction
+
+know @cancel_congruence(c P, a a^{p-1}-1, p):
+    c * a ≡ 0 (mod p)
+    gcd(c,p) = 1
+    then:
+        a ≡ 0 (mod p)
+a^{p-1} - 1 ≡ 0 (mod p)
+a^{p-1} ≡ 1 (mod p)

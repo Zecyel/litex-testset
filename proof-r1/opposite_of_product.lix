@@ -1,0 +1,18 @@
+# For any numbers a, b: -(a × b) = (-a) × b = a × (-b)
+
+let a R, b R
+
+# Prove -(a * b) = (-a) * b
+(-a) * b + a * b = [(-a) + a] * b  # Distributive property
+(-a) * b + a * b = 0 * b           # Additive inverse: (-a) + a = 0
+(-a) * b + a * b = 0               # Multiplication by zero
+(-a) * b = -(a * b)                # Additive inverse uniqueness
+
+# Prove -(a * b) = a * (-b)
+a * (-b) + a * b = a * [(-b) + b]  # Distributive property
+a * (-b) + a * b = a * 0           # Additive inverse: (-b) + b = 0
+a * (-b) + a * b = 0               # Multiplication by zero
+a * (-b) = -(a * b)                # Additive inverse uniqueness
+
+# By transitivity of equality
+-(a * b) = (-a) * b = a * (-b)

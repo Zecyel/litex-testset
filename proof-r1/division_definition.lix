@@ -1,0 +1,6 @@
+# a ÷ b = a × (1/b) for b ≠ 0
+
+let a R, b R:
+    b != 0
+    then:
+        a / b = a * (1/b)

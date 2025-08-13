@@ -1,0 +1,23 @@
+# Vertex of ax²+bx+c is at x = -b/(2a)
+
+# Proof that the vertex of f(x) = ax² + bx + c is at x = -b/(2a)
+
+# Define the quadratic function
+let a R, b R, c R, x R
+let f R: f = a*x^2 + b*x + c
+
+# Rewrite by completing the square
+=:
+    f
+    a*(x^2 + (b/a)*x) + c
+    a*(x^2 + (b/a)*x + (b/(2a))^2 - (b/(2a))^2) + c
+    a*((x + b/(2a))^2 - (b/(2a))^2) + c
+    a*(x + b/(2a))^2 - a*(b^2/(4a^2)) + c
+    a*(x + b/(2a))^2 - b^2/(4a) + c
+
+# The vertex occurs when the square term is minimized
+# This happens when x + b/(2a) = 0
+x + b/(2a) = 0
+x = -b/(2a)
+
+# Therefore, the vertex is at x = -b/(2a)

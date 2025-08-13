@@ -1,0 +1,31 @@
+# For any numbers a, b: -(a + b) = (-a) + (-b)
+
+let a R, b R
+
+# Start with the expression: (a + b) + ((-a) + (-b))
+# Apply associativity and commutativity to rearrange terms
+know:
+    (a + b) + ((-a) + (-b)) 
+        = a + b + (-a) + (-b)   [Grouping terms]
+        = a + (-a) + b + (-b)   [Commutativity of addition]
+        = (a + (-a)) + (b + (-b))   [Associativity of addition]
+
+# Apply the additive inverse property: x + (-x) = 0
+know forall x R:
+    x + (-x) = 0
+
+# Substitute using the additive inverse property
+know:
+    a + (-a) = 0
+    b + (-b) = 0
+
+# Continue simplification:
+    (a + (-a)) + (b + (-b)) 
+        = 0 + 0   [Substitution]
+        = 0   [Additive identity]
+
+# We have shown: (a + b) + ((-a) + (-b)) = 0
+# This means ((-a) + (-b)) is the additive inverse of (a + b)
+# Therefore: -(a + b) = (-a) + (-b)
+
+-(a + b) = (-a) + (-b)

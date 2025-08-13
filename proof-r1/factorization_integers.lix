@@ -1,0 +1,125 @@
+# Every integer >1 has unique prime factorization
+
+# Proof of the Fundamental Theorem of Arithmetic
+
+# Part 1: Existence of prime factorization
+prop has_prime_factorization(n N_pos):
+    n > 1
+    iff:
+        exist_prop factors set st prime_factors(factors):
+            forall p factors:
+                p $in prime
+            n = product(factors)
+
+# Base case: n=2
+know has_prime_factorization(2)
+prove:
+    2 > 1
+    have set factors := {2}
+    forall p factors:
+        p = 2
+        2 $in prime
+    product(factors) = 2
+
+# Induction: Assume true for all k < n
+claim:
+    forall n N_pos:
+        n > 2
+        then:
+            $has_prime_factorization(n)
+    prove:
+        # If n is prime, it's its own factorization
+        or:
+            n $in prime
+            then:
+                have set factors := {n}
+                $prime_factors(factors)
+                product(factors) = n
+        or:
+            # n is composite
+            exist a N_pos, b N_pos:
+                1 < a < n
+                1 < b < n
+                n = a * b
+            # By strong induction
+            $has_prime_factorization(a)
+            have set factors_a st $prime_factors(a)
+            $has_prime_factorization(b)
+            have set factors_b st $prime_factors(b)
+            have set factors_n := union(factors_a, factors_b)
+            forall p factors_n:
+                or:
+                    p $in factors_a
+                    then: p $in prime
+                    p $in factors_b
+                    then: p $in prime
+            product(factors_n) = product(factors_a) * product(factors_b) = a * b = n
+            $prime_factors(factors_n)
+
+# Part 2: Uniqueness of prime factorization
+prop unique_factorization(n N_pos):
+    n > 1
+    iff:
+        forall set1, set2:
+            $prime_factors(set1, n)
+            $prime_factors(set2, n)
+            then:
+                set1 = set2  # Up to ordering (sets are unordered)
+
+# Use Euclid's Lemma
+know Euclid_lemma:
+    forall p prime, a Z, b Z:
+        p divides (a*b)
+        then:
+            or:
+                p divides a
+                p divides b
+
+# Proof by induction on size of factorization
+claim:
+    forall n N_pos:
+        n > 1
+        then:
+            $unique_factorization(n)
+    prove:
+        # Base case: n prime
+        or:
+            n $in prime
+            then:
+                forall set1, set2:
+                    $prime_factors(set1, n)
+                    $prime_factors(set2, n)
+                    set1 = {n}
+                    set2 = {n}
+                    set1 = set2
+        or:
+            # Induction step
+            n composite
+            assume:
+                forall m N_pos:
+                    1 < m < n
+                    then:
+                        $unique_factorization(m)
+            let setA, setB:
+                $prime_factors(setA, n)
+                $prime_factors(setB, n)
+            let p := min(setA)  # Smallest prime factor
+            p divides n
+            n = product(setB)
+            p divides product(setB)
+            by Euclid_lemma:
+                exist q setB:
+                    p divides q
+            q $in prime
+            p $in prime
+            p = q  # Since both prime and p divides q
+            let m := n / p
+            1 < m < n
+            # Remove p from factorizations
+            let setA' := setA without p
+            let setB' := setB without q
+            $prime_factors(setA', m)
+            $prime_factors(setB', m)
+            by induction hypothesis:
+                setA' = setB'
+            setA = setA' union {p} = setB' union {q} = setB

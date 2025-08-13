@@ -1,0 +1,11 @@
+# (a/b) ÷ (c/d) = (a/b) × (d/c) for b,c,d ≠ 0
+
+let a R, b R, c R, d R:
+    b != 0
+    c != 0
+    d != 0
+
+# Express the division of fractions
+(a / b) / (c / d) = (a / b) * (d / c)
+
+# Therefore, (a/b) ÷ (c/d) = (a/b) × (d/c)

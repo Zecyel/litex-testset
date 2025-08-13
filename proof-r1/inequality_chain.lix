@@ -1,0 +1,3 @@
+# If a < b < c, then a < c
+
+forall a, b, c R: a < b, b < c => a < c

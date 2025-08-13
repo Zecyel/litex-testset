@@ -1,0 +1,48 @@
+# A ∪ U = U where U is universal set
+
+# Proof that A ∪ U = U
+
+# Given: U is the universal set containing all elements under consideration
+let U set
+know forall x obj: x $in U   # Universal set contains every object
+
+# Let A be an arbitrary set
+let A set
+
+# Define the union set C = A ∪ U
+have set C := x obj: (x $in A) or (x $in U)
+
+# Prove C = U by showing they have the same elements
+# First direction: If x ∈ C, then x ∈ U
+let x C
+or:
+    x $in A
+    x $in U
+if x $in A:
+    then: x $in U   # Since A ⊆ U (all elements in A are in U)
+else:
+    x $in U
+# Thus ∀x ∈ C: x ∈ U
+
+# Second direction: If x ∈ U, then x ∈ C
+let x U
+x $in U   # True by assumption
+then: 
+    or: 
+        x $in A
+        x $in U   # This condition holds
+    then: x $in C   # By definition of C
+# Thus ∀x ∈ U: x ∈ C
+
+# Set equality axiom: Two sets are equal iff they contain the same elements
+know forall X set, Y set: X = Y <=> (forall z obj: z $in X <=> z $in Y)
+
+# Apply set equality to C and U
+forall z obj: 
+    z $in C <=> (z $in A or z $in U)   # Definition of C
+    z $in U <=> true   # Universal set property
+    (z $in A or z $in U) <=> true   # Since z ∈ U is always true
+    thus z $in C <=> z $in U
+
+# Therefore C = U
+C = U

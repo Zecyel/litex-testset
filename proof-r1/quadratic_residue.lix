@@ -1,0 +1,9 @@
+# a is quadratic residue mod p if x² ≡ a mod p has solution
+
+# Definition of quadratic residue modulo p
+prop quadratic_residue(a Z, p Z):
+    dom:
+        p > 1  # Modulus must be at least 2
+    iff:
+        exist x Z: 
+            (x * x - a) % p = 0

@@ -1,0 +1,23 @@
+# A - A = ∅
+
+let A set
+
+# Prove that A - A = ∅ using set extensionality
+# Set extensionality: Two sets are equal if they have the same elements.
+
+# Show that for any element x, x ∈ (A - A) iff x ∈ ∅
+forall x obj:
+    # By definition of set difference:
+    #   x ∈ (A - A) iff (x ∈ A and x ∉ A)
+    # But (x ∈ A and x ∉ A) is a contradiction, so it is always false.
+    not (x $in (A - A))
+
+    # By definition of the empty set:
+    #   x ∈ ∅ is always false.
+    not (x $in ∅)
+
+    # Therefore, both statements are false, so they are equivalent.
+    (x $in (A - A)) <=> (x $in ∅)
+
+# By set extensionality, A - A = ∅
+A - A = ∅

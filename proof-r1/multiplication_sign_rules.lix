@@ -1,0 +1,80 @@
+# positive × positive = positive; negative × negative = positive; positive × negative = negative
+
+# Proof of multiplication sign rules
+
+# Define positive and negative numbers
+let R_pos set := { x R | x > 0 }
+let R_neg set := { x R | x < 0 }
+
+# Axiom: Multiplication by zero
+know forall x R:
+    x * 0 = 0
+    0 * x = 0
+
+# Proof: positive × positive = positive
+claim:
+    forall a R_pos, b R_pos:
+        a * b > 0
+    prove:
+        let a R_pos, b R_pos:
+            a > 0
+            b > 0
+        
+        # Use multiplicative property of inequalities
+        know forall x,y R:
+            x > 0, y > 0 => x * y > 0
+        
+        a * b > 0
+
+# Proof: negative × negative = positive
+claim:
+    forall a R_neg, b R_neg:
+        a * b > 0
+    prove:
+        let a R_neg, b R_neg:
+            a < 0
+            b < 0
+        
+        # Express negatives as additive inverses
+        have c R_pos, d R_pos:
+            a = -c
+            b = -d
+        
+        # Compute product
+        a * b = (-c) * (-d)
+        (-c) * (-d) = (-1 * c) * (-1 * d)
+        = (-1) * (-1) * c * d
+        = 1 * c * d
+        = c * d
+        
+        # c and d positive, so c*d positive
+        c > 0
+        d > 0
+        c * d > 0
+        a * b = c * d > 0
+
+# Proof: positive × negative = negative
+claim:
+    forall a R_pos, b R_neg:
+        a * b < 0
+    prove:
+        let a R_pos, b R_neg:
+            a > 0
+            b < 0
+        
+        # Express negative as additive inverse
+        have c R_pos:
+            b = -c
+        
+        # Compute product
+        a * b = a * (-c)
+        = - (a * c)
+        
+        # a and c positive, so a*c positive
+        a > 0
+        c > 0
+        a * c > 0
+        
+        # Negative of positive is negative
+        - (a * c) < 0
+        a * b = - (a * c) < 0

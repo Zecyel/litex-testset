@@ -1,0 +1,5 @@
+# |a| = a if a ≥ 0; |a| = -a if a < 0
+
+forall a R:
+    a >= 0 => |a| = a
+    a < 0 => |a| = -a

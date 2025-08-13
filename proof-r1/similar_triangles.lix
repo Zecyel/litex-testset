@@ -1,0 +1,6 @@
+# Corresponding angles equal, sides proportional
+
+forall triangle1 triangle, triangle2 triangle:
+    corresponding_angles_equal(triangle1, triangle2)
+    then:
+        sides_proportional(triangle1, triangle2)

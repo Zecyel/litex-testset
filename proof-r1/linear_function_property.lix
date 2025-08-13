@@ -1,0 +1,14 @@
+# f(x) = mx + b satisfies f(a) - f(b) = m(a - b)
+
+let m R, b_const R
+fn f(x R) R:
+    f(x) = m * x + b_const
+
+let a R, b R
+
+f(a) - f(b) = (m * a + b_const) - (m * b + b_const)
+             = m * a + b_const - m * b - b_const
+             = (m * a - m * b) + (b_const - b_const)
+             = (m * a - m * b) + 0
+             = m * a - m * b
+             = m * (a - b)

@@ -1,0 +1,3 @@
+# |a+bi| = √(a²+b²)
+
+forall a R, b R: |a + b * i| = sqrt(a^2 + b^2)

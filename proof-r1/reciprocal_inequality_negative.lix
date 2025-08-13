@@ -1,0 +1,8 @@
+# If a < b < 0, then 1/a < 1/b < 0
+
+forall a R, b R:
+    a < b
+    b < 0
+    then:
+        1/a < 1/b
+        1/b < 0

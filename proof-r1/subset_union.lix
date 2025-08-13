@@ -1,0 +1,56 @@
+# A ⊆ B iff A ∪ B = B
+
+let A, B set
+
+# Claim: A ⊆ B iff A ∪ B = B
+
+# Part 1: A ⊆ B implies A ∪ B = B
+claim:
+    @subset_implies_union_equals_B():
+        forall x:
+            x $in A => x $in B
+        then:
+            forall y:
+                y $in (A ∪ B) <=> y $in B
+    prove:
+        # (=>) If y ∈ A ∪ B then y ∈ B
+        let y obj:
+            y $in (A ∪ B)
+            or:
+                y $in A
+                y $in B
+            if y $in A:
+                y $in B  # by subset definition
+            if y $in B:
+                y $in B
+            y $in B
+
+        # (<=) If y ∈ B then y ∈ A ∪ B
+        let y obj:
+            y $in B
+            then:
+                or:
+                    y $in A
+                    y $in B
+                y $in (A ∪ B)
+
+# Part 2: A ∪ B = B implies A ⊆ B
+claim:
+    @union_equals_B_implies_subset():
+        forall y:
+            y $in (A ∪ B) <=> y $in B
+        then:
+            forall x:
+                x $in A => x $in B
+    prove:
+        let x obj:
+            x $in A
+            then:
+                or:
+                    x $in A
+                    x $in B
+                x $in (A ∪ B)
+                x $in B  # by set equality
+
+# Therefore, A ⊆ B iff A ∪ B = B
+$subset_implies_union_equals_B() and $union_equals_B_implies_subset()

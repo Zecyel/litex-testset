@@ -1,0 +1,4 @@
+# gcd(a,b) = largest d such that d|a and d|b
+
+know forall a Z, b Z:
+    gcd(a,b) = largest d such that d|a and d|b

@@ -1,0 +1,16 @@
+# Product of even integer with any integer is even
+
+let m Z, even integer:  # m is an even integer
+    exist k Z: m = 2 * k  # Definition of even integer
+
+let n Z  # n is any integer
+
+# Compute the product m*n
+m * n = (2 * k) * n  # Substitute m with 2k
+= 2 * (k * n)  # Associative property of multiplication
+
+# Let l = k * n, which is an integer since Z is closed under multiplication
+have l Z := k * n
+
+# Then m*n = 2*l, which is even by definition
+m * n = 2 * l

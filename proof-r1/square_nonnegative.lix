@@ -1,0 +1,43 @@
+# For any real a: a² ≥ 0
+
+# Proof that for any real a, a² ≥ 0
+
+# We use the fact that every real number is either positive, zero, or negative
+know forall a R:
+    or:
+        a > 0
+        a = 0
+        a < 0
+
+claim:
+    forall a R:
+        a² ≥ 0
+    prove:
+        or:
+            a > 0
+            a = 0
+            a < 0
+        prove_in_each_case:
+            case a > 0:
+                # Product of two positive numbers is positive
+                a > 0
+                a > 0
+                then:
+                    a * a > 0
+                a² = a * a
+                a² > 0
+                a² ≥ 0   # Since > implies ≥
+
+            case a = 0:
+                a² = 0
+                0 ≥ 0
+
+            case a < 0:
+                -a > 0   # Negation reverses inequality
+                -a > 0
+                -a > 0
+                then:
+                    (-a) * (-a) > 0
+                (-a) * (-a) = a²   # Sign rule: negative × negative = positive
+                a² > 0
+                a² ≥ 0   # Since > implies ≥

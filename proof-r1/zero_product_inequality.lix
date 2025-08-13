@@ -1,0 +1,5 @@
+# If ab > 0, then a and b same sign; if ab < 0, opposite signs
+
+forall a R, b R:
+    a * b > 0 <=> (a > 0 and b > 0) or (a < 0 and b < 0)
+    a * b < 0 <=> (a > 0 and b < 0) or (a < 0 and b > 0)

@@ -1,0 +1,46 @@
+# |x| > a iff x < -a or x > a for a > 0
+
+claim:
+    forall a R:
+        a > 0
+        then:
+            forall x R:
+                |x| > a
+                iff:
+                    x < -a or x > a
+    prove:
+        # Case 1: x >= 0
+        let x R:
+            x >= 0
+        |x| = x
+        then:
+            |x| > a
+            iff:
+                x > a
+        
+        # Case 2: x < 0
+        let x R:
+            x < 0
+        |x| = -x
+        then:
+            |x| > a
+            iff:
+                -x > a
+                iff:
+                    x < -a
+        
+        # Combine both cases
+        forall x R:
+            or:
+                x >= 0
+                x < 0
+            then:
+                |x| > a
+                iff:
+                    or:
+                        x >= 0 and x > a
+                        x < 0 and x < -a
+                iff:
+                    or:
+                        x > a
+                        x < -a

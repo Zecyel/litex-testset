@@ -1,0 +1,9 @@
+# For even n, √[n]{a^n} = |a|
+
+let n N
+know $even(n)
+forall a R:
+    a^n = (abs(a))^n
+    root(n, a^n) = root(n, (abs(a))^n)
+    root(n, (abs(a))^n) = abs(a)
+    root(n, a^n) = abs(a)

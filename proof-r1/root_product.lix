@@ -1,0 +1,40 @@
+# For a,b ≥ 0: √(a×b) = √a × √b
+
+# Define the square root function for nonnegative reals
+fn sqrt(x R) R:
+    dom: x >= 0
+    then:
+        sqrt(x) >= 0
+        sqrt(x) * sqrt(x) = x
+
+# Proof that √(a·b) = √a · √b for a,b ≥ 0
+let a R, b R:
+    a >= 0
+    b >= 0
+
+# Let x = √a · √b
+let x R:
+    x = sqrt(a) * sqrt(b)
+
+# Show x ≥ 0
+sqrt(a) >= 0
+sqrt(b) >= 0
+x = sqrt(a) * sqrt(b) >= 0
+
+# Show x² = a·b
+x * x = (sqrt(a) * sqrt(b)) * (sqrt(a) * sqrt(b))
+      = (sqrt(a) * sqrt(a)) * (sqrt(b) * sqrt(b))  # Commutativity/associativity
+      = a * b
+
+# By definition of square root
+sqrt(a * b) * sqrt(a * b) = a * b
+
+# Since x² = a·b and x ≥ 0, by uniqueness of square root
+x * x = a * b
+sqrt(a * b) * sqrt(a * b) = a * b
+sqrt(a * b) >= 0
+x >= 0
+x = sqrt(a * b)
+
+# Therefore √(a·b) = √a · √b
+sqrt(a * b) = sqrt(a) * sqrt(b)

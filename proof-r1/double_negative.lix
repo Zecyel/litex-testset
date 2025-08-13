@@ -1,0 +1,14 @@
+# For any number a: -(-a) = a
+
+let a R
+# By definition of additive inverse
+a + (-a) = 0
+-(-a) + (-a) = 0
+# Add a to both sides of the second equation
+a + (-(-a) + (-a)) = a + 0
+# Apply associative property
+(a + (-(-a))) + (-a) = a
+# Substitute first equation: a + (-a) = 0
+0 + (-(-a)) = a
+# Identity property
+-(-a) = a

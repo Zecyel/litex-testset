@@ -1,0 +1,98 @@
+# positive ÷ positive = positive; negative ÷ negative = positive; positive ÷ negative = negative
+
+# Proof of division sign rules
+
+# Part 1: positive ÷ positive = positive
+claim:
+    forall a R, b R:
+        a > 0
+        b > 0
+        then:
+            a / b > 0
+    prove:
+        # By definition of division: a / b = c iff c * b = a
+        let c = a / b
+        c * b = a  # By definition of division
+        
+        # Since a > 0 and b > 0, c must be positive
+        # If c <= 0, we get contradiction:
+        # Case 1: c = 0 → 0 * b = 0 ≠ a > 0
+        # Case 2: c < 0 → negative times positive is negative, but a > 0
+        # Therefore c > 0
+        not c <= 0
+        prove_by_contradiction:
+            c <= 0
+            or:
+                c = 0
+                c < 0
+            if c = 0:
+                0 * b = 0
+                a = 0  # But a > 0 → contradiction
+            if c < 0:
+                c < 0
+                b > 0
+                c * b < 0  # Negative times positive is negative
+                a = c * b
+                a < 0  # But a > 0 → contradiction
+
+# Part 2: negative ÷ negative = positive
+claim:
+    forall a R, b R:
+        a < 0
+        b < 0
+        then:
+            a / b > 0
+    prove:
+        let c = a / b
+        c * b = a  # By definition
+        
+        # If c <= 0, we get contradiction:
+        # Case 1: c = 0 → 0 * b = 0 ≠ a < 0
+        # Case 2: c < 0 → negative times negative is positive, but a < 0
+        # Therefore c > 0
+        not c <= 0
+        prove_by_contradiction:
+            c <= 0
+            or:
+                c = 0
+                c < 0
+            if c = 0:
+                0 * b = 0
+                a = 0  # But a < 0 → contradiction
+            if c < 0:
+                c < 0
+                b < 0
+                c * b > 0  # Negative times negative is positive
+                a = c * b
+                a > 0  # But a < 0 → contradiction
+
+# Part 3: positive ÷ negative = negative
+claim:
+    forall a R, b R:
+        a > 0
+        b < 0
+        then:
+            a / b < 0
+    prove:
+        let c = a / b
+        c * b = a  # By definition
+        
+        # If c >= 0, we get contradiction:
+        # Case 1: c = 0 → 0 * b = 0 ≠ a > 0
+        # Case 2: c > 0 → positive times negative is negative, but a > 0
+        # Therefore c < 0
+        not c >= 0
+        prove_by_contradiction:
+            c >= 0
+            or:
+                c = 0
+                c > 0
+            if c = 0:
+                0 * b = 0
+                a = 0  # But a > 0 → contradiction
+            if c > 0:
+                c > 0
+                b < 0
+                c * b < 0  # Positive times negative is negative
+                a = c * b
+                a < 0  # But a > 0 → contradiction

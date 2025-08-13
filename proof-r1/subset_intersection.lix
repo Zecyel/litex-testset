@@ -1,0 +1,43 @@
+# A ⊆ B iff A ∩ B = A
+
+let A, B set
+
+claim:
+    A $subseteq B
+    iff:
+        A $cap B = A
+
+prove:
+    # Direction: A ⊆ B → A ∩ B = A
+    assume:
+        A $subseteq B
+    then:
+        forall x:
+            x $in A $cap B
+            iff:
+                x $in A and x $in B
+            =>:  # x ∈ A ∩ B → x ∈ A (trivial)
+                x $in A
+            <=:  # x ∈ A → x ∈ A ∩ B
+                x $in A
+                =>:  # by A ⊆ B
+                    x $in B
+                then:
+                    x $in A and x $in B
+                =>:
+                    x $in A $cap B
+        therefore:
+            A $cap B = A
+
+    # Direction: A ∩ B = A → A ⊆ B
+    assume:
+        A $cap B = A
+    then:
+        forall x:
+            x $in A
+            =>:  # by A = A ∩ B
+                x $in A $cap B
+            =>:
+                x $in B
+        therefore:
+            A $subseteq B

@@ -1,0 +1,40 @@
+# Sum of two odd integers is even
+
+# Define even and odd integers
+prop is_even(n Z):
+    exist_prop k Z st even_rep(n):
+        n = 2 * k
+
+prop is_odd(n Z):
+    exist_prop k Z st odd_rep(n):
+        n = 2 * k + 1
+
+# Claim: Sum of two odd integers is even
+claim:
+    forall a Z, b Z:
+        $is_odd(a)
+        $is_odd(b)
+        then:
+            $is_even(a + b)
+    prove:
+        # Since a is odd, there exists k such that a = 2k+1
+        have k Z st $odd_rep(a)
+        a = 2 * k + 1
+
+        # Since b is odd, there exists l such that b = 2l+1
+        have l Z st $odd_rep(b)
+        b = 2 * l + 1
+
+        # Calculate sum
+        a + b = (2 * k + 1) + (2 * l + 1)
+        a + b = 2 * k + 2 * l + 2
+        a + b = 2 * (k + l + 1)
+
+        # Let m = k + l + 1, which is integer
+        let m Z:
+            m = k + l + 1
+
+        # Show a+b = 2m, which is even
+        a + b = 2 * m
+        $even_rep(a + b)
+        $is_even(a + b)

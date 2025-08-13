@@ -1,0 +1,78 @@
+# For integers a,b>0, ∃! q,r: a = bq + r, 0≤r<b
+
+exist_prop q Z, r Z st division_algorithm(a N_pos, b N_pos):
+    a = b * q + r
+    0 <= r < b
+
+know forall a N_pos, b N_pos:
+    then:
+        $division_algorithm(a, b)
+
+claim:
+    forall a N_pos, b N_pos:
+        $division_algorithm(a, b)
+    prove:
+        # Define set S = {a - b*k | k in Z, a - b*k >= 0}
+        have set S := r N: exists k Z: r = a - b * k, r >= 0
+        
+        # Show S is non-empty (take k=0)
+        let k0 Z: k0 = 0
+        r0 = a - b * k0
+        r0 = a
+        a > 0 => a >= 0 => r0 $in S
+        $non_empty(S)
+        
+        # S has minimum element by well-ordering of N
+        know forall s set: 
+            $non_empty(s) 
+            forall x s: x $in N 
+            then: 
+                exist_prop m N st min_in_set(s): 
+                    m $in s 
+                    forall x s: x >= m
+        
+        have m st $min_in_set(S)
+        m $in S
+        forall x S: x >= m
+        
+        # m = a - b*q for some q
+        have q Z st m = a - b * q
+        
+        # Check 0 <= m < b
+        m >= 0  # since m in S
+        prove_by_contradiction:
+            assume m >= b
+            let m' = m - b
+            m' = a - b * q - b = a - b*(q+1)
+            m' = m - b >= 0  # since m >= b
+            => m' $in S
+            m' < m  # since b > 0
+            => contradiction to m being minimum
+        
+        # Thus 0 <= m < b
+        let r = m
+        a = b * q + r
+        0 <= r < b
+
+claim:
+    forall a N_pos, b N_pos:
+        unique q Z, r Z: 
+            a = b * q + r, 
+            0 <= r < b
+    prove:
+        let q1 Z, r1 Z: 
+            a = b * q1 + r1, 
+            0 <= r1 < b
+        let q2 Z, r2 Z: 
+            a = b * q2 + r2, 
+            0 <= r2 < b
+        
+        b * q1 + r1 = b * q2 + r2
+        b * (q1 - q2) = r2 - r1
+        
+        |r2 - r1| < b  # since 0 <= r1, r2 < b
+        b * |q1 - q2| = |r2 - r1| < b
+        
+        # Only possible if |q1 - q2| = 0
+        |q1 - q2| = 0 => q1 = q2
+        then r2 - r1 = 0 => r1 = r2

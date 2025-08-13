@@ -1,0 +1,42 @@
+# log_b(x/y) = log_b(x) - log_b(y) for x,y > 0
+
+# Proof of log_b(x/y) = log_b(x) - log_b(y) for x,y > 0
+
+# Define the logarithm function
+fn log_base_b(x R) R:
+    dom:
+        x > 0
+    then:
+        b^log_base_b(x) = x
+
+# Let x,y > 0
+let x R, y R:
+    x > 0
+    y > 0
+
+# Set L = log_b(x/y)
+let L R = log_base_b(x / y)
+
+# By logarithm definition: b^L = x/y
+b^L = x / y
+
+# Set M = log_b(x), N = log_b(y)
+let M R = log_base_b(x)
+let N R = log_base_b(y)
+
+# By logarithm definitions
+b^M = x
+b^N = y
+
+# Then b^{M - N} = b^M / b^N = x / y
+b^{M - N} = b^M / b^N
+b^{M - N} = x / y
+
+# Therefore b^L = b^{M - N}
+b^L = b^{M - N}
+
+# Since exponential functions are one-to-one
+L = M - N
+
+# Substitute back the definitions
+log_base_b(x / y) = log_base_b(x) - log_base_b(y)
