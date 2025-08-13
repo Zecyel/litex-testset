@@ -26,3 +26,5 @@ cd autogen && python3 gen.py
 It'll generate `autogen/proof.jsonl`. You can run `python3 unfold_jsonl.py` to unfold all the proof into `proof/`.
 
 Then, run `cd .. & chmod +x check.sh && ./check.sh` to figure out the accuracy of the generated proves.
+
+If you only want to proof one theory, simply run `autogen/gen-interact.py`, this will give you an interactive interface.
