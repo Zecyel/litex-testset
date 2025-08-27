@@ -23,7 +23,7 @@ If you think the problem is so easy that the litex engine should have known it, 
 tutor = load_prompt('../prompt/tutor.txt')
 testings = load_prompt('../prompt/testings.txt')
 examples = load_prompt('../prompt/examples.txt')
-documentation = f"Tutorial: {tutor}\nExample: {testings}\n{examples}"
+documentation = f"Tutorial:\n{tutor}\nHere's some solved problems:\n{testings}\nHere's other examples:\n{examples}"
 
 def answer_question(question: str, model: str = "deepseek-r1-250528") -> str:
     llm_prompt = f"{prompt}\nProblem: {question}\nDocumentation: {documentation}"
